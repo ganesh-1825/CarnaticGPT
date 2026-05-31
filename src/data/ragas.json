@@ -1,0 +1,302 @@
+[
+  {
+    "name": "Bhairavi",
+    "melakarta": "Natabhairavi",
+    "rasa": "Karuna",
+    "audio": {
+      "alapana": "/audio/Bhairavi/alapana.mp3",
+      "arohana": "/audio/Bhairavi/arohana.mp3",
+      "avarohana": "/audio/Bhairavi/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Kalyani",
+    "melakarta": "Mechakalyani",
+    "rasa": "Bhakti, Shringara",
+    "audio": {
+      "alapana": "/audio/Kalyani/alapana.mp3",
+      "arohana": "/audio/Kalyani/arohana.mp3",
+      "avarohana": "/audio/Kalyani/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Hindolam",
+    "melakarta": "Hanumatodi",
+    "rasa": "Karuna",
+    "audio": {
+      "alapana": "/audio/Hindolam/alapana.mp3",
+      "arohana": "/audio/Hindolam/arohana.mp3",
+      "avarohana": "/audio/Hindolam/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Mohanam",
+    "melakarta": "Harikambhoji",
+    "rasa": "Shringara",
+    "audio": {
+      "alapana": "/audio/Mohanam/alapana.mp3",
+      "arohana": "/audio/Mohanam/arohana.mp3",
+      "avarohana": "/audio/Mohanam/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Todi",
+    "melakarta": "Hanumatodi",
+    "rasa": "Bhakti",
+    "audio": {
+      "alapana": "/audio/Todi/alapana.mp3",
+      "arohana": "/audio/Todi/arohana.mp3",
+      "avarohana": "/audio/Todi/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Sankarabharanam",
+    "melakarta": "Dheerasankarabharanam",
+    "rasa": "Veera",
+    "audio": {
+      "alapana": "/audio/Sankarabharanam/alapana.mp3",
+      "arohana": "/audio/Sankarabharanam/arohana.mp3",
+      "avarohana": "/audio/Sankarabharanam/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Hamsadhwani",
+    "melakarta": "Dheerasankarabharanam",
+    "rasa": "Mangalakar",
+    "audio": {
+      "alapana": "/audio/Hamsadhwani/alapana.mp3",
+      "arohana": "/audio/Hamsadhwani/arohana.mp3",
+      "avarohana": "/audio/Hamsadhwani/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Kharaharapriya",
+    "melakarta": "Kharaharapriya",
+    "rasa": "Karuna, Bhakti",
+    "audio": {
+      "alapana": "/audio/Kharaharapriya/alapana.mp3",
+      "arohana": "/audio/Kharaharapriya/arohana.mp3",
+      "avarohana": "/audio/Kharaharapriya/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Keeravani",
+    "melakarta": "Keeravani",
+    "rasa": "Karuna",
+    "audio": {
+      "alapana": "/audio/Keeravani/alapana.mp3",
+      "arohana": "/audio/Keeravani/arohana.mp3",
+      "avarohana": "/audio/Keeravani/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Revathi",
+    "melakarta": "Ratnangi",
+    "rasa": "Bhakti",
+    "audio": {
+      "alapana": "/audio/Revathi/alapana.mp3",
+      "arohana": "/audio/Revathi/arohana.mp3",
+      "avarohana": "/audio/Revathi/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Abhogi",
+    "melakarta": "Kharaharapriya",
+    "rasa": "Karuna",
+    "audio": {
+      "alapana": "/audio/Abhogi/alapana.mp3",
+      "arohana": "/audio/Abhogi/arohana.mp3",
+      "avarohana": "/audio/Abhogi/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Madhyamavathi",
+    "melakarta": "Kharaharapriya",
+    "rasa": "Mangalakar",
+    "audio": {
+      "alapana": "/audio/Madhyamavathi/alapana.mp3",
+      "arohana": "/audio/Madhyamavathi/arohana.mp3",
+      "avarohana": "/audio/Madhyamavathi/avarohana.mp3"
+    }
+  },
+  {
+    "name": "ShuddhaSaveri",
+    "melakarta": "Dheerasankarabharanam",
+    "rasa": "Bhakti",
+    "audio": {
+      "alapana": "/audio/ShuddhaSaveri/alapana.mp3",
+      "arohana": "/audio/ShuddhaSaveri/arohana.mp3",
+      "avarohana": "/audio/ShuddhaSaveri/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Sivaranjani",
+    "melakarta": "Kharaharapriya",
+    "rasa": "Karuna",
+    "audio": {
+      "alapana": "/audio/Sivaranjani/alapana.mp3",
+      "arohana": "/audio/Sivaranjani/arohana.mp3",
+      "avarohana": "/audio/Sivaranjani/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Bilahari",
+    "melakarta": "Dheerasankarabharanam",
+    "rasa": "Veera",
+    "audio": {
+      "alapana": "/audio/Bilahari/alapana.mp3",
+      "arohana": "/audio/Bilahari/arohana.mp3",
+      "avarohana": "/audio/Bilahari/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Charukesi",
+    "melakarta": "Charukesi",
+    "rasa": "Karuna, Shringara",
+    "audio": {
+      "alapana": "/audio/Charukesi/alapana.mp3",
+      "arohana": "/audio/Charukesi/arohana.mp3",
+      "avarohana": "/audio/Charukesi/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Anandabhairavi",
+    "melakarta": "Natabhairavi",
+    "rasa": "Karuna, Bhakti",
+    "audio": {
+      "alapana": "/audio/Anandabhairavi/alapana.mp3",
+      "arohana": "/audio/Anandabhairavi/arohana.mp3",
+      "avarohana": "/audio/Anandabhairavi/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Kamboji",
+    "melakarta": "Harikambhoji",
+    "rasa": "Shringara",
+    "audio": {
+      "alapana": "/audio/Kamboji/alapana.mp3",
+      "arohana": "/audio/Kamboji/arohana.mp3",
+      "avarohana": "/audio/Kamboji/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Arabhi",
+    "melakarta": "Dheerasankarabharanam",
+    "rasa": "Veera",
+    "audio": {
+      "alapana": "/audio/Arabhi/alapana.mp3",
+      "arohana": "/audio/Arabhi/arohana.mp3",
+      "avarohana": "/audio/Arabhi/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Nattai",
+    "melakarta": "Chalanata",
+    "rasa": "Veera",
+    "audio": {
+      "alapana": "/audio/Nattai/alapana.mp3",
+      "arohana": "/audio/Nattai/arohana.mp3",
+      "avarohana": "/audio/Nattai/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Bhupalam",
+    "melakarta": "Mayamalavagowla",
+    "rasa": "Bhakti",
+    "audio": {
+      "alapana": "/audio/Bhupalam/alapana.mp3",
+      "arohana": "/audio/Bhupalam/arohana.mp3",
+      "avarohana": "/audio/Bhupalam/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Amruthavarshini",
+    "melakarta": "Mechakalyani",
+    "rasa": "Adbhuta",
+    "audio": {
+      "alapana": "/audio/Amruthavarshini/alapana.mp3",
+      "arohana": "/audio/Amruthavarshini/arohana.mp3",
+      "avarohana": "/audio/Amruthavarshini/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Hamsanadam",
+    "melakarta": "Neetimati",
+    "rasa": "Veera",
+    "audio": {
+      "alapana": "/audio/Hamsanadam/alapana.mp3",
+      "arohana": "/audio/Hamsanadam/arohana.mp3",
+      "avarohana": "/audio/Hamsanadam/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Udayaravichandrika",
+    "melakarta": "Kharaharapriya",
+    "rasa": "Bhakti",
+    "audio": {
+      "alapana": "/audio/Udayaravichandrika/alapana.mp3",
+      "arohana": "/audio/Udayaravichandrika/arohana.mp3",
+      "avarohana": "/audio/Udayaravichandrika/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Naagaswaraavali",
+    "melakarta": "Harikambhoji",
+    "rasa": "Bhakti",
+    "audio": {
+      "alapana": "/audio/Naagaswaraavali/alapana.mp3",
+      "arohana": "/audio/Naagaswaraavali/arohana.mp3",
+      "avarohana": "/audio/Naagaswaraavali/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Andolika",
+    "melakarta": "Kharaharapriya",
+    "rasa": "Bhakti, Karuna",
+    "audio": {
+      "alapana": "/audio/Andolika/alapana.mp3",
+      "arohana": "/audio/Andolika/arohana.mp3",
+      "avarohana": "/audio/Andolika/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Gambheeranattai",
+    "melakarta": "Chalanata",
+    "rasa": "Veera",
+    "audio": {
+      "alapana": "/audio/Gambheeranattai/alapana.mp3",
+      "arohana": "/audio/Gambheeranattai/arohana.mp3",
+      "avarohana": "/audio/Gambheeranattai/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Mohanakalyani",
+    "melakarta": "Mechakalyani",
+    "rasa": "Shringara",
+    "audio": {
+      "alapana": "/audio/Mohanakalyani/alapana.mp3",
+      "arohana": "/audio/Mohanakalyani/arohana.mp3",
+      "avarohana": "/audio/Mohanakalyani/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Durga",
+    "melakarta": "Dheerasankarabharanam",
+    "rasa": "Veera",
+    "audio": {
+      "alapana": "/audio/Durga/alapana.mp3",
+      "arohana": "/audio/Durga/arohana.mp3",
+      "avarohana": "/audio/Durga/avarohana.mp3"
+    }
+  },
+  {
+    "name": "Malkouns",
+    "melakarta": "Hanumatodi",
+    "rasa": "Karuna",
+    "audio": {
+      "alapana": "/audio/Malkouns/alapana.mp3",
+      "arohana": "/audio/Malkouns/arohana.mp3",
+      "avarohana": "/audio/Malkouns/avarohana.mp3"
+    }
+  }
+]
