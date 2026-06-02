@@ -273,12 +273,15 @@ def split_multi_questions(query: str) -> list[str]:
         "arohana", "avarohana", "varnam", "kriti", "pallavi", "anupallavi", "charanam"
     ]
     if any(t in lower for t in ["explain", "what is", "define", "describe"]):
-        found_concepts = [c for c in THEORY_CONCEPT_TERMS if re.search(r"\b" + re.escape(c) + r"\b", lower)]
-        if len(found_concepts) >= 2:
-            # Only split if they appear to be listed (joined by "and", comma, etc.)
-            # Don't split if it's a single comparison: "difference between X and Y"
-            action = "Explain" if "explain" in lower else ("Define" if "define" in lower else "What is")
-            return [f"{action} {c}?" for c in found_concepts]
+        if "arohana" in lower and "avarohana" in lower:
+            pass
+        else:
+            found_concepts = [c for c in THEORY_CONCEPT_TERMS if re.search(r"\b" + re.escape(c) + r"\b", lower)]
+            if len(found_concepts) >= 2:
+                # Only split if they appear to be listed (joined by "and", comma, etc.)
+                # Don't split if it's a single comparison: "difference between X and Y"
+                action = "Explain" if "explain" in lower else ("Define" if "define" in lower else "What is")
+                return [f"{action} {c}?" for c in found_concepts]
 
     # ── Coordinated sub-questions (original logic) ────────────────────────────
     if len(questions) == 1:
