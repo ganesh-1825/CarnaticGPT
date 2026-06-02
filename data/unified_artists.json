@@ -1,0 +1,230 @@
+{
+  "Sumitra Nitin": {
+    "name": "Sumitra Nitin",
+    "tradition": "Carnatic",
+    "total_tracks": 133,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580805"
+  },
+  "Salem Gayatri Venkatesan": {
+    "name": "Salem Gayatri Venkatesan",
+    "tradition": "Carnatic",
+    "total_tracks": 112,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580814"
+  },
+  "Vasundara Rajagopal": {
+    "name": "Vasundara Rajagopal",
+    "tradition": "Carnatic",
+    "total_tracks": 163,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580816"
+  },
+  "Kanakadurga Venkatesh": {
+    "name": "Kanakadurga Venkatesh",
+    "tradition": "Carnatic",
+    "total_tracks": 177,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580818"
+  },
+  "Mahati": {
+    "name": "Mahati",
+    "tradition": "Carnatic",
+    "total_tracks": 199,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580819"
+  },
+  "N J Nandini": {
+    "name": "N J Nandini",
+    "tradition": "Carnatic",
+    "total_tracks": 107,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580821"
+  },
+  "Cherthala Ranganatha Sharma": {
+    "name": "Cherthala Ranganatha Sharma",
+    "tradition": "Carnatic",
+    "total_tracks": 181,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580822"
+  },
+  "Prema Rangarajan": {
+    "name": "Prema Rangarajan",
+    "tradition": "Carnatic",
+    "total_tracks": 165,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580823"
+  },
+  "Modhumudi Sudhakar": {
+    "name": "Modhumudi Sudhakar",
+    "tradition": "Carnatic",
+    "total_tracks": 174,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580825"
+  },
+  "Vidya Subramanian": {
+    "name": "Vidya Subramanian",
+    "tradition": "Carnatic",
+    "total_tracks": 120,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580826"
+  },
+  "Kuldeep Pai": {
+    "name": "Kuldeep Pai",
+    "tradition": "Carnatic",
+    "total_tracks": 149,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580827"
+  },
+  "Sumithra Vasudev": {
+    "name": "Sumithra Vasudev",
+    "tradition": "Carnatic",
+    "total_tracks": 157,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580829"
+  },
+  "Angarai V K Rajasimhan": {
+    "name": "Angarai V K Rajasimhan",
+    "tradition": "Carnatic",
+    "total_tracks": 125,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580830"
+  },
+  "Manda Sudharani": {
+    "name": "Manda Sudharani",
+    "tradition": "Carnatic",
+    "total_tracks": 196,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580831"
+  },
+  "Srividya Janakiraman": {
+    "name": "Srividya Janakiraman",
+    "tradition": "Carnatic",
+    "total_tracks": 155,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580832"
+  },
+  "KP Nandini": {
+    "name": "KP Nandini",
+    "tradition": "Carnatic",
+    "total_tracks": 147,
+    "source": "saraga_carnatic_melody_synth",
+    "dataset": "melody_synth",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580834"
+  },
+  "saraga1.5_carnatic": {
+    "name": "saraga1.5_carnatic",
+    "tradition": "Carnatic",
+    "total_tracks": 954,
+    "source": "saraga1.5",
+    "dataset": "saraga1.5_carnatic",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580835"
+  },
+  "__MACOSX": {
+    "name": "__MACOSX",
+    "tradition": "Hindustani",
+    "total_tracks": 84,
+    "source": "saraga1.5",
+    "dataset": "saraga1.5_hindustani",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580836"
+  },
+  "saraga1.5_hindustani": {
+    "name": "saraga1.5_hindustani",
+    "tradition": "Hindustani",
+    "total_tracks": 84,
+    "source": "saraga1.5",
+    "dataset": "saraga1.5_hindustani",
+    "sources": [
+      "saraga"
+    ],
+    "source_priority": "secondary",
+    "last_updated": "2025-09-08T22:03:54.580837"
+  }
+}

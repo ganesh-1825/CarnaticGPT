@@ -1,0 +1,15 @@
+{
+  "1":   "C (Safed Ek / Tonic at ~261.6 Hz)",
+  "1.5": "C# / D-flat (Between 1 & 2 Kattai / ~269.3 Hz — used by some vocalists for a mid-low pitch)",
+  "2":   "C# / D-flat (Safed Do / Tonic at ~277.2 Hz)",
+  "2.5": "D / D# (Between 2 & 3 Kattai / ~285.3 Hz — a commonly chosen comfortable mid-pitch)",
+  "3":   "D (Safed Teen / Tonic at ~293.7 Hz)",
+  "3.5": "D# / E-flat (Between 3 & 4 Kattai / ~302.3 Hz — preferred by many female vocalists)",
+  "4":   "D# / E-flat (Safed Char / Tonic at ~311.1 Hz)",
+  "4.5": "E / F (Between 4 & 5 Kattai / ~320.2 Hz — frequently used concert pitch for male vocalists)",
+  "5":   "E (Safed Panch / Tonic at ~329.6 Hz)",
+  "5.5": "F / F# (Between 5 & 6 Kattai / ~339.4 Hz — higher pitch for bright, resonant concert effect)",
+  "6":   "F (Safed Chah / Tonic at ~349.2 Hz)",
+  "6.5": "F# / G-flat (Between 6 & 7 Kattai / ~359.7 Hz — used for high-pitched traditional renditions)",
+  "7":   "F# / G-flat (Safed Sat / Tonic at ~370.0 Hz)"
+}

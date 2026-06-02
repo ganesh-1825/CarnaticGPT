@@ -1,0 +1,55 @@
+{
+  "raga": "Hindolam",
+  "parent_melakarta": "Hanuma Todi (8th Melakarta)",
+  "type": "Audava Raga",
+  "hindustani_equivalent": "Malkouns",
+  "swarasthanas": [
+    "S",
+    "G",
+    "M",
+    "D",
+    "N"
+  ],
+  "arohana": "S G M D N S",
+  "avarohana": "S N D M G S",
+  "rasas": [
+    "Karuna",
+    "Bhakti",
+    "Santa"
+  ],
+  "special_features": [
+    "Moorchhana Kaaraka Raga",
+    "All swaras are Graha, Nyasa and Jeeva swaras",
+    "Can be a main concert raga",
+    "Sweet and attractive raga"
+  ],
+  "samvadi_swaras": [
+    "S-M",
+    "G-D",
+    "G-N",
+    "M-N",
+    "M-S"
+  ],
+  "compositions": [
+    {
+      "name": "Saamaja Vara Gamana",
+      "talam": "Aadi",
+      "composer": "Tyagaraja"
+    },
+    {
+      "name": "Manasuloni Marmamu",
+      "talam": "Aadi",
+      "composer": "Tyagaraja"
+    },
+    {
+      "name": "Neerajaakshi Kaamaakshi",
+      "talam": "Roopakam",
+      "composer": "Muthuswami Dikshitar"
+    },
+    {
+      "name": "Bhajare Gopalam",
+      "talam": "Aadi",
+      "composer": "Sadasiva Brahmendra"
+    }
+  ]
+}

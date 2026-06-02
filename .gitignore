@@ -1,0 +1,106 @@
+# ==========================================
+# CarnaticGPT - Comprehensive .gitignore
+# ==========================================
+
+# --- Python Caches & Bytecode ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- Virtual Environments ---
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# --- Environment Secrets & Config ---
+.env
+.env.local
+.env.*.local
+*.env
+backend/.env
+frontend/.env
+
+# --- Node / Frontend Dependencies & Builds ---
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+build/
+frontend/build/
+.eslintcache
+.parcel-cache
+.cache/
+
+# --- Compiled Binaries & OS Libraries ---
+# (Ignores OS-specific binaries/executables, which should not be tracked)
+*.exe
+*.dll
+*.so
+*.dylib
+*.msi
+*.cab
+*.sys
+*.obj
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.settings/
+
+# --- OS Specific Files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs, Databases & Backups ---
+*.log
+*.db
+*.sqlite
+backend/carnatic_gpt.db
+backend/data/backups/
+**/backups/
+scratch/
+
+# --- Dynamic/Generated Data & Vector Databases ---
+# Ignore FAISS vector databases and generated index files
+data/faiss_index/
+vectorDB/faiss_index/
+
+# Ignore intermediate data processing outputs
+data/extracted_text/
+data/cleaned_text/
+data/chunks/
+data/generated_QA/
+data/embeddings/
+
+# Ignore text files extracted from raw PDFs in the data subdirectories
+data/**/*.txt
+
+# --- Accidental/Duplicate Frontend Folders ---
+# (Ignores duplicates of root-level folders if they are present in frontend/)
+frontend/backend/
+frontend/analytics/
+frontend/deployment/
+frontend/doc/
+frontend/models/
+frontend/scripts/
+frontend/tessdata/
+frontend/tests/
+
+
+# Books and datasets
+data/books/
+data/uploads/
+backend/data/backups/

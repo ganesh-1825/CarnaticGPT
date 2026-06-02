@@ -1,0 +1,5 @@
+metric,value
+faithfulness,1.0000
+context_relevance,0.8929
+recall_at_2,0.9520
+latency_ms,185.0
