@@ -12,6 +12,8 @@ import os
 import pickle
 import logging
 import threading
+import json
+import hashlib
 from pathlib import Path
 
 import faiss
@@ -19,9 +21,10 @@ import numpy as np
 
 logger = logging.getLogger(__name__)
 
-INDEX_DIR = Path(os.getenv("FAISS_INDEX_DIR", "data/faiss_index"))
+INDEX_DIR = Path(os.getenv("FAISS_INDEX_DIR", "data/vectorDB"))
 INDEX_FILE = INDEX_DIR / "index.faiss"
 META_FILE = INDEX_DIR / "metadata.pkl"
+META_JSON = INDEX_DIR / "metadata.json"
 HASHES_FILE = INDEX_DIR / "hashes.pkl"
 
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
@@ -117,17 +120,28 @@ class FAISSStore:
     # ------------------------------------------------------------------
 
     def _load(self):
-        if INDEX_FILE.exists() and META_FILE.exists():
+        if INDEX_FILE.exists() and (META_FILE.exists() or META_JSON.exists()):
             try:
                 self.index = faiss.read_index(str(INDEX_FILE))
-                with open(META_FILE, "rb") as f:
-                    self.metadata = pickle.load(f)
+
+                if META_FILE.exists():
+                    with open(META_FILE, "rb") as f:
+                        self.metadata = pickle.load(f)
+                elif META_JSON.exists():
+                    with open(META_JSON, "r", encoding="utf-8") as f:
+                        self.metadata = json.load(f)
+                        # Ensure each metadata entry has an 'id' for hashing if it's missing
+                        for m in self.metadata:
+                            if "id" not in m and "content" in m:
+                                m["id"] = hashlib.sha256(m["content"].strip().lower().encode()).hexdigest()[:16]
+
                 if HASHES_FILE.exists():
                     with open(HASHES_FILE, "rb") as f:
                         self.known_hashes = pickle.load(f)
                 else:
                     # Rebuild hashes from metadata
-                    self.known_hashes = {m.get("id", "") for m in self.metadata}
+                    self.known_hashes = {m.get("id", "") for m in self.metadata if m.get("id")}
+
                 logger.info(
                     "Loaded FAISS index: %d vectors, %d metadata entries",
                     self.index.ntotal, len(self.metadata),

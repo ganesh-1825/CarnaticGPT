@@ -2896,7 +2896,7 @@ def _call_hf(prompt: str) -> str:
     
     import time
     start = time.time()
-    print("Starting HF generation...")
+    log.info("Starting HF generation...")
     # Add repetition penalty to avoid loops, limit tokens for speed on CPU
     out = _hf_pipeline_obj(
         prompt, 
@@ -2904,7 +2904,7 @@ def _call_hf(prompt: str) -> str:
         do_sample=False,
         repetition_penalty=1.15
     )
-    print(f"Generation took {time.time()-start:.2f} sec")
+    log.info("Generation took %.2f sec", time.time()-start)
     full_text = out[0]["generated_text"]
 
     if full_text.startswith(prompt):
@@ -2954,6 +2954,10 @@ _TERM_WEIGHTS = {
     "dikshitar":3,"composition":2,"kriti":3,"varnam":3,"pallavi":3,
     "pitch":3,"note":3,"interval":3,"scale":3,"melody":3,"rhythm":3,
     "octave":3,"tone":3,"frequency":2,"beat":2,"tradition":2,
+    "melakarta":5,"janya":4,"varja":4,"vakra":4,"upanga":4,"bhashanga":4,
+    "kirtana":4,"darugam":4,"padam":4,"javali":4,
+    "trikala":3,"laya":4,"anuloma":3,"pratiloma":3,"manodharma":5,
+    "kalpanaswara":4,"niraval":4,"tanam":4,"pallavi":4,
 }
 
 _JUNK_RE = re.compile(
