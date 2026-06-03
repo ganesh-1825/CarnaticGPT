@@ -1,30 +1,48 @@
 import React from 'react';
+import ragas from "../data/youtube_ragas.json";
 
-export default function AudioPlayerComponent({ audioPaths, title }) {
-  // Expected paths format: { alapana: "url", arohana: "url", avarohana: "url" }
+function AudioPlayer({ ragaName }) {
+  const song = ragas.find(
+    x => x.ragam.toLowerCase() === ragaName.toLowerCase()
+  );
+
+  if (!song) {
+    return (
+      <div style={{ color: 'hsl(var(--text-secondary))', padding: '10px' }}>
+        Audio unavailable for {ragaName}
+      </div>
+    );
+  }
+
+  // Handle potential YouTube URL variations safely
+  const embedUrl = song.youtube.includes("watch?v=")
+    ? song.youtube.replace("watch?v=", "embed/")
+    : song.youtube; // fallback if already an embed or different format
+
   return (
-    <div className="bg-neutral-950 p-3 rounded border border-neutral-800 space-y-3">
-      <div className="text-xs font-semibold text-neutral-300 flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-        Audio Reference Architecture Track Elements
-      </div>
+    <div className="glass-card animate-fade-in" style={{
+      marginTop: '16px',
+      padding: '16px 20px',
+      background: 'rgba(28, 36, 58, 0.45)',
+      borderRadius: 'var(--border-radius-md)',
+      border: '1px solid var(--glass-border)',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+    }}>
+      <h3 style={{ fontSize: '1rem', color: '#fff', marginBottom: '12px' }}>
+        {ragaName} Demo - {song.song_name}
+      </h3>
 
-      <div className="grid grid-cols-1 gap-2">
-        {Object.entries(audioPaths).map(([trackName, trackUrl]) => (
-          <div key={trackName} className="flex flex-col sm:flex-row sm:items-center justify-between bg-neutral-900 p-2 rounded border border-neutral-800 gap-2">
-            <span className="text-[11px] font-mono uppercase text-amber-400 tracking-wider">
-              ▶ {trackName}
-            </span>
-            <audio
-              controls
-              src={trackUrl}
-              className="h-6 max-w-full sm:max-w-[240px] opacity-80 hover:opacity-100 transition"
-            >
-              Your browser does not support the audio playback control layer.
-            </audio>
-          </div>
-        ))}
-      </div>
+      <iframe
+        width="100%"
+        height="120"
+        src={embedUrl}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        style={{ borderRadius: '8px' }}
+      />
     </div>
   );
 }
+
+export default AudioPlayer;

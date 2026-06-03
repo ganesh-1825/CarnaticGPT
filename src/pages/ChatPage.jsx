@@ -1,29 +1,20 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { sendMessage, createSession } from '../services/api'
 import ChatMessage from '../components/ChatMessage'
+import { Send, Menu } from 'lucide-react'
 
-const STARTERS = [
-  'What is Shruti in Carnatic music?',
-  'Explain the raga Hindolam',
-  'What are Jeeva Swaras?',
-  'Explain Gamaka techniques',
-  'Who is Tyagaraja?',
-  'Compare Kalyani and Mohanam ragas',
-  'What is the 72 Melapakarta system?',
-  'Play Bhairavi alapana',
+const QUICK_ACTIONS = [
+  { text: 'Explore Ragas', query: 'List some beautiful Carnatic ragas and explain their scales', icon: '🎵', color: 'var(--peacock)' },
+  { text: 'Learn Talas', query: 'Explain how Adi Tala and other common talas work', icon: '🎼', color: 'var(--peacock)' },
+  { text: 'Great Composers', query: 'Who are the Trinity of Carnatic music and what are their contributions?', icon: '👤', color: 'var(--peacock)' },
+  { text: 'RTP & Manodharma', query: 'What is Ragam Tanam Pallavi and how is it structured?', icon: '🎤', color: 'var(--peacock)' },
 ]
 
-const FRAMEWORK_INFO = [
-  'Similarity Floor Threshold: >0.70',
-  'Target Extraction Count (Top K): 5',
-  'Realtime Cross-Encoder Reranking: Active',
-  'Domain Validation: Carnatic-only filter',
-]
-
-export default function ChatPage({ activeSession, setActiveSession, setSessions }) {
+export default function ChatPage({ activeSession, setActiveSession, setSessions, onMenuClick, autoPlayTTS }) {
   const [messages, setMessages] = useState([])
   const [input,    setInput]    = useState('')
   const [loading,  setLoading]  = useState(false)
+  const [activeAudioId, setActiveAudioId] = useState(null)
   const bottomRef = useRef(null)
   const textRef   = useRef(null)
 
@@ -31,12 +22,26 @@ export default function ChatPage({ activeSession, setActiveSession, setSessions 
     bottomRef.current?.scrollIntoView({ behavior:'smooth' })
   }, [messages])
 
+  useEffect(() => {
+    if (activeSession) {
+      import('../services/api').then(({ getSessionHistory }) => {
+        getSessionHistory(activeSession)
+          .then(r => {
+            setMessages(r.data.history || [])
+          })
+          .catch(e => console.error("Failed to load conversation history:", e))
+      })
+    } else {
+      setMessages([])
+    }
+  }, [activeSession])
+
   const ensureSession = useCallback(async () => {
     if (activeSession) return activeSession
     const r   = await createSession()
     const sid = r.data.session_id
     setActiveSession(sid)
-    setSessions(s => [{ id:sid, title:'New conversation', message_count:0 }, ...s])
+    setSessions(s => [{ id:sid, title:'New Practice', message_count:0 }, ...s])
     return sid
   }, [activeSession, setActiveSession, setSessions])
 
@@ -44,6 +49,7 @@ export default function ChatPage({ activeSession, setActiveSession, setSessions 
     const q = (question || input).trim()
     if (!q || loading) return
     setInput('')
+    setActiveAudioId(null) // Stop active audio playbacks on new question
 
     const sid = await ensureSession()
 
@@ -67,14 +73,13 @@ export default function ChatPage({ activeSession, setActiveSession, setSessions 
           audio:             d.audio,
         }
       ])
-      // Update session title
       setSessions(s => s.map(x =>
         x.id === sid ? { ...x, title: q.slice(0,48) } : x
       ))
     } catch(e) {
       setMessages(m => [
         ...m.slice(0,-1),
-        { role:'assistant', content:`Error: ${e.message}` }
+        { role:'assistant', content:`I'm sorry, I hit a wrong note: ${e.message}` }
       ])
     } finally {
       setLoading(false)
@@ -89,143 +94,145 @@ export default function ChatPage({ activeSession, setActiveSession, setSessions 
   const empty = messages.length === 0
 
   return (
-    <div style={{ display:'flex', flexDirection:'column', height:'100%', overflow:'hidden' }}>
-      {/* Top bar */}
-      <div style={{
-        padding:'14px 24px', borderBottom:'1px solid var(--border)',
-        background:'var(--bg-surface)',
-        display:'flex', alignItems:'center', justifyContent:'space-between',
-        flexShrink:0,
+    <div style={{ display:'flex', flexDirection:'column', height:'100%', overflow:'hidden', position: 'relative' }}>
+      
+      {/* Top bar (Mobile only) */}
+      <div className="d-md-none" style={{
+        padding: '16px 20px',
+        display: 'flex', alignItems: 'center', gap: 16,
+        background: 'var(--bg-app)',
+        borderBottom: '1px solid var(--border)',
+        zIndex: 10
       }}>
-        <div>
-          <h1 style={{ fontSize:18, fontWeight:700, letterSpacing:'-.01em' }}
-              className="grad-text">CarnaticGPT Chat</h1>
-          <p style={{ fontSize:12, color:'var(--text-muted)', marginTop:2 }}>
-            Ask questions about Carnatic ragas, composers, and theory from uploaded books.
-          </p>
-        </div>
-        <button onClick={() => setMessages([])}
-          style={{
-            padding:'6px 14px', borderRadius:8,
-            background:'var(--bg-card)', border:'1px solid var(--border)',
-            color:'var(--text-secondary)', fontSize:12.5,
-            transition:'var(--transition)',
-          }}
-          onMouseEnter={e=>e.currentTarget.style.borderColor='var(--border-bright)'}
-          onMouseLeave={e=>e.currentTarget.style.borderColor='var(--border)'}
-        >
-          + New Chat
+        <button className="btn-icon" onClick={onMenuClick} style={{ border: 'none', background: 'transparent', boxShadow: 'none' }}>
+          <Menu size={24} />
         </button>
+        <div style={{ flex: 1 }} />
       </div>
 
-      {/* Framework banner */}
-      {empty && (
-        <div style={{
-          margin:'16px 24px 0',
-          padding:'12px 16px', borderRadius:10,
-          background:'var(--bg-card)',
-          border:'1px solid var(--border)',
-          flexShrink:0,
-        }}>
-          <p style={{ fontSize:11.5, fontWeight:600, color:'var(--purple-light)', marginBottom:8 }}>
-            Active Framework Metrics
-          </p>
-          <p style={{ fontSize:11.5, color:'var(--text-muted)', marginBottom:6 }}>
-            Strict domain monitoring validates queries against Carnatic structural metadata before FAISS retrieval.
-          </p>
-          <div style={{ display:'flex', flexWrap:'wrap', gap:6 }}>
-            {FRAMEWORK_INFO.map((f,i) => (
-              <span key={i} style={{
-                fontSize:11, padding:'3px 9px', borderRadius:20,
-                background:'var(--purple-pale)',
-                border:'0.5px solid rgba(139,92,246,.2)',
-                color:'var(--purple-light)',
-              }}>• {f}</span>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Messages */}
-      <div style={{
-        flex:1, overflowY:'auto', padding:'20px 24px',
-        display:'flex', flexDirection:'column', gap:20,
-      }}>
+      {/* Messages Feed */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingTop: empty ? 0 : 20, paddingBottom: 140, overflowY: 'auto' }}>
         {empty && (
-          <div style={{ marginTop:20 }}>
-            <p style={{ fontSize:12, color:'var(--text-muted)', marginBottom:12 }}>
-              Try a question:
-            </p>
-            <div style={{ display:'flex', flexWrap:'wrap', gap:8 }}>
-              {STARTERS.map((s,i) => (
-                <button key={i} onClick={() => send(s)}
-                  style={{
-                    padding:'7px 14px', borderRadius:20,
-                    background:'var(--bg-card)',
-                    border:'1px solid var(--border)',
-                    color:'var(--text-secondary)', fontSize:12.5,
-                    transition:'var(--transition)',
-                  }}
-                  onMouseEnter={e=>{e.currentTarget.style.borderColor='var(--border-bright)';e.currentTarget.style.color='var(--text-primary)'}}
-                  onMouseLeave={e=>{e.currentTarget.style.borderColor='var(--border)';e.currentTarget.style.color='var(--text-secondary)'}}
-                >{STARTERS[i]}</button>
-              ))}
+          <div className="animate-fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0 24px', position: 'relative' }}>
+            
+            {/* Subtle premium background watermark of a Veena outline */}
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: -1,
+              opacity: 0.02,
+              background: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 100 100\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Ccircle cx=\'50\' cy=\'70\' r=\'15\' stroke=\'%238B4A36\' stroke-width=\'2.5\' fill=\'%23F8F7F5\'/%3E%3Ccircle cx=\'50\' cy=\'70\' r=\'9\' stroke=\'%238B4A36\' stroke-width=\'1.5\' stroke-dasharray=\'3 2\'/%3E%3Cline x1=\'50\' y1=\'20\' x2=\'50\' y2=\'55\' stroke=\'%238B4A36\' stroke-width=\'3\' stroke-linecap=\'round\'/%3E%3C/svg%3E") no-repeat center center',
+              backgroundSize: '40%',
+              pointerEvents: 'none',
+            }} />
+
+            <div style={{ textAlign: 'center', maxWidth: 680, width: '100%', padding: '40px 0' }}>
+              
+              <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 64, height: 64, borderRadius: '50%', background: 'rgba(139, 74, 54, 0.06)', marginBottom: 24 }}>
+                <span style={{ fontSize: 32 }}>🪕</span>
+              </div>
+              
+              <h1 style={{ fontSize: '2.5rem', marginBottom: 6, fontFamily: 'var(--font-serif)', color: 'var(--peacock)' }}>
+                CarnaticGPT
+              </h1>
+              <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', fontFamily: 'var(--font-serif)', fontStyle: 'italic', marginBottom: 16 }}>
+                Digital Gurukul
+              </p>
+              
+              <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: 40, letterSpacing: '0.01em' }}>
+                Explore Ragas, Talas, Composers and Classical Wisdom
+              </p>
+
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gap: 16,
+                textAlign: 'left'
+              }}>
+                {QUICK_ACTIONS.map((s, idx) => (
+                  <button key={idx} onClick={() => send(s.query)} className="elevated-card" style={{
+                    padding: '24px', display: 'flex', alignItems: 'center', gap: 16, 
+                    cursor: 'pointer', borderRadius: '20px', border: '1px solid var(--border)',
+                    background: '#FFFFFF', transition: 'all 0.25s ease'
+                  }}>
+                    <div style={{ fontSize: 24, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      {s.icon}
+                    </div>
+                    <span style={{ fontSize: 15, color: 'var(--text-primary)', fontWeight: 600, fontFamily: 'var(--font-sans)' }}>{s.text}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         )}
 
-        {messages.map((m, i) => <ChatMessage key={i} message={m}/>)}
-        <div ref={bottomRef}/>
+        {!empty && (
+          <div style={{ maxWidth: 880, margin: '0 auto', width: '100%', padding: '0 24px' }}>
+            {messages.map((m, i) => (
+              <ChatMessage 
+                key={i} 
+                msg={m} 
+                msgIndex={i}
+                isLatest={i === messages.length - 1}
+                autoPlayTTS={autoPlayTTS}
+                activeAudioId={activeAudioId}
+                setActiveAudioId={setActiveAudioId}
+              />
+            ))}
+            <div ref={bottomRef} style={{height: 20}} />
+          </div>
+        )}
       </div>
 
-      {/* Input */}
+      {/* Floating Input Area (ShrutiFlow Glass/White Style) */}
       <div style={{
-        padding:'16px 24px', borderTop:'1px solid var(--border)',
-        background:'var(--bg-surface)', flexShrink:0,
+        position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
+        width: '100%', maxWidth: 880, padding: '0 24px', zIndex: 20
       }}>
         <div style={{
-          display:'flex', gap:10, alignItems:'flex-end',
-          background:'var(--bg-card)',
-          border:`1px solid ${loading ? 'var(--border-bright)' : 'var(--border)'}`,
-          borderRadius:14, padding:'12px 14px',
-          transition:'var(--transition)',
+          padding: '8px 12px',
+          display: 'flex',
+          alignItems: 'flex-end',
+          borderRadius: '24px', // Rounded 24px
+          background: 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          border: '1px solid var(--border)',
+          boxShadow: 'var(--shadow-lg)'
         }}>
           <textarea
             ref={textRef}
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={onKey}
-            placeholder="Ask about Carnatic ragas, talas, composers… (Enter to send)"
+            placeholder="Ask anything about Carnatic Music..."
             rows={1}
             style={{
-              flex:1, background:'transparent', border:'none', outline:'none',
-              color:'var(--text-primary)', fontSize:13.5, lineHeight:1.6,
-              resize:'none', maxHeight:120, overflowY:'auto',
-            }}
-            onInput={e => {
-              e.target.style.height = 'auto'
-              e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px'
+              flex: 1, border: 'none', outline: 'none',
+              padding: '12px 16px', fontSize: 15, fontWeight: 400,
+              resize: 'none', maxHeight: 120, minHeight: 48,
+              lineHeight: 1.6,
+              color: 'var(--text-primary)',
+              background: 'transparent'
             }}
           />
-          <button onClick={() => send()} disabled={!input.trim() || loading}
+          <button
+            onClick={() => send()}
+            disabled={!input.trim() || loading}
+            className={input.trim() && !loading ? "btn-primary" : "btn-icon"}
             style={{
-              width:36, height:36, borderRadius:9, flexShrink:0,
-              background: input.trim() && !loading
-                ? 'linear-gradient(135deg,var(--purple),var(--blue))'
-                : 'var(--bg-hover)',
-              border:'none',
-              color:'white', fontSize:15,
-              display:'flex', alignItems:'center', justifyContent:'center',
-              transition:'var(--transition)',
-              opacity: (!input.trim() || loading) ? .5 : 1,
-              cursor: (!input.trim() || loading) ? 'not-allowed' : 'pointer',
-            }}>
-            {loading ? <span style={{ animation:'spin 1s linear infinite', display:'inline-block' }}>⟳</span> : '➤'}
+              width: 48, height: 48, borderRadius: 'var(--radius-full)', margin: 4,
+              padding: 0, border: 'none',
+              cursor: input.trim() && !loading ? 'pointer' : 'not-allowed',
+            }}
+          >
+            {loading ? (
+               <div className="typing-dot" style={{ background: '#fff', margin: 'auto' }} />
+            ) : (
+              <Send size={18} strokeWidth={2.5} />
+            )}
           </button>
         </div>
-        <p style={{ fontSize:10.5, color:'var(--text-faint)', textAlign:'center', marginTop:7 }}>
-          Shift+Enter for newline · Only answers from uploaded Carnatic books
-        </p>
       </div>
     </div>
   )

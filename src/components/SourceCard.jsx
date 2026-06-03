@@ -1,21 +1,9 @@
-/**
- * SourceCard.jsx  —  FIXED
- * Shows: Book Name | Page Number | Confidence | Snippet | YouTube link
- * 
- * Fix: previously showed only "p." because:
- *   - citation.book_name was undefined (field name mismatch)
- *   - excerpt was not rendered unless expanded
- *   - confidence badge was missing when score < threshold
- * 
- * Drop into: frontend/src/components/SourceCard.jsx
- */
-
 import React, { useState } from 'react'
 import ConfidenceBadge from './ConfidenceBadge'
+import { FileText, Music, BookOpen, Volume2, ChevronDown, ChevronUp, PlayCircle } from 'lucide-react'
 
 const YOUTUBE_BASE = 'https://www.youtube.com/results?search_query='
 
-// Safely get a field from citation, trying multiple possible key names
 function field(obj, ...keys) {
   for (const k of keys) {
     const v = obj[k]
@@ -25,152 +13,103 @@ function field(obj, ...keys) {
 }
 
 const TYPE_ICON = {
-  music:    '🎵',
-  research: '🔬',
-  audio:    '🔊',
-  theory:   '📖',
+  music:    <Music size={18} />,
+  research: <FileText size={18} />,
+  audio:    <Volume2 size={18} />,
+  theory:   <BookOpen size={18} />,
 }
 
 export default function SourceCard({ citation, index = 0 }) {
-  const [expanded, setExpanded] = useState(true)   // open by default so users see content
+  const [expanded, setExpanded] = useState(false)
 
   if (!citation) return null
 
-  // ── Safely extract all fields (handles snake_case, camelCase, and missing) ──
   const bookName   = field(citation, 'book_name', 'bookName', 'title', 'source_name') || 'Unknown Source'
   const pageNum    = field(citation, 'page_number', 'pageNumber', 'page')
   const confidence = field(citation, 'confidence', 'score', 'confidence_score') || 0
   const confLabel  = field(citation, 'confidence_label', 'confidenceLabel') || null
   const excerpt    = field(citation, 'excerpt', 'snippet', 'text', 'content') || ''
-  const sourceFile = field(citation, 'source', 'file_path', 'filepath') || ''
   const chunkType  = field(citation, 'type', 'category', 'chunk_type') || 'theory'
   const song       = field(citation, 'song') || ''
   const composer   = field(citation, 'composer') || ''
-  const melakarta  = field(citation, 'melakarta') || ''
   const shruti     = field(citation, 'shruti') || ''
 
   const ytQuery = encodeURIComponent(`Carnatic music ${bookName} ${chunkType}`)
   const youtubeUrl = field(citation, 'youtube_url', 'youtubeUrl', 'youtube')
   const ytUrl   = youtubeUrl || (YOUTUBE_BASE + ytQuery)
-  const icon    = TYPE_ICON[chunkType] || '📖'
-
-  // Shorten file path to filename only
-  const fileName = sourceFile
-    ? sourceFile.replace(/\\/g, '/').split('/').pop()
-    : ''
+  const icon    = TYPE_ICON[chunkType] || <BookOpen size={18} />
 
   return (
     <div
+      className="elevated-card"
       style={{
-        background: 'var(--bg-card2, #161f30)',
-        border: '1px solid var(--border, rgba(99,112,175,.18))',
-        borderRadius: 10,
+        padding: 0,
         overflow: 'hidden',
-        transition: 'border-color .18s',
-        animation: `fadeUp .3s ease ${index * 0.06}s both`,
+        animation: `fadeIn .3s ease ${index * 0.05}s both`,
       }}
-      onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-bright, rgba(139,92,246,.35))'}
-      onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border, rgba(99,112,175,.18))'}
     >
-      {/* ── Header ─────────────────────────────────────────────────────────── */}
-      <div style={{ padding: '10px 14px', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-
-        {/* Type icon */}
+      <div 
+        style={{ padding: '16px', display: 'flex', alignItems: 'flex-start', gap: 16, cursor: 'pointer', background: expanded ? 'var(--bg-surface-hover)' : 'transparent', transition: 'background var(--transition-fast)' }}
+        onClick={() => setExpanded(e => !e)}
+      >
         <div style={{
-          width: 30, height: 30, borderRadius: 7, flexShrink: 0,
-          background: 'linear-gradient(135deg,rgba(139,92,246,.15),rgba(59,130,246,.15))',
-          border: '1px solid rgba(139,92,246,.25)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14,
+          width: 40, height: 40, borderRadius: 'var(--radius-sm)', flexShrink: 0,
+          background: 'rgba(2, 132, 199, 0.1)', color: 'var(--peacock)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
           {icon}
         </div>
 
-        {/* Book name + meta row */}
         <div style={{ flex: 1, minWidth: 0 }}>
-          {/* Book name — always visible */}
           <p style={{
-            fontSize: 13, fontWeight: 600,
-            color: 'var(--text-primary, #f1f5f9)',
+            fontSize: 15, fontWeight: 700,
+            color: 'var(--text-primary)',
+            fontFamily: 'var(--font-sans)',
             overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-            marginBottom: 5,
+            marginBottom: 4,
           }}>
             {chunkType === 'music' && song ? `${song} (${composer})` : bookName}
           </p>
 
-          {/* Meta pills row */}
-          <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap' }}>
-
-            {/* Page number */}
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
             {pageNum != null && (
-              <span style={{
-                fontSize: 11, fontFamily: 'var(--font-mono, monospace)',
-                padding: '2px 8px', borderRadius: 5,
-                background: 'rgba(59,130,246,.12)',
-                border: '0.5px solid rgba(59,130,246,.25)',
-                color: 'var(--blue-light, #60a5fa)',
-              }}>
+              <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-muted)' }}>
                 Page {pageNum}
               </span>
             )}
+            
+            {pageNum != null && <span style={{ color: 'var(--border-strong)' }}>•</span>}
 
-            {/* Confidence badge */}
-            {confidence > 0 && (
-              <ConfidenceBadge score={confidence} label={confLabel} />
-            )}
-
-            {/* Type pill */}
             <span style={{
-              fontSize: 10.5, padding: '2px 8px', borderRadius: 5,
-              background: 'rgba(139,92,246,.12)',
-              border: '0.5px solid rgba(139,92,246,.2)',
-              color: 'var(--purple-light, #a78bfa)',
-              textTransform: 'capitalize',
+              fontSize: 11, padding: '2px 8px', borderRadius: 'var(--radius-full)',
+              background: 'rgba(236, 72, 153, 0.1)', color: 'var(--lotus-pink)',
+              textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 800
             }}>
               {chunkType}
             </span>
 
+            {confidence > 0 && <ConfidenceBadge score={confidence} label={confLabel} />}
           </div>
         </div>
 
-        {/* Expand / collapse button */}
-        <button
-          onClick={() => setExpanded(e => !e)}
-          style={{
-            flexShrink: 0, padding: '3px 8px', borderRadius: 5,
-            background: 'var(--bg-hover, #1a2540)',
-            border: '1px solid var(--border, rgba(99,112,175,.18))',
-            color: 'var(--text-muted, #64748b)', fontSize: 11,
-            transition: '.15s',
-          }}
-          title={expanded ? 'Collapse' : 'Expand'}
-        >
-          {expanded ? '▲' : '▼'}
-        </button>
+        <div style={{ color: 'var(--text-muted)' }}>
+          {expanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+        </div>
       </div>
 
-      {/* ── Excerpt (always shown when expanded) ───────────────────────────── */}
       {expanded && excerpt && (
         <div style={{
-          padding: '10px 14px',
-          borderTop: '1px solid var(--border, rgba(99,112,175,.18))',
-          background: 'rgba(0,0,0,.18)',
-          animation: 'fadeIn .2s ease',
+          padding: '16px 20px',
+          borderTop: '1px solid var(--border)',
+          background: 'var(--bg-surface)',
         }}>
-          {/* Snippet label */}
           <p style={{
-            fontSize: 10, color: 'var(--text-muted, #64748b)',
-            textTransform: 'uppercase', letterSpacing: '.06em',
-            marginBottom: 6,
-          }}>
-            Snippet
-          </p>
-          <p style={{
-            fontSize: 12.5,
-            color: 'var(--text-secondary, #94a3b8)',
-            lineHeight: 1.7,
-            fontStyle: 'italic',
-            borderLeft: '2px solid var(--purple, #8b5cf6)',
-            paddingLeft: 10,
+            fontSize: 15,
+            color: 'var(--text-secondary)',
+            lineHeight: 1.6,
+            fontFamily: 'var(--font-serif)',
+            borderLeft: '3px solid var(--peacock)',
+            paddingLeft: 16,
             wordBreak: 'break-word',
           }}>
             "{excerpt}"
@@ -178,59 +117,38 @@ export default function SourceCard({ citation, index = 0 }) {
         </div>
       )}
 
-      {/* ── Footer actions ──────────────────────────────────────────────────── */}
-      <div style={{
-        padding: '8px 14px',
-        borderTop: '1px solid var(--border, rgba(99,112,175,.18))',
-        display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
-      }}>
-
-        {/* Shruti Tag */}
-        {shruti && (
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', gap: 5,
-            padding: '4px 11px', borderRadius: 6,
-            background: 'rgba(16,185,129,.1)',
-            border: '0.5px solid rgba(16,185,129,.25)',
-            color: '#34d399', fontSize: 11.5, fontWeight: 500,
-          }}>
-            Shruti: {shruti}
-          </span>
-        )}
-
-        {/* YouTube link */}
-        {youtubeUrl && (
+      {(shruti || youtubeUrl || chunkType === 'music') && (
+        <div style={{
+          padding: '12px 16px',
+          borderTop: '1px solid var(--border)',
+          display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap',
+          background: 'var(--bg-surface-hover)'
+        }}>
+          {shruti && (
+            <span style={{
+              fontSize: 12, fontWeight: 700, color: 'var(--peacock)',
+              background: 'rgba(2, 132, 199, 0.1)', padding: '4px 10px', borderRadius: 'var(--radius-sm)'
+            }}>
+              Shruti: {shruti}
+            </span>
+          )}
+          
           <a
-            href={youtubeUrl}
+            href={ytUrl}
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 5,
-              padding: '4px 11px', borderRadius: 6,
-              background: 'rgba(239,68,68,.1)',
-              border: '0.5px solid rgba(239,68,68,.25)',
-              color: '#f87171', fontSize: 11.5, fontWeight: 500,
-              transition: '.15s', textDecoration: 'none',
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              fontSize: 13, fontWeight: 700, color: '#EF4444',
+              padding: '4px 10px', borderRadius: 'var(--radius-sm)',
+              background: 'rgba(239, 68, 68, 0.1)', textDecoration: 'none'
             }}
-            onMouseEnter={e => e.currentTarget.style.background = 'rgba(239,68,68,.2)'}
-            onMouseLeave={e => e.currentTarget.style.background = 'rgba(239,68,68,.1)'}
           >
-            ▶ Open Recording
+            <PlayCircle size={16} />
+            Listen on YouTube
           </a>
-        )}
-
-        {/* Filename */}
-        {fileName && (
-          <span style={{
-            fontSize: 10.5,
-            color: 'var(--text-faint, #374151)',
-            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-            flex: 1,
-          }}>
-            {fileName}
-          </span>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   )
 }

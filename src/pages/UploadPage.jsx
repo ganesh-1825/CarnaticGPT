@@ -1,16 +1,17 @@
 import React, { useState, useRef, useCallback } from 'react'
 import { uploadPDF } from '../services/api'
 import ProgressTracker from '../components/ProgressTracker'
+import { UploadCloud, FileText, File, AlertCircle, CheckCircle2 } from 'lucide-react'
 
 const STEPS = [
-  { label:'Uploading file to server…' },
+  { label:'Receiving document…' },
   { label:'Extracting text from PDF…' },
   { label:'Running OCR (if scanned)…' },
   { label:'Cleaning and normalising text…' },
   { label:'Creating semantic chunks…' },
   { label:'Generating embeddings…' },
   { label:'Updating FAISS vector database…' },
-  { label:'✓ Document indexed — ready for questions' },
+  { label:'Document indexed!' },
 ]
 
 const sleep = ms => new Promise(r => setTimeout(r, ms))
@@ -75,24 +76,33 @@ export default function UploadPage({ onDone }) {
   }
 
   return (
-    <div style={{
-      flex:1, overflow:'auto', padding:'28px 32px',
-      display:'flex', flexDirection:'column',
+    <div className="animate-fade-in" style={{
+      flex:1, overflow:'auto', padding:'40px 32px',
+      display:'flex', flexDirection:'column', alignItems: 'center', position: 'relative'
     }}>
-      <div style={{ maxWidth:560 }}>
+      {/* Background Motif */}
+      <div style={{ position: 'fixed', bottom: -50, right: -50, fontSize: 300, opacity: 0.015, color: 'var(--peacock)', pointerEvents: 'none', zIndex: 0 }}>
+        📤
+      </div>
+
+      <div style={{ width: '100%', maxWidth: 680, position: 'relative', zIndex: 1 }}>
         {/* Header */}
-        <h2 style={{ fontSize:20, fontWeight:700, marginBottom:4 }} className="grad-text">
-          Ingest Documents
-        </h2>
-        <p style={{ fontSize:13, color:'var(--text-muted)', marginBottom:24 }}>
-          Upload PDF books or research papers. They are automatically indexed into FAISS and
-          immediately available for question answering.
-        </p>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(139, 74, 54, 0.08)', color: 'var(--peacock)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px' }}>
+             <UploadCloud size={36} />
+          </div>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: 12, fontFamily: 'var(--font-serif)', color: 'var(--peacock)' }}>
+            Ingest Knowledge
+          </h2>
+          <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-serif)', fontStyle: 'italic', maxWidth: 480, margin: '0 auto' }}>
+            Upload PDFs or text files to expand the Digital Gurukul's intelligence.
+          </p>
+        </div>
 
         {/* Card */}
-        <div className="glass" style={{ borderRadius:16, overflow:'hidden' }}>
+        <div className="elevated-card" style={{ padding: '40px', background: '#FFFFFF', border: '1px solid var(--border)', borderRadius: '20px' }}>
           {status === 'idle' && (
-            <div style={{ padding:28 }}>
+            <div>
               {/* Drop zone */}
               <div
                 onClick={() => inputRef.current?.click()}
@@ -100,34 +110,38 @@ export default function UploadPage({ onDone }) {
                 onDragOver={e => { e.preventDefault(); setDrag(true) }}
                 onDragLeave={() => setDrag(false)}
                 style={{
-                  border:`2px dashed ${drag ? 'var(--purple)' : file ? 'var(--green)' : 'var(--border)'}`,
-                  borderRadius:12, padding:'36px 24px', textAlign:'center',
-                  cursor:'pointer',
-                  background: drag ? 'var(--purple-pale)' : file ? 'var(--green-pale)' : 'transparent',
-                  transition:'all .2s ease',
+                  border: `2px dashed ${drag ? 'var(--peacock)' : file ? 'var(--peacock)' : 'var(--border-strong)'}`,
+                  borderRadius: '16px', padding: '60px 24px', textAlign: 'center',
+                  cursor: 'pointer',
+                  background: drag ? 'rgba(139, 74, 54, 0.05)' : file ? 'rgba(139, 74, 54, 0.02)' : 'var(--bg-app)',
+                  transition: 'all var(--transition)',
                 }}
               >
                 <input ref={inputRef} type="file" accept=".pdf,.txt"
                   style={{display:'none'}} onChange={e=>pick(e.target.files[0])}/>
+                
                 <div style={{
-                  width:52,height:52,borderRadius:14,margin:'0 auto 14px',
-                  background: file ? 'var(--green-pale)' : 'var(--purple-pale)',
-                  border:`1px solid ${file ? 'rgba(16,185,129,.3)' : 'rgba(139,92,246,.3)'}`,
-                  display:'flex',alignItems:'center',justifyContent:'center',fontSize:22,
+                  width: 72, height: 72, borderRadius: '50%', margin: '0 auto 24px',
+                  background: file ? 'rgba(139, 74, 54, 0.08)' : '#FFFFFF',
+                  color: file ? 'var(--peacock)' : 'var(--text-muted)',
+                  border: file ? 'none' : '1px solid var(--border)',
+                  boxShadow: file ? 'none' : 'var(--shadow-sm)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  transition: 'all var(--transition)'
                 }}>
-                  {file ? '📄' : '📤'}
+                  {file ? <FileText size={30} /> : <File size={30} />}
                 </div>
                 {file ? (
                   <>
-                    <p style={{ fontSize:14,fontWeight:600,color:'var(--text-primary)',marginBottom:4 }}>{file.name}</p>
-                    <p style={{ fontSize:12,color:'var(--text-muted)' }}>{(file.size/1024/1024).toFixed(2)} MB · Click to change</p>
+                    <p style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8, fontFamily: 'var(--font-serif)' }}>{file.name}</p>
+                    <p style={{ fontSize: 14, color: 'var(--text-muted)', fontWeight: 500 }}>{(file.size/1024/1024).toFixed(2)} MB • Click to replace</p>
                   </>
                 ) : (
                   <>
-                    <p style={{ fontSize:14,fontWeight:500,color:'var(--text-secondary)',marginBottom:6 }}>
-                      Drop PDF or TXT here
+                    <p style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8, fontFamily: 'var(--font-serif)' }}>
+                      Drag & Drop your files here
                     </p>
-                    <p style={{ fontSize:12,color:'var(--text-muted)' }}>or click to browse · Max 150 MB</p>
+                    <p style={{ fontSize: 14, color: 'var(--text-muted)', fontWeight: 500 }}>Click to browse • Max 150 MB</p>
                   </>
                 )}
               </div>
@@ -135,33 +149,20 @@ export default function UploadPage({ onDone }) {
               {/* Error */}
               {error && (
                 <div style={{
-                  marginTop:14,padding:'10px 14px',borderRadius:9,
-                  background:'var(--red-pale)',border:'1px solid rgba(239,68,68,.25)',
-                  display:'flex',gap:8,alignItems:'flex-start',
+                  marginTop: 24, padding: '16px 20px', borderRadius: 'var(--radius-md)',
+                  background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)',
+                  display: 'flex', gap: 12, alignItems: 'center',
                 }}>
-                  <span style={{color:'var(--red)',fontSize:14,flexShrink:0}}>⚠</span>
-                  <p style={{fontSize:12.5,color:'#f87171'}}>{error}</p>
+                  <AlertCircle color="#EF4444" size={20} />
+                  <p style={{fontSize: 14, color: '#EF4444', fontFamily: 'var(--font-sans)', fontWeight: 700}}>{error}</p>
                 </div>
               )}
 
               {file && (
-                <div style={{ marginTop:18, display:'flex', gap:10 }}>
-                  <button onClick={reset} style={{
-                    flex:1, padding:'10px', borderRadius:9,
-                    background:'var(--bg-hover)', border:'1px solid var(--border)',
-                    color:'var(--text-muted)', fontSize:13,
-                  }}>Clear</button>
-                  <button onClick={upload} style={{
-                    flex:3, padding:'10px', borderRadius:9,
-                    background:'linear-gradient(135deg,var(--purple),var(--blue))',
-                    color:'white', fontSize:13, fontWeight:600,
-                    boxShadow:'0 4px 16px rgba(139,92,246,.3)',
-                    transition:'var(--transition)',
-                  }}
-                    onMouseEnter={e=>e.currentTarget.style.opacity='.9'}
-                    onMouseLeave={e=>e.currentTarget.style.opacity='1'}
-                  >
-                    🚀 Index Document
+                <div style={{ marginTop: 32, display: 'flex', gap: 16 }}>
+                  <button onClick={reset} className="btn-secondary" style={{ flex: 1 }}>Clear</button>
+                  <button onClick={upload} className="btn-primary" style={{ flex: 2 }}>
+                    Index Document
                   </button>
                 </div>
               )}
@@ -169,46 +170,52 @@ export default function UploadPage({ onDone }) {
           )}
 
           {(status==='running'||status==='done'||status==='error') && (
-            <div style={{ padding:28 }}>
+            <div>
               {status==='running' && (
-                <div style={{ textAlign:'center', marginBottom:22 }}>
-                  <p style={{ fontSize:15,fontWeight:600,color:'var(--text-primary)',marginBottom:4 }}>
-                    Processing <span className="grad-text">"{file?.name}"</span>
+                <div style={{ textAlign: 'center', marginBottom: 40 }}>
+                  <p style={{ fontSize: 20, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8, fontFamily: 'var(--font-sans)' }}>
+                    Reading "{file?.name}"
                   </p>
-                  <p style={{ fontSize:12,color:'var(--text-muted)' }}>
-                    Please wait — large PDFs may take a minute.
+                  <p style={{ fontSize: 15, color: 'var(--text-secondary)' }}>
+                    Please wait — this might take a moment for large books.
                   </p>
                 </div>
               )}
 
               {status==='done' && result && (
                 <div style={{
-                  textAlign:'center', marginBottom:22, padding:'14px 18px',
-                  borderRadius:10, background:'var(--green-pale)',
-                  border:'1px solid rgba(16,185,129,.25)',
+                  textAlign: 'center', marginBottom: 40, padding: '32px',
+                  borderRadius: 'var(--radius-lg)', background: 'rgba(16, 185, 129, 0.1)',
+                  border: '1px solid rgba(16, 185, 129, 0.2)',
                 }}>
-                  <p style={{ fontSize:16,fontWeight:700,color:'var(--green)',marginBottom:4 }}>
-                    ✓ Indexed Successfully
+                  <CheckCircle2 size={48} color="var(--emerald)" style={{ margin: '0 auto 16px' }} />
+                  <p style={{ fontSize: 24, fontWeight: 800, color: 'var(--emerald)', marginBottom: 16, fontFamily: 'var(--font-sans)' }}>
+                    Successfully Indexed!
                   </p>
-                  <p style={{ fontSize:12.5,color:'var(--green)' }}>
-                    {result.chunks_added} chunks · {result.pages_processed} pages · Total: {result.total_indexed} vectors
-                  </p>
-                  <p style={{ fontSize:12,color:'var(--green)',marginTop:6,opacity:.7 }}>
-                    Redirecting to chat…
-                  </p>
+                  <div style={{ display: 'inline-flex', gap: 24, background: 'var(--bg-surface)', padding: '12px 24px', borderRadius: 'var(--radius-full)', boxShadow: 'var(--shadow-sm)' }}>
+                     <div>
+                       <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--text-primary)' }}>{result.chunks_added}</div>
+                       <div style={{ fontSize: 11, color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.5px' }}>Chunks</div>
+                     </div>
+                     <div style={{ width: 1, background: 'var(--border)' }} />
+                     <div>
+                       <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--text-primary)' }}>{result.pages_processed}</div>
+                       <div style={{ fontSize: 11, color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.5px' }}>Pages</div>
+                     </div>
+                  </div>
                 </div>
               )}
 
               {status==='error' && (
                 <div style={{
-                  marginBottom:18,padding:'12px 16px',borderRadius:10,
-                  background:'var(--red-pale)',border:'1px solid rgba(239,68,68,.25)',
-                  display:'flex',gap:10,alignItems:'flex-start',
+                  marginBottom: 32, padding: '20px', borderRadius: 'var(--radius-md)',
+                  background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)',
+                  display: 'flex', gap: 16, alignItems: 'flex-start',
                 }}>
-                  <span style={{color:'var(--red)',fontSize:18,flexShrink:0}}>✕</span>
+                  <AlertCircle color="#EF4444" size={24} style={{ flexShrink: 0 }} />
                   <div>
-                    <p style={{fontSize:13.5,fontWeight:600,color:'#f87171',marginBottom:3}}>Indexing Failed</p>
-                    <p style={{fontSize:12.5,color:'#f87171'}}>{error}</p>
+                    <p style={{fontSize: 16, fontWeight: 800, color: '#EF4444', marginBottom: 4}}>Indexing Failed</p>
+                    <p style={{fontSize: 14, color: '#EF4444'}}>{error}</p>
                   </div>
                 </div>
               )}
@@ -216,18 +223,16 @@ export default function UploadPage({ onDone }) {
               <ProgressTracker steps={steps}/>
 
               {status==='error' && (
-                <button onClick={reset} style={{
-                  marginTop:18,width:'100%',padding:'11px',borderRadius:9,
-                  background:'linear-gradient(135deg,var(--purple),var(--blue))',
-                  color:'white',fontSize:13.5,fontWeight:600,
-                }}>Try Again</button>
+                <button onClick={reset} className="btn-secondary" style={{ marginTop: 32, width: '100%' }}>
+                  Try Again
+                </button>
               )}
             </div>
           )}
         </div>
 
-        <p style={{ marginTop:14,fontSize:11.5,color:'var(--text-faint)',textAlign:'center' }}>
-          Supported: PDF · TXT · Multi-page books · Scanned PDFs (auto-OCR)
+        <p style={{ marginTop: 32, fontSize: 14, color: 'var(--text-muted)', textAlign: 'center', fontWeight: 600 }}>
+          Supported: PDF • TXT • Multi-page books • Scanned PDFs (auto-OCR)
         </p>
       </div>
     </div>

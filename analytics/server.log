@@ -4649,3 +4649,166 @@ NameError: name 'generate_response' is not defined
 2026-05-31 11:21:59,183 - CarnaticGPT-Server - INFO - [database.py:87] - SQLite database tables verified/initialized successfully.
 2026-05-31 11:25:56,805 - CarnaticGPT-Server - INFO - [model_loader.py:11] - Initializing embedding model cache...
 2026-05-31 11:26:18,880 - CarnaticGPT-Server - INFO - [database.py:87] - SQLite database tables verified/initialized successfully.
+2026-06-01 19:10:06,155 - CarnaticGPT-Server - INFO - [reranker.py:20] - CarnaticReranker initialized.
+2026-06-01 19:10:06,157 - CarnaticGPT-Server - INFO - [confidence_engine.py:12] - CarnaticConfidenceEngine initialized.
+2026-06-01 19:10:06,160 - CarnaticGPT-Server - INFO - [response_formatter.py:10] - CarnaticResponseFormatter initialized.
+2026-06-01 19:10:06,169 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Which songs belong to Aarabhi?'
+2026-06-01 19:10:06,172 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:10:06,172 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Who composed Nagumomu?'
+2026-06-01 19:10:06,172 - CarnaticGPT-Server - INFO - [rag.py:271] - Query 'Who composed Nagumomu?' rejected as outside CarnaticGPT knowledge domain.
+2026-06-01 19:10:06,172 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'List songs by Tyagaraja.'
+2026-06-01 19:10:06,172 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:10:06,173 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Which ragas belong to Janya number 22?'
+2026-06-01 19:10:06,173 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:10:06,173 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Show songs in Abheri.'
+2026-06-01 19:10:06,173 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:10:06,173 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Explain Hindolam and list songs in Hindolam.'
+2026-06-01 19:10:06,174 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-01 19:10:06,174 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Compare Kalyani and Mohanam and give compositions.'
+2026-06-01 19:10:06,174 - CarnaticGPT-Server - INFO - [query_optimizer.py:10] - Detected query type: comparison
+2026-06-01 19:10:06,174 - CarnaticGPT-Server - INFO - [rag.py:305] - Comparison query detected. Running independent retrievals for 'kalyani' and 'mohanam'
+2026-06-01 19:10:06,174 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Who composed songs in Bhairavi?'
+2026-06-01 19:10:06,174 - CarnaticGPT-Server - INFO - [query_optimizer.py:13] - Detected query type: person
+2026-06-01 19:10:06,190 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'What does the paper say about Carnatic datasets?'
+2026-06-01 19:10:06,190 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:10:06,190 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Explain computational musicology.'
+2026-06-01 19:10:06,190 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-01 19:10:06,190 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Explain scalable extraction of Ragam metadata.'
+2026-06-01 19:10:06,191 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-01 19:10:06,191 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'How are Shruti and Talam used?'
+2026-06-01 19:10:06,191 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:10:06,191 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Summarize the uploaded paper.'
+2026-06-01 19:10:06,191 - CarnaticGPT-Server - INFO - [rag.py:271] - Query 'Summarize the uploaded paper.' rejected as outside CarnaticGPT knowledge domain.
+2026-06-01 19:12:44,007 - CarnaticGPT-Server - INFO - [reranker.py:20] - CarnaticReranker initialized.
+2026-06-01 19:12:44,009 - CarnaticGPT-Server - INFO - [confidence_engine.py:12] - CarnaticConfidenceEngine initialized.
+2026-06-01 19:12:44,014 - CarnaticGPT-Server - INFO - [response_formatter.py:10] - CarnaticResponseFormatter initialized.
+2026-06-01 19:12:44,047 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Which songs belong to Aarabhi?'
+2026-06-01 19:12:44,062 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:12:44,063 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Who composed Nagumomu?'
+2026-06-01 19:12:44,063 - CarnaticGPT-Server - INFO - [rag.py:271] - Query 'Who composed Nagumomu?' rejected as outside CarnaticGPT knowledge domain.
+2026-06-01 19:12:44,064 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'List songs by Tyagaraja.'
+2026-06-01 19:12:44,064 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:12:44,064 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Which ragas belong to Janya number 22?'
+2026-06-01 19:12:44,067 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:12:44,068 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Show songs in Abheri.'
+2026-06-01 19:12:44,068 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:12:44,069 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Explain Hindolam and list songs in Hindolam.'
+2026-06-01 19:12:44,069 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-01 19:12:44,070 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Compare Kalyani and Mohanam and give compositions.'
+2026-06-01 19:12:44,070 - CarnaticGPT-Server - INFO - [query_optimizer.py:10] - Detected query type: comparison
+2026-06-01 19:12:44,071 - CarnaticGPT-Server - INFO - [rag.py:305] - Comparison query detected. Running independent retrievals for 'kalyani' and 'mohanam'
+2026-06-01 19:12:44,071 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Who composed songs in Bhairavi?'
+2026-06-01 19:12:44,071 - CarnaticGPT-Server - INFO - [query_optimizer.py:13] - Detected query type: person
+2026-06-01 19:12:44,075 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'What does the paper say about Carnatic datasets?'
+2026-06-01 19:12:44,076 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:12:44,076 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Explain computational musicology.'
+2026-06-01 19:12:44,077 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-01 19:12:44,078 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Explain scalable extraction of Ragam metadata.'
+2026-06-01 19:12:44,079 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-01 19:12:44,079 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'How are Shruti and Talam used?'
+2026-06-01 19:12:44,080 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-01 19:12:44,081 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Summarize the uploaded paper.'
+2026-06-01 19:12:44,082 - CarnaticGPT-Server - INFO - [rag.py:271] - Query 'Summarize the uploaded paper.' rejected as outside CarnaticGPT knowledge domain.
+2026-06-02 07:24:41,880 - CarnaticGPT-Server - INFO - [model_loader.py:11] - Initializing embedding model cache...
+2026-06-02 07:25:59,733 - CarnaticGPT-Server - INFO - [reranker.py:20] - CarnaticReranker initialized.
+2026-06-02 07:25:59,735 - CarnaticGPT-Server - INFO - [confidence_engine.py:12] - CarnaticConfidenceEngine initialized.
+2026-06-02 07:25:59,738 - CarnaticGPT-Server - INFO - [response_formatter.py:10] - CarnaticResponseFormatter initialized.
+2026-06-02 07:25:59,747 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Which songs belong to Aarabhi?'
+2026-06-02 07:25:59,751 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,774 - CarnaticGPT-Server - INFO - [rag.py:323] - Raga entity detected: 'Arabhi'. Filtering retrieval matching keywords.
+2026-06-02 07:25:59,774 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 1 chunks for query: 'Which songs belong to Aarabhi'
+2026-06-02 07:25:59,775 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.57]
+2026-06-02 07:25:59,775 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'Which songs belong to Aarabhi?' with 1 chunks.
+2026-06-02 07:25:59,775 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,775 - CarnaticGPT-Server - INFO - [response_generator.py:196] - Using local Carnatic response generator fallback.
+2026-06-02 07:25:59,777 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:25:59,777 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Who composed Nagumomu?'
+2026-06-02 07:25:59,778 - CarnaticGPT-Server - INFO - [rag.py:271] - Query 'Who composed Nagumomu?' rejected as outside CarnaticGPT knowledge domain.
+2026-06-02 07:25:59,778 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'List songs by Tyagaraja.'
+2026-06-02 07:25:59,778 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,799 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 10 chunks for query: 'List songs by Tyagaraja'
+2026-06-02 07:25:59,800 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.957, 0.865, 0.861]
+2026-06-02 07:25:59,800 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'List songs by Tyagaraja.' with 3 chunks.
+2026-06-02 07:25:59,800 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,800 - CarnaticGPT-Server - INFO - [response_generator.py:196] - Using local Carnatic response generator fallback.
+2026-06-02 07:25:59,800 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:25:59,800 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Which ragas belong to Janya number 22?'
+2026-06-02 07:25:59,800 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,816 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 10 chunks for query: 'Which ragas belong to Janya number 22'
+2026-06-02 07:25:59,817 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.881, 0.827, 0.775]
+2026-06-02 07:25:59,817 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'Which ragas belong to Janya number 22?' with 3 chunks.
+2026-06-02 07:25:59,817 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,817 - CarnaticGPT-Server - INFO - [response_generator.py:196] - Using local Carnatic response generator fallback.
+2026-06-02 07:25:59,817 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:25:59,817 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Show songs in Abheri.'
+2026-06-02 07:25:59,818 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,840 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 10 chunks for query: 'Show songs in Abheri'
+2026-06-02 07:25:59,841 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.591, 0.59, 0.588]
+2026-06-02 07:25:59,841 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'Show songs in Abheri.' with 3 chunks.
+2026-06-02 07:25:59,841 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,841 - CarnaticGPT-Server - INFO - [response_generator.py:196] - Using local Carnatic response generator fallback.
+2026-06-02 07:25:59,841 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:25:59,842 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Explain Hindolam and list songs in Hindolam.'
+2026-06-02 07:25:59,842 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-02 07:25:59,859 - CarnaticGPT-Server - INFO - [rag.py:323] - Raga entity detected: 'Hindolam'. Filtering retrieval matching keywords.
+2026-06-02 07:25:59,860 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 1 chunks for query: 'Explain Raga Hindolam and list songs in Raga Hindolam'
+2026-06-02 07:25:59,860 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.891]
+2026-06-02 07:25:59,860 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'Explain Hindolam and list songs in Hindolam.' with 1 chunks.
+2026-06-02 07:25:59,860 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-02 07:25:59,860 - CarnaticGPT-Server - INFO - [response_generator.py:196] - Using local Carnatic response generator fallback.
+2026-06-02 07:25:59,860 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:25:59,861 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Compare Kalyani and Mohanam and give compositions.'
+2026-06-02 07:25:59,861 - CarnaticGPT-Server - INFO - [query_optimizer.py:10] - Detected query type: comparison
+2026-06-02 07:25:59,861 - CarnaticGPT-Server - INFO - [rag.py:305] - Comparison query detected. Running independent retrievals for 'kalyani' and 'mohanam'
+2026-06-02 07:25:59,896 - CarnaticGPT-Server - INFO - [rag.py:323] - Raga entity detected: 'Kalyani'. Filtering retrieval matching keywords.
+2026-06-02 07:25:59,896 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 1 chunks for query: 'Compare Raga Kalyani and Mohanam and give compositions'
+2026-06-02 07:25:59,897 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.99]
+2026-06-02 07:25:59,897 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'Compare Kalyani and Mohanam and give compositions.' with 1 chunks.
+2026-06-02 07:25:59,897 - CarnaticGPT-Server - INFO - [query_optimizer.py:10] - Detected query type: comparison
+2026-06-02 07:25:59,897 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:25:59,897 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Who composed songs in Bhairavi?'
+2026-06-02 07:25:59,898 - CarnaticGPT-Server - INFO - [query_optimizer.py:13] - Detected query type: person
+2026-06-02 07:25:59,918 - CarnaticGPT-Server - INFO - [rag.py:323] - Raga entity detected: 'Bhairavi'. Filtering retrieval matching keywords.
+2026-06-02 07:25:59,918 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 1 chunks for query: 'Who composed songs in Raga Bhairavi'
+2026-06-02 07:25:59,918 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.99]
+2026-06-02 07:25:59,919 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'Who composed songs in Bhairavi?' with 1 chunks.
+2026-06-02 07:25:59,919 - CarnaticGPT-Server - INFO - [query_optimizer.py:13] - Detected query type: person
+2026-06-02 07:25:59,919 - CarnaticGPT-Server - INFO - [response_generator.py:196] - Using local Carnatic response generator fallback.
+2026-06-02 07:25:59,920 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:25:59,925 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'What does the paper say about Carnatic datasets?'
+2026-06-02 07:25:59,926 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,941 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 10 chunks for query: 'What does the paper say about Carnatic datasets'
+2026-06-02 07:25:59,942 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.56, 0.545, 0.543]
+2026-06-02 07:25:59,942 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'What does the paper say about Carnatic datasets?' with 3 chunks.
+2026-06-02 07:25:59,942 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,942 - CarnaticGPT-Server - INFO - [response_generator.py:196] - Using local Carnatic response generator fallback.
+2026-06-02 07:25:59,943 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:25:59,943 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Explain computational musicology.'
+2026-06-02 07:25:59,943 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-02 07:25:59,944 - CarnaticGPT-Server - INFO - [rag.py:127] - Injecting theory KB chunk for concept: 'computational musicology'
+2026-06-02 07:25:59,960 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 11 chunks for query: 'Explain computational musicology'
+2026-06-02 07:25:59,961 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.831, 0.792, 0.789]
+2026-06-02 07:25:59,961 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'Explain computational musicology.' with 3 chunks.
+2026-06-02 07:25:59,962 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-02 07:25:59,962 - CarnaticGPT-Server - INFO - [response_generator.py:196] - Using local Carnatic response generator fallback.
+2026-06-02 07:25:59,962 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:25:59,963 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Explain scalable extraction of Ragam metadata.'
+2026-06-02 07:25:59,963 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-02 07:25:59,963 - CarnaticGPT-Server - INFO - [rag.py:127] - Injecting theory KB chunk for concept: 'ragam'
+2026-06-02 07:25:59,979 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 11 chunks for query: 'Explain scalable extraction of Ragam metadata'
+2026-06-02 07:25:59,980 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.953, 0.847, 0.802]
+2026-06-02 07:25:59,980 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'Explain scalable extraction of Ragam metadata.' with 3 chunks.
+2026-06-02 07:25:59,980 - CarnaticGPT-Server - INFO - [query_optimizer.py:16] - Detected query type: explanation
+2026-06-02 07:25:59,980 - CarnaticGPT-Server - INFO - [response_generator.py:196] - Using local Carnatic response generator fallback.
+2026-06-02 07:25:59,980 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:25:59,980 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'How are Shruti and Talam used?'
+2026-06-02 07:25:59,981 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:25:59,981 - CarnaticGPT-Server - INFO - [rag.py:127] - Injecting theory KB chunk for concept: 'carnatic music'
+2026-06-02 07:26:00,004 - CarnaticGPT-Server - INFO - [reranker.py:27] - Reranking 11 chunks for query: 'How are Shruti and Talam used? pitch frequency note Carnatic music rhythm cycle'
+2026-06-02 07:26:00,005 - CarnaticGPT-Server - INFO - [reranker.py:69] - Top 3 reranked scores: [0.806, 0.78, 0.746]
+2026-06-02 07:26:00,005 - CarnaticGPT-Server - INFO - [response_generator.py:123] - Generating natural answer for query: 'How are Shruti and Talam used? pitch frequency note Carnatic music rhythm cycle' with 3 chunks.
+2026-06-02 07:26:00,005 - CarnaticGPT-Server - INFO - [query_optimizer.py:22] - Detected query type: general
+2026-06-02 07:26:00,005 - CarnaticGPT-Server - INFO - [response_generator.py:196] - Using local Carnatic response generator fallback.
+2026-06-02 07:26:00,006 - CarnaticGPT-Server - INFO - [response_formatter.py:40] - Answer formatting and Markdown auditing complete.
+2026-06-02 07:26:00,006 - CarnaticGPT-Server - INFO - [rag.py:267] - Executing improved RAG Pipeline for query: 'Summarize the uploaded paper.'
+2026-06-02 07:26:00,006 - CarnaticGPT-Server - INFO - [rag.py:271] - Query 'Summarize the uploaded paper.' rejected as outside CarnaticGPT knowledge domain.

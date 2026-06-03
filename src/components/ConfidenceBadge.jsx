@@ -1,57 +1,54 @@
 import React from 'react'
 
-const ConfidenceBadge = ({ score }) => {
-  if (score == null) return null
+export default function ConfidenceBadge({ score, label }) {
+  if (typeof score !== 'number') return null
+  
+  // Normalize score to [0, 1] range if it was passed in [0, 100] range
+  const normalizedScore = score > 1.0 ? score / 100 : score
+  
+  let color = 'var(--text-muted)'
+  let bg = 'var(--bg-surface-hover)'
+  let displayLabel = label || 'Neutral'
 
-  let label = ''
-  let color = 'var(--gold)'
-  let bg = 'var(--gold-pale)'
-  let border = 'rgba(200, 146, 42, 0.2)'
-
-  if (typeof score === 'string') {
-    label = score
-    if (score.toLowerCase().includes('high')) {
-      color = 'var(--teal)'
-      bg = 'var(--teal-pale)'
-      border = 'rgba(26, 122, 106, 0.2)'
-    } else if (score.toLowerCase().includes('low')) {
-      color = 'var(--red-deep)'
-      bg = 'var(--red-pale)'
-      border = 'rgba(139, 32, 32, 0.2)'
-    }
+  if (normalizedScore >= 0.8) {
+    color = 'var(--emerald)'
+    bg = 'rgba(16, 185, 129, 0.1)'
+    displayLabel = label || 'High Confidence'
+  } else if (normalizedScore >= 0.5) {
+    color = 'var(--saffron)'
+    bg = 'rgba(245, 158, 11, 0.1)'
+    displayLabel = label || 'Medium Confidence'
   } else {
-    // Score is a number (e.g. 0-1 or 0-100)
-    const pct = score <= 1 ? score * 100 : score
-    label = `${pct.toFixed(0)}%`
-    if (pct >= 80) {
-      color = 'var(--teal)'
-      bg = 'var(--teal-pale)'
-      border = 'rgba(26, 122, 106, 0.2)'
-    } else if (pct < 50) {
-      color = 'var(--red-deep)'
-      bg = 'var(--red-pale)'
-      border = 'rgba(139, 32, 32, 0.2)'
-    }
+    color = 'var(--lotus-pink)'
+    bg = 'rgba(236, 72, 153, 0.1)'
+    displayLabel = label || 'Low Confidence'
   }
 
+  const scorePct = Math.round(normalizedScore * 100)
+
   return (
-    <span style={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      padding: '2px 8px',
-      borderRadius: 12,
-      fontSize: 10.5,
-      fontWeight: 600,
-      color,
-      background: bg,
-      border: `1px solid ${border}`,
-      textTransform: 'uppercase',
-      letterSpacing: '0.03em',
-      lineHeight: 1,
-    }}>
-      {label}
+    <span
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '6px',
+        fontSize: '11px',
+        fontWeight: 800,
+        fontFamily: 'var(--font-sans)',
+        padding: '4px 10px',
+        borderRadius: 'var(--radius-full)',
+        background: bg,
+        color: color,
+        textTransform: 'uppercase',
+        letterSpacing: '0.5px'
+      }}
+      title={`Confidence Score: ${scorePct}%`}
+    >
+      <span style={{ 
+        width: 6, height: 6, borderRadius: '50%', background: color,
+        boxShadow: `0 0 4px ${color}`
+      }} />
+      {displayLabel} ({scorePct}%)
     </span>
   )
 }
-
-export default ConfidenceBadge

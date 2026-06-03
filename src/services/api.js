@@ -131,7 +131,7 @@ export const api = {
   
   // --- TELEMETRY / ANALYTICS STATS ---
   async getStats() {
-    const res = await fetch(`${API_BASE}/api/dashboard/stats`, {
+    const res = await fetch(`${API_BASE}/api/stats`, {
       method: "GET",
       headers: getHeaders(),
     });
@@ -187,12 +187,47 @@ export async function deleteSession(conversationId) {
   return { data: await res.json() };
 }
 
+export async function renameSession(conversationId, newTitle) {
+  const res = await fetch(`${API_BASE}/api/chat/sessions/${conversationId}/rename`, {
+    method: "PUT",
+    headers: getHeaders(),
+    body: JSON.stringify({ title: newTitle }),
+  });
+  if (!res.ok) throw new Error("Failed to rename session");
+  return { data: await res.json() };
+}
+
+export async function pinSession(conversationId) {
+  const res = await fetch(`${API_BASE}/api/chat/sessions/${conversationId}/pin`, {
+    method: "PUT",
+    headers: getHeaders(),
+  });
+  if (!res.ok) throw new Error("Failed to pin session");
+  return { data: await res.json() };
+}
+
+export async function getSessionHistory(conversationId) {
+  const res = await fetch(`${API_BASE}/api/chat/sessions/${conversationId}/history`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+  if (!res.ok) throw new Error("Failed to load session history");
+  return { data: await res.json() };
+}
+
 export async function uploadPDF(file) {
   const formData = new FormData();
   formData.append("file", file);
   
+  const token = localStorage.getItem("carnatic_token");
+  const headers = {};
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+  
   const res = await fetch(`${API_BASE}/api/upload`, {
     method: "POST",
+    headers: headers,
     body: formData,
   });
   

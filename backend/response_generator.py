@@ -167,9 +167,9 @@ Answer:"""
     if settings.GEMINI_API_KEY:
         try:
             logger.info("Attempting Gemini API generation...")
-            url = f"https://generativetool.googleapis.com/v1beta/models/gemini-pro:generateContent?key={settings.GEMINI_API_KEY}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={settings.GEMINI_API_KEY}"
             data = {"contents": [{"parts": [{"text": prompt}]}]}
-            res = requests.post(url, json=data, timeout=8)
+            res = requests.post(url, json=data, timeout=10)
             if res.status_code == 200:
                 return res.json()['candidates'][0]['content']['parts'][0]['text']
         except Exception as e:
