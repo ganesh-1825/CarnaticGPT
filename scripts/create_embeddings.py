@@ -6,7 +6,10 @@ import numpy as np
 # Ensure scripts folder is in path for imports
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from utils import setup_logger
+try:
+    from scripts.utils import setup_logger
+except ImportError:
+    from utils import setup_logger
 
 logger = setup_logger("EmbeddingGenerator")
 

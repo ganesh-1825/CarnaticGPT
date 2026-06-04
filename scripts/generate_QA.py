@@ -3,7 +3,10 @@ import sys
 import json
 import re
 import requests
-from utils import setup_logger
+try:
+    from scripts.utils import setup_logger
+except ImportError:
+    from utils import setup_logger
 
 logger = setup_logger("QAGenerator")
 

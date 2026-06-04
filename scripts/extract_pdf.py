@@ -1,20 +1,14 @@
 import os
 import sys
 import glob
-from utils import setup_logger, ensure_directory_structure
 
 # Add parent dir to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-logger = setup_logger("PDFExtractor")
-
-import os
-import sys
-import glob
-from utils import setup_logger, ensure_directory_structure
-
-# Add parent dir to path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+try:
+    from scripts.utils import setup_logger, ensure_directory_structure
+except ImportError:
+    from utils import setup_logger, ensure_directory_structure
 
 logger = setup_logger("PDFExtractor")
 

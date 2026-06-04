@@ -2,7 +2,10 @@ import os
 import sys
 import re
 import glob
-from utils import setup_logger
+try:
+    from scripts.utils import setup_logger
+except ImportError:
+    from utils import setup_logger
 
 logger = setup_logger("TextCleaner")
 
