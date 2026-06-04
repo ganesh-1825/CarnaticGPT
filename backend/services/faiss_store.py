@@ -100,10 +100,7 @@ class FAISSStore:
             return
         self._initialised = True
         self._write_lock = threading.Lock()
-
-        logger.info("Loading embedding model via get_cached_embedder...")
-        from backend.model_loader import get_cached_embedder
-        self.model = get_cached_embedder()
+        self._model = None
 
         self.metadata: list[dict] = []
         self.known_hashes: set[str] = set()
@@ -111,6 +108,14 @@ class FAISSStore:
 
         INDEX_DIR.mkdir(parents=True, exist_ok=True)
         self._load()
+
+    @property
+    def model(self):
+        if self._model is None:
+            logger.info("Loading embedding model lazily...")
+            from backend.model_loader import get_cached_embedder
+            self._model = get_cached_embedder()
+        return self._model
 
     # ------------------------------------------------------------------
     # Persistence
