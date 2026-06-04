@@ -3,6 +3,8 @@ from typing import List, Optional, Dict, Any, Union
 
 class UserRegister(BaseModel):
     username: str = Field(..., min_length=3, max_length=50)
+    email: str = Field(None, description="Optional email address")
+    full_name: str = Field(None, description="User's full name")
     password: str = Field(..., min_length=4)
 
 class UserLogin(BaseModel):
@@ -14,6 +16,24 @@ class TokenResponse(BaseModel):
     token_type: str
     username: str
     user_id: int
+    full_name: Optional[str] = None
+    email: Optional[str] = None
+
+class UserProfile(BaseModel):
+    id: int
+    username: str
+    email: Optional[str] = None
+    full_name: Optional[str] = None
+    preferences: Optional[Any] = None
+    theme: Optional[str] = None
+    created_at: str
+
+class ForgotPasswordRequest(BaseModel):
+    email: str
+
+class ResetPasswordRequest(BaseModel):
+    token: str
+    new_password: str = Field(..., min_length=4)
 
 class ChatQueryRequest(BaseModel):
     conversation_id: str
@@ -55,7 +75,12 @@ class MessageItem(BaseModel):
 class ConversationItem(BaseModel):
     id: str
     title: str
+    is_pinned: bool = False
     created_at: str
+    updated_at: Optional[str] = None
+
+class RenameConversationRequest(BaseModel):
+    title: str
 
 class DashboardStats(BaseModel):
     total_queries: int

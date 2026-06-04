@@ -23,7 +23,11 @@ def init_db():
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT UNIQUE NOT NULL,
+        email TEXT UNIQUE,
+        full_name TEXT,
         hashed_password TEXT NOT NULL,
+        preferences TEXT,     -- JSON string
+        theme TEXT DEFAULT 'light',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     """)
@@ -34,7 +38,9 @@ def init_db():
         id TEXT PRIMARY KEY,
         user_id INTEGER,
         title TEXT NOT NULL,
+        is_pinned BOOLEAN DEFAULT 0,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY(user_id) REFERENCES users(id)
     )
     """)
@@ -76,9 +82,41 @@ def init_db():
     )
     """)
     
+    # 6. Bookmarks Table
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS bookmarks (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        message_id INTEGER NOT NULL,
+        note TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY(user_id) REFERENCES users(id),
+        FOREIGN KEY(message_id) REFERENCES messages(id) ON DELETE CASCADE
+    )
+    """)
+    
     # Failsafe migration for existing SQLite databases
     try:
         cursor.execute("ALTER TABLE messages ADD COLUMN confidence TEXT")
+    except Exception:
+        pass
+
+    # New migrations
+    try:
+        cursor.execute("ALTER TABLE users ADD COLUMN email TEXT UNIQUE")
+        cursor.execute("ALTER TABLE users ADD COLUMN full_name TEXT")
+        cursor.execute("ALTER TABLE users ADD COLUMN preferences TEXT")
+        cursor.execute("ALTER TABLE users ADD COLUMN theme TEXT DEFAULT 'light'")
+    except Exception:
+        pass
+        
+    try:
+        cursor.execute("ALTER TABLE conversations ADD COLUMN is_pinned BOOLEAN DEFAULT 0")
+    except Exception:
+        pass
+    try:
+        cursor.execute("ALTER TABLE conversations ADD COLUMN updated_at TIMESTAMP DEFAULT NULL")
+        cursor.execute("UPDATE conversations SET updated_at = created_at WHERE updated_at IS NULL")
     except Exception:
         pass
         

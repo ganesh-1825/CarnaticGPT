@@ -8,14 +8,19 @@ from datetime import timedelta
 from typing import List, Dict, Any
 
 from backend.schemas import (
-    UserRegister, TokenResponse, ChatQueryRequest, ChatQueryResponse,
-    FeedbackRequest, FeedbackResponse, ConversationItem, DashboardStats
+    UserRegister, TokenResponse, UserProfile, ForgotPasswordRequest, ResetPasswordRequest,
+    ChatQueryRequest, ChatQueryResponse, FeedbackRequest, FeedbackResponse, ConversationItem, 
+    RenameConversationRequest, DashboardStats
 )
 from backend.database import get_db_connection
-from backend.auth import hash_password, verify_password, create_access_token, get_current_user
+from backend.auth import (
+    hash_password, verify_password, create_access_token, get_current_user,
+    create_password_reset_token, verify_password_reset_token
+)
 from backend.history import (
     create_conversation_if_not_exists, save_chat_message,
-    get_conversation_history, get_user_conversations, delete_user_conversation
+    get_conversation_history, get_user_conversations, delete_user_conversation,
+    rename_conversation, toggle_pin_conversation
 )
 from backend.feedback import record_user_feedback
 from backend.rag import execute_rag_pipeline
@@ -30,18 +35,21 @@ def register(user: UserRegister):
     conn = get_db_connection()
     cursor = conn.cursor()
     try:
-        # Check if user exists
+        # Check if username exists
         cursor.execute("SELECT id FROM users WHERE username = ?", (user.username,))
         if cursor.fetchone():
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Username already registered"
-            )
+            raise HTTPException(status_code=400, detail="Username already registered")
+            
+        # Check if email exists
+        if user.email:
+            cursor.execute("SELECT id FROM users WHERE email = ?", (user.email,))
+            if cursor.fetchone():
+                raise HTTPException(status_code=400, detail="Email already registered")
         
         hashed = hash_password(user.password)
         cursor.execute(
-            "INSERT INTO users (username, hashed_password) VALUES (?, ?)",
-            (user.username, hashed)
+            "INSERT INTO users (username, email, full_name, hashed_password) VALUES (?, ?, ?, ?)",
+            (user.username, user.email, user.full_name, hashed)
         )
         conn.commit()
         return {"status": "success", "message": "User registered successfully"}
@@ -53,7 +61,8 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
     conn = get_db_connection()
     cursor = conn.cursor()
     try:
-        cursor.execute("SELECT id, username, hashed_password FROM users WHERE username = ?", (form_data.username,))
+        # Allow login by username OR email
+        cursor.execute("SELECT * FROM users WHERE username = ? OR email = ?", (form_data.username, form_data.username))
         row = cursor.fetchone()
         if not row or not verify_password(form_data.password, row["hashed_password"]):
             raise HTTPException(
@@ -70,50 +79,107 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
             "access_token": access_token,
             "token_type": "bearer",
             "username": row["username"],
-            "user_id": row["id"]
+            "user_id": row["id"],
+            "full_name": dict(row).get("full_name"),
+            "email": dict(row).get("email")
         }
     finally:
         conn.close()
 
-# --- CHAT & RAG ROUTES ---
-
-@router.post("/chat/query", response_model=ChatQueryResponse)
-def chat_query(req: ChatQueryRequest, current_user: dict = Depends(get_current_user)):
-    start_time = time.time()
-    
-    # 1. Create conversation record if new
-    create_conversation_if_not_exists(req.conversation_id, current_user["id"], "New Chat")
-    
-    # 2. Save User Message
-    save_chat_message(req.conversation_id, "user", req.message)
-    
-    # 3. Run RAG Pipeline
-    rag_result = execute_rag_pipeline(req.message)
-    
-    # 4. Save Assistant Message and Citations
-    save_chat_message(
-        req.conversation_id, "assistant",
-        rag_result["response"],
-        rag_result["citations"],
-        rag_result.get("confidence")
-    )
-    
-    # 5. Log Telemetry
-    latency_ms = int((time.time() - start_time) * 1000)
+@router.get("/auth/me", response_model=UserProfile)
+def get_me(current_user: dict = Depends(get_current_user)):
+    if current_user["id"] == 0:
+        return {
+            "id": 0,
+            "username": current_user["username"],
+            "email": None,
+            "full_name": "Guest User",
+            "preferences": None,
+            "theme": "light",
+            "created_at": str(time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
+        }
     conn = get_db_connection()
     cursor = conn.cursor()
     try:
-        cursor.execute(
-            "INSERT INTO telemetry (user_id, query, latency_ms) VALUES (?, ?, ?)",
-            (current_user["id"], req.message, latency_ms)
-        )
-        conn.commit()
-    except Exception:
-        pass
+        cursor.execute("SELECT * FROM users WHERE id = ?", (current_user["id"],))
+        row = cursor.fetchone()
+        if not row:
+            raise HTTPException(status_code=404, detail="User not found")
+        return {
+            "id": row["id"],
+            "username": row["username"],
+            "email": row["email"],
+            "full_name": row["full_name"],
+            "preferences": row["preferences"],
+            "theme": row["theme"],
+            "created_at": str(row["created_at"])
+        }
     finally:
         conn.close()
+
+@router.post("/auth/forgot-password")
+def forgot_password(req: ForgotPasswordRequest):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("SELECT email FROM users WHERE email = ?", (req.email,))
+        if not cursor.fetchone():
+            return {"status": "success", "message": "If this email is registered, a reset link has been sent."}
+            
+        token = create_password_reset_token(req.email)
+        # In a real app, send an email here. For now, log it.
+        print(f"[AUTH] Reset Token for {req.email}: {token}")
         
-    return rag_result
+        # We optionally return the token strictly for testing purposes without an SMTP server setup.
+        return {"status": "success", "message": "If this email is registered, a reset link has been sent.", "dev_token": token}
+    finally:
+        conn.close()
+
+@router.post("/auth/reset-password")
+def reset_password(req: ResetPasswordRequest):
+    email = verify_password_reset_token(req.token)
+    if not email:
+        raise HTTPException(status_code=400, detail="Invalid or expired reset token")
+        
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        hashed = hash_password(req.new_password)
+        cursor.execute("UPDATE users SET hashed_password = ? WHERE email = ?", (hashed, email))
+        conn.commit()
+        return {"status": "success", "message": "Password successfully reset"}
+    finally:
+        conn.close()
+
+@router.post("/auth/guest", response_model=TokenResponse)
+def guest_login():
+    # Create a temporary guest user token without saving to DB.
+    # Note: A robust system might save an anonymous user to DB, but for CarnaticGPT
+    # we'll use user_id = 0 for the guest space.
+    guest_id = 0
+    guest_username = "Guest_" + str(uuid.uuid4())[:8]
+    access_token = create_access_token(
+        data={"sub": guest_username, "user_id": guest_id, "role": "guest"},
+        expires_delta=timedelta(days=1)
+    )
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "username": guest_username,
+        "user_id": guest_id,
+        "full_name": "Guest User",
+        "email": None
+    }
+
+# --- CHAT & RAG ROUTES ---
+
+@router.post("/chat/sessions")
+def create_session(current_user: dict = Depends(get_current_user)):
+    """Create a new conversation session and return its ID."""
+    import uuid
+    session_id = str(uuid.uuid4())
+    create_conversation_if_not_exists(session_id, current_user["id"], "New Practice")
+    return {"session_id": session_id, "title": "New Practice"}
 
 @router.get("/chat/sessions", response_model=List[ConversationItem])
 def get_sessions(current_user: dict = Depends(get_current_user)):
@@ -130,6 +196,20 @@ def delete_session(conv_id: str, current_user: dict = Depends(get_current_user))
     if not success:
         raise HTTPException(status_code=400, detail="Failed to delete conversation")
     return {"status": "success", "message": "Conversation deleted"}
+
+@router.put("/chat/sessions/{conv_id}/rename")
+def rename_session(conv_id: str, req: RenameConversationRequest, current_user: dict = Depends(get_current_user)):
+    success = rename_conversation(conv_id, current_user["id"], req.title)
+    if not success:
+        raise HTTPException(status_code=400, detail="Failed to rename conversation")
+    return {"status": "success", "message": "Conversation renamed", "title": req.title}
+
+@router.put("/chat/sessions/{conv_id}/pin")
+def pin_session(conv_id: str, current_user: dict = Depends(get_current_user)):
+    success = toggle_pin_conversation(conv_id, current_user["id"])
+    if not success:
+        raise HTTPException(status_code=400, detail="Failed to toggle pin on conversation")
+    return {"status": "success", "message": "Conversation pin toggled"}
 
 # --- FEEDBACK ---
 

@@ -26,6 +26,20 @@ def create_access_token(data: dict, expires_delta: timedelta = None) -> str:
     encoded_jwt = jwt.encode(to_encode, settings.JWT_SECRET, algorithm="HS256")
     return encoded_jwt
 
+def create_password_reset_token(email: str) -> str:
+    expire = datetime.utcnow() + timedelta(hours=1)
+    to_encode = {"sub": email, "type": "reset", "exp": expire}
+    return jwt.encode(to_encode, settings.JWT_SECRET, algorithm="HS256")
+
+def verify_password_reset_token(token: str) -> str:
+    try:
+        payload = jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
+        if payload.get("type") != "reset":
+            return None
+        return payload.get("sub")
+    except JWTError:
+        return None
+
 def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
