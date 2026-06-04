@@ -28,6 +28,60 @@ EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM
 DIMENSION = 384
 
 
+class BM25Searcher:
+    def __init__(self, corpus: list[dict]):
+        import re
+        import math
+        from collections import Counter, defaultdict
+        
+        self.corpus = corpus
+        self.doc_len = []
+        self.vocab_df = Counter()
+        self.inverted_index = defaultdict(list)
+        
+        for idx, doc in enumerate(corpus):
+            text = (doc.get("content") or doc.get("text") or "").lower()
+            words = re.findall(r"\b[a-z]{3,}\b", text)
+            self.doc_len.append(len(words))
+            word_counts = Counter(words)
+            for word, freq in word_counts.items():
+                self.inverted_index[word].append((idx, freq))
+                self.vocab_df[word] += 1
+                
+        self.n_docs = len(corpus)
+        self.avg_doc_len = sum(self.doc_len) / self.n_docs if self.n_docs > 0 else 1.0
+        
+        # Precompute IDFs
+        self.idfs = {}
+        for word, df in self.vocab_df.items():
+            self.idfs[word] = math.log((self.n_docs - df + 0.5) / (df + 0.5) + 1.0)
+            
+    def search(self, query: str, top_k: int = 150) -> list[tuple[int, float]]:
+        import re
+        from collections import defaultdict
+        
+        query_words = re.findall(r"\b[a-z]{3,}\b", query.lower())
+        if not query_words:
+            return []
+            
+        scores = defaultdict(float)
+        k1 = 1.5
+        b = 0.75
+        
+        for word in query_words:
+            idf = self.idfs.get(word, 0)
+            if idf <= 0:
+                continue
+            postings = self.inverted_index.get(word, [])
+            for doc_idx, freq in postings:
+                d_len = self.doc_len[doc_idx]
+                tf_denom = freq + k1 * (1.0 - b + b * (d_len / self.avg_doc_len))
+                scores[doc_idx] += idf * (freq * (k1 + 1.0)) / tf_denom
+                
+        sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+        return sorted_scores[:top_k]
+
+
 class FAISSStore:
     _instance = None
     _lock = threading.Lock()
@@ -53,6 +107,7 @@ class FAISSStore:
 
         self.metadata: list[dict] = []
         self.known_hashes: set[str] = set()
+        self.bm25 = None
 
         INDEX_DIR.mkdir(parents=True, exist_ok=True)
         self._load()
@@ -197,60 +252,93 @@ class FAISSStore:
         min_score: float = 25.0,
     ) -> list[dict]:
         """
-        Search FAISS for the most relevant chunks.
-
-        Args:
-            query:       User query string.
-            top_k:       Number of results to return after filtering.
-            type_filter: If provided, only return chunks whose 'type'
-                         matches one of these values (e.g. ["theory"]).
-            min_score:   Minimum confidence score (0-100) to include.
-
-        Returns:
-            List of dicts: { text, metadata, score (0-100) }
+        Search FAISS + BM25 hybrid for the most relevant chunks.
         """
         if self.index.ntotal == 0:
             return []
 
-        # Over-fetch heavily to account for type filtering in a skewed dataset
-        fetch_k = self.index.ntotal if type_filter else top_k * 5
+        # Lazily build BM25 searcher
+        if self.bm25 is None or len(self.bm25.corpus) != len(self.metadata):
+            self.bm25 = BM25Searcher(self.metadata)
 
+        # 1. Fetch Candidates from FAISS (Vector Search)
+        # Fetch slightly more candidates to do meaningful re-ranking
+        fetch_k = min(150, self.index.ntotal)
         q_emb = self.model.encode(
             [query],
             normalize_embeddings=True,
             convert_to_numpy=True,
         ).astype(np.float32)
 
-        distances, indices = self.index.search(q_emb, min(fetch_k, self.index.ntotal))
+        distances, indices = self.index.search(q_emb, fetch_k)
 
-        results = []
+        # Map FAISS results to normalized scores (0-100)
+        vector_scores = {}
         for dist, idx in zip(distances[0], indices[0]):
             if idx < 0 or idx >= len(self.metadata):
                 continue
-
-            # Convert inner-product score (already normalised) to 0-100
-            # IP of two unit vectors = cosine similarity in [-1, 1]
             score = float(np.clip((dist + 1.0) / 2.0 * 100.0, 0.0, 100.0))
+            vector_scores[idx] = score
 
-            if score < min_score:
-                continue
+        # 2. Fetch Candidates from BM25 Search
+        bm25_results = self.bm25.search(query, top_k=150)
+        max_bm25_score = bm25_results[0][1] if bm25_results else 0.0
 
+        bm25_scores = {}
+        for idx, score in bm25_results:
+            # Normalize to 0-100 scale based on maximum score in current query
+            norm_score = (score / max_bm25_score * 100.0) if max_bm25_score > 0 else 0.0
+            bm25_scores[idx] = norm_score
+
+        # 3. Combine rankings using Reciprocal Rank Fusion (RRF)
+        # Get dense ranks (0-indexed rank from FAISS search)
+        dense_ranks = {}
+        for rank, idx in enumerate(indices[0]):
+            if idx >= 0 and idx < len(self.metadata):
+                dense_ranks[idx] = rank
+
+        # Get BM25 ranks (0-indexed rank from BM25 search)
+        bm25_ranks = {}
+        for rank, (idx, _) in enumerate(bm25_results):
+            bm25_ranks[idx] = rank
+
+        all_candidate_indices = set(dense_ranks.keys()) | set(bm25_ranks.keys())
+        k_rrf = 60
+        results = []
+
+        for idx in all_candidate_indices:
             meta = self.metadata[idx]
 
             # Apply type filter
             if type_filter and meta.get("type") not in type_filter:
                 continue
 
+            # RRF Score formula: sum of 1 / (60 + rank + 1)
+            rrf_score = 0.0
+            if idx in dense_ranks:
+                rrf_score += 1.0 / (k_rrf + dense_ranks[idx] + 1)
+            if idx in bm25_ranks:
+                rrf_score += 1.0 / (k_rrf + bm25_ranks[idx] + 1)
+
+            v_score = vector_scores.get(idx, 20.0) # default fallback if only in BM25
+            b_score = bm25_scores.get(idx, 0.0)
+
+            # Hybrid score computation (50/50 balance)
+            hybrid_score = 0.5 * v_score + 0.5 * b_score
+
+            if hybrid_score < min_score:
+                continue
+
             results.append({
                 "text": meta.get("content", ""),
                 "metadata": meta,
-                "score": round(score, 1),
+                "score": round(hybrid_score, 1),
+                "rrf_score": rrf_score,
             })
 
-            if len(results) >= top_k:
-                break
-
-        return results
+        # Sort by RRF score descending and take top_k
+        results.sort(key=lambda x: x["rrf_score"], reverse=True)
+        return results[:top_k]
 
     # ------------------------------------------------------------------
     # Stats

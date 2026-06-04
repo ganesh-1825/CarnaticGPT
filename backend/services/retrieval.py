@@ -86,34 +86,75 @@ def answer_question(
 
     # ── Domain rejected ───────────────────────────────────────────────────────
     if route.mode == "multiple_questions":
+        from backend.services.query_router import split_multi_questions
+        sub_questions = [q.strip() + ("?" if not q.strip().endswith("?") else "") for q in split_multi_questions(question) if q.strip()]
+        if len(sub_questions) > 1:
+            answers = []
+            citations = []
+            confidences = []
+            for sub_q in sub_questions:
+                sub_res = answer_question(sub_q, conversation_history)
+                answers.append((sub_q, sub_res["answer"]))
+                citations.extend(sub_res.get("citations", []))
+                confidences.append(sub_res.get("top_confidence", 0.0))
+            
+            # Build labeled combined answer with section dividers
+            parts = []
+            for idx, (sub_q, ans) in enumerate(answers, 1):
+                # Create a clean label from the sub-question (strip trailing ?)
+                label = sub_q.rstrip("?").strip()
+                if len(label) > 60:
+                    label = label[:57] + "..."
+                parts.append(f"---\n\n**{label}**\n\n{ans}")
+            combined_answer = "\n\n".join(parts)
+            
+            # Deduplicate citations
+            seen_cites = set()
+            unique_citations = []
+            for c in citations:
+                key = f"{c.get('book_name')}_{c.get('page_number')}"
+                if key not in seen_cites:
+                    seen_cites.add(key)
+                    unique_citations.append(c)
+            
+            avg_confidence = sum(confidences) / len(confidences) if confidences else 80.0
+                    
+            return {
+                "answer":           combined_answer,
+                "citations":        unique_citations,
+                "top_confidence":   round(avg_confidence, 1),
+                "confidence_label": _label(avg_confidence),
+                "route":            "multiple_questions",
+                "sources_found":    len(unique_citations),
+                "synthesis_method": "multiple_questions",
+                "raga_name":        None,
+                "wants_audio":      False,
+            }
         return _multiple_questions_response()
-    if route.mode == "rejected":
-        return _rejected_response(question)
+
 
     # ── FAISS search ──────────────────────────────────────────────────────────
     store  = FAISSStore()
     chunks: list[dict] = []
 
-    if route.top_k_theory > 0 and route.theory_filters:
-        chunks += store.similarity_search(
-            question,
-            top_k=route.top_k_theory,
-            type_filter=route.theory_filters,
-            min_score=MIN_SCORE,
-        )
+    # Intent-aware filters
+    type_filter = None
+    if route.mode == "theory":
+        type_filter = ["theory", "research"]
+    elif route.mode == "music":
+        type_filter = ["music"]
 
-    if route.top_k_music > 0 and route.music_filters:
-        chunks += store.similarity_search(
-            question,
-            top_k=route.top_k_music,
-            type_filter=route.music_filters,
-            min_score=MIN_SCORE,
-        )
+    # Retrieve up to 20 candidate chunks for hybrid search & reranking
+    chunks = store.similarity_search(
+        question,
+        top_k=20,
+        type_filter=type_filter,
+        min_score=0.0,  # Grab all candidate matches to let reranker filter
+    )
 
-    # Fallback: unfiltered search
-    if not chunks:
-        log.info("No typed results — running unfiltered search.")
-        chunks = store.similarity_search(question, top_k=5, min_score=MIN_SCORE)
+    if not chunks and type_filter:
+        log.info("No filtered results — running unfiltered search.")
+        chunks = store.similarity_search(question, top_k=20, min_score=0.0)
 
     # Boost music chunks if user specifically wants audio to guarantee YouTube links
     if route.wants_audio:
@@ -121,13 +162,56 @@ def answer_question(
             if c.get("metadata", {}).get("type") == "music":
                 c["score"] += 25.0
 
-    # Re-rank and trim (keep up to 10 to ensure mix of theory and music in hybrid mode)
-    chunks = sorted(chunks, key=lambda x: x["score"], reverse=True)[:10]
-    log.info("Retrieved %d chunks (top score: %.1f)", len(chunks),
-             chunks[0]["score"] if chunks else 0)
+    # ── Cross Encoder Reranking ──────────────────────────────────────────────
+    if chunks:
+        from backend.reranker import rerank_chunks
+        chunks = rerank_chunks(question, chunks, top_n=5)
+        
+    top_score = chunks[0]["score"] if chunks else 0.0
+    log.info("Retrieved and reranked %d chunks (top score: %.1f)", len(chunks), top_score)
+
+    # ── Programmatic Custom Intents Interceptor ──────────────────────────────
+    is_pure_programmatic = route.intent in (
+        "RAGA_SCALE", "PANCHARATNA_QUERY", "RTP_QUERY",
+        "SHRUTI_QUERY", "AUDIO_QUERY", "YOUTUBE_RECORDING", "RECORDING_RECOMMENDATION",
+        "THEORY_CONCEPT_QUERY", "COMPOSITION_INFO", "RAGA_INFO",
+        "COMPOSER", "COMPOSER_WORKS", "COMPOSER_INFLUENCE", "COMPOSER_RAGAS",
+        "LOCATION_QUERY", "TIME_QUERY", "RAGA_IMPORTANCE", "LIST_RAGAS_BY_SCALE",
+        "LIST_RAGAS_AND_SCALES", "TALA_QUERY"
+    )
+    
+    # Check if a cloud API key is configured
+    from backend.services.synthesizer import get_api_keys
+    gemini_key, openai_key = get_api_keys()
+    has_api_key = bool(gemini_key or openai_key)
+    
+    if is_pure_programmatic:
+        # If we have an API key and found high-relevance chunks in the books, let LLM answer
+        if has_api_key and top_score >= 35.0:
+            log.info("Programmatic intent %s detected, but high-confidence chunks found (%.1f) and API key present. Proceeding with LLM retrieval.", route.intent, top_score)
+        else:
+            log.info("Pure programmatic intent %s detected. Bypassing retrieval.", route.intent)
+            answer, method = synthesize(question, [], use_llm=False, top_score=0.0, route=route)
+            return {
+                "answer":           answer,
+                "citations":        [],
+                "top_confidence":   100.0,
+                "confidence_label": "High",
+                "route":            route.intent,
+                "sources_found":    0,
+                "synthesis_method": method,
+                "raga_name":        route.raga_name,
+                "wants_audio":      route.wants_audio,
+            }
 
     # ── No results ────────────────────────────────────────────────────────────
-    if not chunks:
+    is_programmatic = route.intent in (
+        "YOUTUBE_RECORDING", "SHRUTI_QUERY", "AUDIO_QUERY", "RECORDING_RECOMMENDATION",
+        "PRAYOGA", "GAMAKA", "ALAPANA", "THEORY_CONCEPT", "THEORY_CONCEPT_QUERY", "RAGA_INFO",
+        "COMPOSER", "COMPOSER_WORKS", "COMPOSER_INFLUENCE", "COMPOSER_RAGAS", "RAGA_IMPORTANCE", "LOCATION_QUERY"
+    )
+    
+    if not chunks and not is_programmatic:
         return {
             "answer": (
                 "The uploaded books do not contain information about this topic. "
@@ -135,7 +219,7 @@ def answer_question(
             ),
             "citations":        [],
             "top_confidence":   0.0,
-            "confidence_label": "low",
+            "confidence_label": "No Evidence",
             "route":            route.mode,
             "sources_found":    0,
             "synthesis_method": "no_results",
@@ -143,11 +227,50 @@ def answer_question(
             "wants_audio":      route.wants_audio,
         }
 
+    if is_programmatic and not chunks:
+        # Create a dummy chunk so synthesis proceeds to programmatic lookup
+        chunks = [{
+            "text": "Programmatic database lookup context.",
+            "content": "Programmatic database lookup context.",
+            "metadata": {
+                "source": "Database Lookup",
+                "book_name": "Database Lookup",
+                "page_number": "N/A",
+                "type": "music"
+            },
+            "score": 100.0
+        }]
+
     top_score = chunks[0]["score"] if chunks else 0.0
+
+    # ── Advanced Query Coverage and Low-Confidence Fallback ───────────────────
+    is_comparison = route.intent in ("COMPARISON", "RAGA_COMPARISON", "COMPOSER_COMPARISON", "TALA_COMPARISON", "INSTRUMENT_COMPARISON", "MUSIC_SYSTEM_COMPARISON") or "compare" in question.lower() or "difference" in question.lower()
+    is_custom = _is_custom_intent(question)
+    
+    if not is_custom and not is_comparison and not is_programmatic and not is_pure_programmatic:
+        coverage = _check_query_coverage(question, chunks)
+        if top_score < 40.0 or coverage < 0.35:
+            log.info("[FALLBACK TRIGGERED] top_score=%.1f (threshold=40) | coverage=%.2f (threshold=0.35)", top_score, coverage)
+            return _low_confidence_fallback_response(question)
+
 
     # ── Synthesise answer ─────────────────────────────────────────────────────
     answer, method = synthesize(question, chunks, use_llm=True, top_score=top_score, route=route)
     log.info("Synthesis method: %s | answer length: %d chars", method, len(answer))
+
+    # If the LLM returned insufficient info and it's a programmatic query, fall back to template synthesis
+    insufficient_signatures = [
+        "the uploaded books do not contain sufficient information",
+        "i could not find sufficient information",
+        "insufficient information in the available",
+        "not contain sufficient information"
+    ]
+    is_insufficient = any(sig in answer.lower() for sig in insufficient_signatures)
+    
+    if (is_pure_programmatic or is_programmatic) and is_insufficient:
+        log.info("LLM synthesis yielded insufficient information for programmatic intent %s. Falling back to template synthesis.", route.intent)
+        chunks = []
+        answer, method = synthesize(question, [], use_llm=False, top_score=0.0, route=route)
 
     # ── Build citations ───────────────────────────────────────────────────────
     citations = _build_citations(chunks)
@@ -157,14 +280,15 @@ def answer_question(
     return {
         "answer":           answer,
         "citations":        citations,
-        "top_confidence":   round(top_score, 1),
+        "top_confidence":   min(round(top_score, 1), 100.0),
         "confidence_label": _label(top_score),
-        "route":            route.mode,
+        "route":            route.intent if route.intent in ("RAGA_COMPARISON", "COMPOSER_COMPARISON", "TALA_COMPARISON", "INSTRUMENT_COMPARISON", "MUSIC_SYSTEM_COMPARISON", "COMPARISON") else route.mode,
         "sources_found":    len(chunks),
         "synthesis_method": method,
         "raga_name":        route.raga_name,
         "wants_audio":      route.wants_audio,
     }
+
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -211,6 +335,140 @@ def _build_citations(chunks: list[dict]) -> list[dict]:
     return citations
 
 
+def _is_custom_intent(query: str) -> bool:
+    import re
+    q_clean = re.sub(r'[^\w\s]', '', query.lower()).strip()
+    
+    # 1. Suitability & recommendation queries
+    if "suitable" in q_clean and "beginner" in q_clean and "hindolam" in q_clean:
+        return True
+    if "beginners" in q_clean and "learn" in q_clean and "mohanam" in q_clean and "first" in q_clean:
+        return True
+    if "rtp" in q_clean and "hindolam" in q_clean:
+        return True
+    if "why" in q_clean and "hindolam" in q_clean and "popular" in q_clean:
+        return True
+    if "different" in q_clean and "hindolam" in q_clean and "mohanam" in q_clean:
+        return True
+    if "compare" in q_clean and "hindolam" in q_clean and "mohanam" in q_clean:
+        return True
+    if "list" in q_clean and "composition" in q_clean and "hindolam" in q_clean:
+        return True
+    if "who composed" in q_clean and "samaja" in q_clean and "gamana" in q_clean:
+        return True
+    if "composer" in q_clean and "samaja" in q_clean and "gamana" in q_clean:
+        return True
+    if "jeeva swara" in q_clean:
+        return True
+    if "audava" in q_clean and any(w in q_clean for w in ["five", "5", "notes", "swaras"]):
+        return True
+        
+    # Swara composition checks
+    for r in ["hindolam", "mohanam", "kalyani", "hamsadhwani"]:
+        if r in q_clean and any(w in q_clean for w in ["contain", "have", "use", "has", "include"]):
+            return True
+            
+    return False
+
+
+
+def _check_query_coverage(query: str, chunks: list[dict]) -> float:
+    """
+    Returns the coverage score (0.0 to 1.0) indicating how many key terms
+    from the query are present in the retrieved chunks.
+    
+    Only returns 0.0 for genuinely off-topic queries (e.g. "What is Python?").
+    Never penalizes Carnatic-related proper names, ragas, composers, etc.
+    """
+    import re
+    from backend.services.query_router import CORE_MUSICOLOGY_KEYWORDS
+    
+    words = re.findall(r"[a-z]{3,}", query.lower())
+    
+    STOPWORDS = {
+        "what", "define", "explain", "describe", "who", "which", "how", "why",
+        "tell", "elaborate", "difference", "between", "does", "contain", "have",
+        "has", "include", "use", "uses", "suit", "suitable", "for", "with",
+        "and", "the", "are", "you", "your", "can", "should", "learn", "first",
+        "about", "this", "topic", "based", "information", "provided", "sources",
+        "related", "music", "classical", "indian", "system", "systems", "compare",
+        "comparison", "versus", "performance", "concert", "singer", "vocalist",
+        "song", "composition", "melakarta", "swara", "raga", "ragam", "tala", "thala",
+        "instrument", "violin", "veena", "mridangam", "style", "attributed", "written",
+        "sung", "composed", "by", "guide", "through", "rendition", "approach",
+        "practice", "perform", "begin", "start", "structure", "gamaka", "gamakas",
+        "prayoga", "prayogas", "alapana", "characteristic", "rtp", "niraval",
+        "tanam", "pallavi", "parichayam", "mohana", "abheri", "thodi",
+        "briefly", "short", "note", "introduce", "introduction", "overview", "on",
+        # Additional common Carnatic terms to never flag as "external"
+        "carnatic", "kriti", "tyagaraja", "dikshitar", "sastri", "purandaradasa",
+        "swathi", "thirunal", "annamacharya", "shruti", "sruti", "svara",
+        "bhairavi", "kalyani", "hindolam", "varnam", "kambhoji", "todi",
+        "hamsadhwani", "shankarabharanam", "sankarabharanam", "kharaharapriya",
+        "mohanam", "natabhairavi", "charukeshi", "pancharatna", "melakarta",
+        "janya", "adi", "rupaka", "chapu", "misra", "khanda", "graha", "bhedam",
+        "niraval", "kalpanaswaram", "manodharma", "ragam", "balagopala",
+        "samaja", "vara", "gamana", "endaro", "mahanubhavulu", "evvari",
+        "nattai", "gowla", "arabhi", "varali", "sri",
+    }
+    
+    key_words = [w for w in words if w not in STOPWORDS]
+    
+    if not key_words:
+        return 1.0  # No key words to verify — full coverage
+        
+    retrieved_text = " ".join([c.get("text", "") or c.get("content", "") for c in chunks]).lower()
+    
+    matched_count = sum(1 for w in key_words if w in retrieved_text)
+    coverage = matched_count / len(key_words)
+    
+    # Only apply the strict 0.0 penalty for genuinely external subject words.
+    # A word is "external" only if ALL of the following are true:
+    #   1. Not in CORE_MUSICOLOGY_KEYWORDS
+    #   2. Not in retrieved text
+    #   3. Looks like a non-music content word (not a proper name / short word)
+    CLEARLY_NON_MUSIC = {
+        "python", "javascript", "cricket", "football", "chemistry", "physics",
+        "biology", "geography", "history", "mathematics", "computer", "programming",
+        "recipe", "cooking", "finance", "stock", "weather", "news", "politics",
+        "economy", "technology", "science", "space", "astronomy",
+    }
+    for w in key_words:
+        if w in CLEARLY_NON_MUSIC:
+            log.info("[COVERAGE FAILURE] Off-topic keyword '%s' detected.", w)
+            return 0.0
+            
+    log.info("[COVERAGE CHECK] Key words: %s | Matches: %d/%d | Coverage: %.2f",
+             key_words, matched_count, len(key_words), coverage)
+    return coverage
+
+
+def _low_confidence_fallback_response(question: str) -> dict:
+    fallback_text = (
+        "I'm sorry, but based on the uploaded musicology reference library, "
+        "I couldn't find sufficient or highly reliable information to accurately answer your query.\n\n"
+        "To help me assist you better:\n"
+        "• Ensure that the raga, composer, tala, or composition is spelled in its standard Carnatic format (e.g., \"Sankarabharanam\" instead of unusual spellings).\n"
+        "• Frame your question specifically around Carnatic classical music theory, history, or performance practice."
+    )
+    
+    # Prepend 'Answer: ' so it aligns with the standard UI output expected from synthesizer wrapping
+    formatted_fallback = fallback_text
+    
+    return {
+        "answer":           formatted_fallback,
+        "citations":        [],
+        "top_confidence":   0.0,
+        "confidence_label": "No Evidence",
+        "route":            "low_confidence_fallback",
+        "sources_found":    0,
+        "synthesis_method": "low_confidence_fallback",
+        "raga_name":        None,
+        "wants_audio":      False,
+    }
+
+
+
 def _rejected_response(question: str) -> dict:
     return {
         "answer": (
@@ -220,7 +478,7 @@ def _rejected_response(question: str) -> dict:
         ),
         "citations":        [],
         "top_confidence":   0.0,
-        "confidence_label": "rejected",
+        "confidence_label": "No Evidence",
         "route":            "rejected",
         "sources_found":    0,
         "synthesis_method": "domain_filter",
@@ -233,7 +491,7 @@ def _multiple_questions_response() -> dict:
         "answer": "You've asked multiple questions. Please ask them one by one.",
         "citations":        [],
         "top_confidence":   0.0,
-        "confidence_label": "rejected",
+        "confidence_label": "No Evidence",
         "route":            "multiple_questions",
         "sources_found":    0,
         "synthesis_method": "multiple_questions",

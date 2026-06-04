@@ -4,18 +4,24 @@ main.py
 FastAPI application entry point for CarnaticGPT.
 """
 
-import logging
+import sys
 import os
 from pathlib import Path
 from contextlib import asynccontextmanager
+import logging
+
+# Ensure parent directory of backend is in Python path for absolute imports to succeed
+backend_parent = str(Path(__file__).resolve().parent.parent)
+if backend_parent not in sys.path:
+    sys.path.insert(0, backend_parent)
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from .routers.upload_pdf import router as upload_router
-from .routes import router as chat_router
-from .services.faiss_store import FAISSStore
+from backend.routers.upload_pdf import router as upload_router
+from backend.routes import router as chat_router
+from backend.services.faiss_store import FAISSStore
 
 logging.basicConfig(
     level=logging.INFO,

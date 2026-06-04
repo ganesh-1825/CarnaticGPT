@@ -86,9 +86,24 @@ def _extract_pdf_pages(file_path: Path) -> list[dict]:
 
 def _ocr_pdf(file_path: Path) -> list[dict]:
     try:
+        from pathlib import Path as PathLib
+        _root = PathLib(__file__).resolve().parent
+        while _root.name in ("services", "backend", "scripts", "routers"):
+            _root = _root.parent
+            
+        tesseract_exe = _root / "tesseract.exe"
+        poppler_bin = _root / "poppler" / "Library" / "bin"
+        
+        poppler_path = None
+        if tesseract_exe.exists():
+            import pytesseract
+            pytesseract.pytesseract.tesseract_cmd = str(tesseract_exe)
+        if poppler_bin.exists():
+            poppler_path = str(poppler_bin)
+            
         from pdf2image import convert_from_path
         import pytesseract
-        images = convert_from_path(str(file_path), dpi=300)
+        images = convert_from_path(str(file_path), dpi=150, poppler_path=poppler_path)
         pages = []
         for i, img in enumerate(images, 1):
             text = pytesseract.image_to_string(img, lang="eng")
@@ -150,8 +165,8 @@ def ingest_document(file_path: Path, force_category: str | None = None) -> int:
             source=source,
             book_name=book_name,
             page_number=page["page_number"],
-            chunk_size=800,
-            chunk_overlap=150,
+            chunk_size=330,
+            chunk_overlap=65,
             force_category=force_category,
         )
         all_chunks.extend(chunks)
@@ -194,7 +209,7 @@ def ingest_csv(csv_path: Path) -> int:
                     source=source,
                     book_name=book_name,
                     page_number=row_num,
-                    chunk_size=800,
+                    chunk_size=330,
                     chunk_overlap=0,   # CSV rows: no overlap needed
                     force_category="music",
                 )
@@ -263,7 +278,7 @@ def ingest_audio_metadata() -> int:
             source=str(AUDIO_DIR / raga_name),
             book_name=f"audio_{raga_name}",
             page_number=1,
-            chunk_size=800,
+            chunk_size=330,
             chunk_overlap=0,
             force_category="audio",
         )

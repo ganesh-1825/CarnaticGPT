@@ -197,6 +197,37 @@ class _HFBackend:
         return answer if answer else "I could not find reliable Carnatic knowledge for this query."
 
 
+class _GeminiBackend:
+    name = "gemini"
+
+    def __init__(self, key: str):
+        self.key = key
+        logger.info("Gemini backend initialized ✓")
+
+    def generate(self, question: str, context: str) -> str:
+        import requests
+        prompt = _build_prompt(question, context)
+        model = "gemini-2.5-flash"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.key}"
+        data = {
+            "contents": [{
+                "parts": [{
+                    "text": prompt
+                }]
+            }]
+        }
+        try:
+            res = requests.post(url, json=data, timeout=12)
+            if res.status_code == 200:
+                answer = res.json()['candidates'][0]['content']['parts'][0]['text'].strip()
+                return answer if answer else "I could not find reliable Carnatic knowledge for this query."
+            else:
+                logger.error(f"Gemini API error: {res.status_code} - {res.text}")
+        except Exception as e:
+            logger.error(f"Gemini API request failed: {e}")
+        return "I could not find reliable Carnatic knowledge for this query."
+
+
 # ─────────────────────────────────────────────
 # LOADER  – tries backends in order
 # ─────────────────────────────────────────────
@@ -205,6 +236,35 @@ _backend = None
 
 def _load_backend():
     global _backend
+
+    # 0. Check Gemini API key first if configured
+    gemini_key = os.getenv("GEMINI_API_KEY")
+    if not gemini_key:
+        try:
+            from pathlib import Path
+            _root = Path(__file__).resolve().parent
+            while _root.name in ("services", "backend", "scripts"):
+                _root = _root.parent
+            env_path = _root / ".env"
+            if env_path.exists():
+                with open(env_path, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith("#"):
+                            parts = line.split("=", 1)
+                            if len(parts) == 2:
+                                if parts[0].strip() == "GEMINI_API_KEY" and parts[1].strip():
+                                    gemini_key = parts[1].strip()
+                                    break
+        except Exception:
+            pass
+
+    if gemini_key:
+        try:
+            _backend = _GeminiBackend(gemini_key)
+            return
+        except Exception as e:
+            logger.warning(f"Gemini backend initialization failed: {e}")
 
     # 1. Fine-tuned local model
     if FINETUNED_PATH.exists() and any(FINETUNED_PATH.iterdir()):

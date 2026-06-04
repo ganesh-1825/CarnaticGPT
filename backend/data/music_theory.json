@@ -1,0 +1,1547 @@
+{
+  "concepts": {
+    "sangeetham": {
+      "name": "Sangeetham (Music)",
+      "definition": "Sangeetham is an ancient and melodious art form in Indian classical culture comprising the triple union of Geetham (vocal music), Vadyam (instrumental music), and Nrithyam (dance). It serves both as a vehicle of pure aesthetic joy (Rakti) and spiritual devotion (Bhakti).",
+      "explanation": "Indian classical music is broadly classified into two main streams: Carnatic music (the indigenous, mathematically precise system of Southern India) and Hindostani music (the traditional classical system of Northern India). The foundation of Sangeetham lies in the structures of Sruthi (pitch), Swara (melody), and Tala (rhythm).",
+      "bullet_points": [
+        "Comprises vocal music, instrumental accompaniment, and classical dance (Tourya Trikama).",
+        "Regulated by the universal frameworks of Sruthi (pitch) and Tala (time measure).",
+        "Deeply rooted in Vedic origin (specifically Gandharva Veda and Sama Veda)."
+      ]
+    },
+    "sruthi": {
+      "name": "Sruthi (Pitch)",
+      "definition": "Sruthi (often spelled shruti) represents the fundamental pitch, tonic frequency, or continuous microtonal sound drone that serves as the foundation for all musical expression and performance in Indian classical music.",
+      "explanation": "Commonly described in Sanskrit as 'Sruyate iti Sruthih' (that which is heard), Sruthi corresponds to the microtonal musical intervals (22 sruthis in an octave) or the tonic note chosen by the performer as 'Sa' (Shadjama). All melodic swaras are sung or played relative to this reference drone, usually provided by a tambura or an electronic sruti box.",
+      "bullet_points": [
+        "Forms the foundational 'mother' pitch (mother reference) of Indian classical performance.",
+        "Refers to the microtonal pitches (22 distinct shrutis) that construct swara intervals.",
+        "Measured in the Carnatic Kattai system (e.g. 1 Kattai = C, 4 Kattai = G, 5 Kattai = G#)."
+      ]
+    },
+    "swara": {
+      "name": "Swara (Melodic Note)",
+      "definition": "A Swara is a single musical note or sound interval that possesses a distinct frequency and inherently carries the capacity to please the minds of listeners by its melodic character.",
+      "explanation": "Derived from the root words 'Swayam' (self) and 'Rajate' (shines), a swara is self-pleasing in nature. While there are seven primary notes (Saptha Swaras), Carnatic music recognizes 12 basic semitonal pitch positions (Dwadasa Swarasthanas) and 16 distinct naming intervals used to define raga structures.",
+      "bullet_points": [
+        "The building blocks of melody (raga scale composition).",
+        "Tuned dynamically using microtonal oscillations called Gamakas.",
+        "Differentiated from Sruthi (which is the steady background drone, whereas Swara is the active note)."
+      ]
+    },
+    "saptha swaras": {
+      "name": "Saptha Swaras (Seven Notes)",
+      "definition": "The Saptha Swaras represent the seven primary musical notes that form the fundamental scale of Indian classical musicology.",
+      "explanation": "These seven notes are abbreviations derived from classical natural sounds: Shadjam (Sa, sound of a peacock), Rishabham (Ri, lowing of a bull), Gandharam (Ga, bleating of a goat), Madhyamam (M1/M2, cry of a heron), Panchamam (Pa, call of a cuckoo), Dhaivatham (Dha, neighing of a horse), and Nishadham (Ni, trumpeting of an elephant).",
+      "bullet_points": [
+        "1. **Shadjam (Sa)** — The tonic base note (peacock sound).",
+        "2. **Rishabham (Ri)** — The second interval (bull sound).",
+        "3. **Gandharam (Ga)** — The third interval (goat sound).",
+        "4. **Madhyamam (Ma)** — The fourth interval (heron sound).",
+        "5. **Panchamam (Pa)** — The perfect fifth note (cuckoo sound).",
+        "6. **Dhaivatham (Da)** — The sixth interval (horse sound).",
+        "7. **Nishadham (Ni)** — The leading seventh note (elephant sound)."
+      ],
+      "list": [
+        "Shadjam (Sa)",
+        "Rishabham (Ri)",
+        "Gandharam (Ga)",
+        "Madhyamam (Ma)",
+        "Panchamam (Pa)",
+        "Dhaivatham (Da)",
+        "Nishadham (Ni)"
+      ]
+    },
+    "dwadasa swarasthanas": {
+      "name": "Dwadasa Swarasthanas (Twelve Semitones)",
+      "definition": "The Dwadasa Swarasthanas are the twelve semitonal pitch intervals that constitute a complete octave (Sthayi) in Indian classical music.",
+      "explanation": "While there are seven basic notes, Sa and Pa are constant (Achala Swaras), whereas Ri, Ga, Ma, Dha, and Ni have variable pitch variants (Chala Swaras). The twelve positions are: Shadjam, Suddha Rishabham, Chatusruti Rishabham, Sadharana Gandharam, Antara Gandharam, Suddha Madhyamam, Prati Madhyamam, Panchamam, Suddha Dhaivatham, Chatusruti Dhaivatham, Kaisiki Nishadham, and Kakali Nishadham.",
+      "bullet_points": [
+        "**Shadjam (Sa)** — Constant base note.",
+        "**Suddha Rishabham (R1)** / **Chatusruti Rishabham (R2)** / **Shatsruti Rishabham (R3)**.",
+        "**Suddha Gandharam (G1)** / **Sadharana Gandharam (G2)** / **Antara Gandharam (G3)**.",
+        "**Suddha Madhyamam (M1)** / **Prati Madhyamam (M2)**.",
+        "**Panchamam (Pa)** — Constant perfect fifth.",
+        "**Suddha Dhaivatham (D1)** / **Chatusruti Dhaivatham (D2)** / **Shatsruti Dhaivatham (D3)**.",
+        "**Suddha Nishadham (N1)** / **Kaisiki Nishadham (N2)** / **Kakali Nishadham (N3)**."
+      ]
+    },
+    "arohana": {
+      "name": "Arohana (Ascending Scale)",
+      "definition": "Arohana is the ascending sequence of musical notes (swaras) from the lower Shadja to the higher Shadja, defining the upward path of a raga scale.",
+      "explanation": "Arohana provides the structural framework of a raga's upward progression, showing which swaras are present, omitted (varja), or arranged in zig-zag order (vakra). It establishes the fundamental rising mood and grammar of the raga.",
+      "bullet_points": [
+        "Represents the upward scale movement (e.g. S R G M P D N S*).",
+        "Defines swara omission rules (Varja swaras) in the ascending direction.",
+        "Combined with Avarohana to represent the complete scale framework."
+      ]
+    },
+    "avarohana": {
+      "name": "Avarohana (Descending Scale)",
+      "definition": "Avarohana is the descending sequence of musical notes (swaras) from the higher Shadja to the lower Shadja, defining the downward path of a raga scale.",
+      "explanation": "Avarohana provides the structural grammar of a raga's downward path, noting which swara variants are used or omitted. Certain ragas (Bhashanga ragas) introduce external foreign notes (Anya Swaras) specifically in the descending path.",
+      "bullet_points": [
+        "Represents the downward scale movement (e.g. S* N D P M G R S).",
+        "Establishes structural resolution patterns (descending cadences).",
+        "Critical for outlining unique raga prayogas (characteristic phrases)."
+      ]
+    },
+    "moorchana": {
+      "name": "Moorchana (Raga Scale)",
+      "definition": "Moorchana is the sequential arrangement of notes in ascending (Arohana) and descending (Avarohana) patterns that outline the basic melodic skeleton of a raga.",
+      "explanation": "In ancient musicology texts, Moorchana represented the practice of starting a standard scale from different degrees to produce new scales (equivalent to ancient Greek modes or Graha Bhedam). In modern usage, it refers directly to the Raga's basic scale notation.",
+      "bullet_points": [
+        "Historically refers to modal shifts of tonic scales (Graha Bhedam).",
+        "Modernly represents the raw Arohana and Avarohana framework.",
+        "Highlights the skeletal boundaries of melodic improvisation."
+      ]
+    },
+    "sthayi": {
+      "name": "Sthayi (Octave)",
+      "definition": "Sthayi refers to the octave range, register, or scale span in Indian classical musicology.",
+      "explanation": "A standard sthayi spans from Shadja (Sa) to Nishadha (Ni). Carnatic music recognizes five distinct registers (Pancha Sthayis): Anumandra Sthayi (double lower register), Mandra Sthayi (lower register), Madhya Sthayi (middle register), Tara Sthayi (upper register), and Atitara Sthayi (double upper register). Most vocalists perform within a comfortable 2 to 2.5 octave register.",
+      "bullet_points": [
+        "Anumandra Sthayi — Extremely low register (represented by two dots below notes).",
+        "Mandra Sthayi — Low register (represented by one dot below notes).",
+        "Madhya Sthayi — Normal middle register (no dot representation).",
+        "Tara Sthayi — Upper register (represented by one dot above notes).",
+        "Atitara Sthayi — Double upper register (represented by two dots above notes)."
+      ]
+    },
+    "purvanga": {
+      "name": "Purvanga (First Half of Octave)",
+      "definition": "Purvanga represents the lower tetrachord or the first half of a musical octave, traditionally consisting of the notes Sa, Ri, Ga, and Ma (S R G M).",
+      "explanation": "In raga analysis, the Purvanga helps classify scales and compositions based on their initial ascending movement. It is also used in Tala context to describe the first half of a complete composition or rhythmic cycle.",
+      "bullet_points": [
+        "Melodic definition: The lower tetrachord spanning the notes Sa, Ri, Ga, Ma.",
+        "Structural composition definition: The first half of a composition (Varnam/Kriti).",
+        "Contrasts with Uttaranga (the upper tetrachord)."
+      ]
+    },
+    "uttaranga": {
+      "name": "Uttaranga (Second Half of Octave)",
+      "definition": "Uttaranga represents the upper tetrachord or the second half of a musical octave, traditionally consisting of the notes Pa, Dha, Ni, and higher Sa (P D N S*).",
+      "explanation": "In musicology, the treatment of the Uttaranga determines raga progression and resolution. Ragas like Shankarabharanam or Kalyani show high structural symmetry between their Purvanga and Uttaranga blocks.",
+      "bullet_points": [
+        "Melodic definition: The upper tetrachord spanning the notes Pa, Dha, Ni, Sa*.",
+        "Composition definition: The second half of a musical composition or rhythmic cycle.",
+        "Critical for establishing peak Tara Sthayi (upper register) phrases."
+      ]
+    },
+    "dhatuvu": {
+      "name": "Dhatuvu (Melody / Swara)",
+      "definition": "Dhatuvu represents the melodic aspect, musical notation, or swara composition of a classical Carnatic song.",
+      "explanation": "Every classical composition has two primary bodies: Dhatuvu (the musical notes/swaras) and Matuvu (the literary lyrics/sahitya). A composer must beautifully balance Dhatuvu and Matuvu to ensure the composition carries both musical value and emotional depth.",
+      "bullet_points": [
+        "Represents the musical setting, notation, and pitch structure.",
+        "Governed by Raga grammar and Swarasthanas.",
+        "Dhatuvu must be learned precisely to retain the authentic composition structure."
+      ]
+    },
+    "matuvu": {
+      "name": "Matuvu (Lyrics / Sahitya)",
+      "definition": "Matuvu represents the lyrical content, literary text, poetry, or sahitya aspect of a Carnatic composition.",
+      "explanation": "Matuvu provides the linguistic and emotional narrative of the composition, usually written in Telugu, Sanskrit, Tamil, or Kannada. It conveys the devotional themes (Bhakti) or poetic metaphors, providing a framework for melodic improvisation like Niraval.",
+      "bullet_points": [
+        "Represents the words, literature, and poetry of the composition.",
+        "Drives the emotional core (Bhava) and devotional expressions.",
+        "Forms the direct foundation for Niraval expansion."
+      ]
+    },
+    "akshara kala": {
+      "name": "Akshara Kala (Unit Beat)",
+      "definition": "Akshara Kala represents the unit of time, beat interval, or duration of a single beat inside a rhythmic cycle (Tala).",
+      "explanation": "In Carnatic rhythm, Tala is measured in Aksharas. For example, Adi Tala has 8 beats (8 Akshara Kalas) in one complete rotation. The speed (Kala) of the composition determines how many swara notes are sung within a single Akshara Kala.",
+      "bullet_points": [
+        "The atomic unit of time measurement in the Tala system.",
+        "Determines rhythmic synchronization between soloist and percussionists.",
+        "Varies depending on composition tempo."
+      ]
+    },
+    "trikala": {
+      "name": "Trikala (Three Speeds)",
+      "definition": "Trikala refers to the practice or execution of rhythmic phrases/compositions in three distinct, mathematically proportional speeds: single (slow), double (medium), and quadruple (fast).",
+      "explanation": "Trikala is an essential component of advanced Carnatic pedagogy (Varnams, Pallavi in RTP). The speeds are: Prathama Kala (first speed, 1 note per beat), Dwitiya Kala (second speed, 2 notes per beat), and Tritiya Kala (third speed, 4 notes per beat). It demonstrates absolute rhythmic mastery.",
+      "bullet_points": [
+        "Prathama Kala — Slow speed (1x speed, basic pulse).",
+        "Dwitiya Kala — Medium speed (2x speed, mathematically double).",
+        "Tritiya Kala — Fast speed (4x speed, mathematically quadruple)."
+      ]
+    },
+    "tourya trikama": {
+      "name": "Tourya Trikama (The Triple Arts)",
+      "definition": "Tourya Trikama represents the sacred triple-union of Geetham (vocal music), Vadyam (instrumental music), and Nrithyam (classical dance) as defined in ancient classical Sanskrit musicology scriptures.",
+      "explanation": "Ancient musicological texts state that Sangeetham is complete only when vocal art, instrumental accompaniment, and interpretive dance work in absolute harmony. Historically, these three branches were heavily integrated in temple rituals and court recitals.",
+      "bullet_points": [
+        "Geetham — The vocal melody.",
+        "Vadyam — The instrumental rhythm and support (e.g. Veena, Mridangam).",
+        "Nrithyam — The classical dance expression (e.g. Bharatanatyam)."
+      ]
+    },
+    "naadam": {
+      "name": "Naadam (Musical Sound)",
+      "definition": "Naadam represents the musical sound, regular sound vibration, or cosmic resonance that constitutes the structural essence of Indian classical music.",
+      "explanation": "Naadam is classified into two primary dimensions: Ahata Naadam (sound produced by physical contact or striking, which is audible to human ears and used to create music) and Anahata Naadam (unstruck cosmic sound, audible only to realized sages through meditation). Ahata Naadam is further split into five structural origins: body, throat, instruments, wind, and percussion.",
+      "bullet_points": [
+        "Ahata Naadam — Struck sound (physical sound used in human music).",
+        "Anahata Naadam — Unstruck sound (cosmic internal energy vibration).",
+        "Forms the foundation of Shruti and Swara systems."
+      ]
+    },
+    "jaati": {
+      "name": "Jaati (Rhythmic Families)",
+      "definition": "Jaati (also spelled jati) represents the rhythmic classification or family group that determines the count of beats assigned to the Laghu limb inside a Tala cycle.",
+      "explanation": "Carnatic music recognizes five distinct rhythmic families (Pancha Jaatis): Tisra (3 beats), Chatusra (4 beats), Khanda (5 beats), Misra (7 beats), and Sankirna (9 beats). By changing the Jaati of the Laghu, the standard 7 parent talas expand into 35 unique talas.",
+      "bullet_points": [
+        "1. **Tisra Jaati** — 3 beats (notation: tap, ring, middle).",
+        "2. **Chatusra Jaati** — 4 beats (notation: tap, ring, middle, index).",
+        "3. **Khanda Jaati** — 5 beats (notation: tap, count of 4 fingers).",
+        "4. **Misra Jaati** — 7 beats (notation: tap, count of 6 finger strokes).",
+        "5. **Sankirna Jaati** — 9 beats (notation: tap, count of 8 finger strokes)."
+      ],
+      "list": [
+        "Tisra Jaati (3 beats)",
+        "Chatusra Jaati (4 beats)",
+        "Khanda Jaati (5 beats)",
+        "Misra Jaati (7 beats)",
+        "Sankirna Jaati (9 beats)"
+      ]
+    },
+    "pancha jaatis": {
+      "name": "Pancha Jaatis (Five Jatis)",
+      "definition": "The Pancha Jaatis are the five fundamental rhythmic families that form the core structural matrix of the Carnatic rhythmic system.",
+      "explanation": "These 5 Jatis are: Tisra (3 beats), Chatusra (4 beats), Khanda (5 beats), Misra (7 beats), and Sankirna (9 beats). They dictate the rhythmic pulse and determine the count value of a Laghu beat.",
+      "bullet_points": [
+        "Tisra Jaati (3 beats)",
+        "Chatusra Jaati (4 beats)",
+        "Khanda Jaati (5 beats)",
+        "Misra Jaati (7 beats)",
+        "Sankirna Jaati (9 beats)"
+      ],
+      "list": [
+        "Tisra (3 beats)",
+        "Chatusra (4 beats)",
+        "Khanda (5 beats)",
+        "Misra (7 beats)",
+        "Sankirna (9 beats)"
+      ]
+    },
+    "avartham": {
+      "name": "Avartham (Tala Cycle)",
+      "definition": "An Avartham (often spelled avartanam) is one complete rotation, circle, or cycle of a Tala rhythmic loop.",
+      "explanation": "It starts from the first beat (Samam) and returns to it after traversing all the Angas (limbs) of the Tala. Compositions and improvisations are measured by the number of Avarthams they occupy.",
+      "bullet_points": [
+        "A complete, self-contained loop of a rhythmic pattern.",
+        "Starts and ends on the first beat (Samam).",
+        "Provides the framework for structured percussion solos (Thani Avartanam)."
+      ]
+    },
+    "tala": {
+      "name": "Tala (Rhythmic Cycle)",
+      "definition": "Tala represents the rhythmic framework or time-measurement system that organizes musical performance into repeating cycles of beats.",
+      "explanation": "Tala regulates tempo (Laya), structures compositions, and guides the timing of improvisations. Derived from 'Ta' (representing Lord Shiva's Tandava dance) and 'La' (representing Goddess Parvati's Lasya dance), it unites active beat counts with rhythmic limbs.",
+      "bullet_points": [
+        "Maintains time measurement throughout the concert.",
+        "Formed by structured components called Angas (Laghu, Drutam, Anudrutam).",
+        "Divided into 35 primary talas based on Sapta Talas and Pancha Jaatis."
+      ]
+    },
+    "angas": {
+      "name": "Angas (Tala Limbs)",
+      "definition": "Angas are the constituent limbs, structural parts, or beat patterns that build a complete Avartham inside a Tala cycle.",
+      "explanation": "While there are six classical limbs (Shadangas), the modern system primarily relies on three functional Angas: Anudrutam (1 beat, tap only), Drutam (2 beats, tap + wave), and Laghu (variable beats, tap + finger counts). These are represented in notations as U, O, and I.",
+      "bullet_points": [
+        "**Anudrutam (U)** — 1 beat (represented by a tap).",
+        "**Drutam (O)** — 2 beats (represented by a tap and a hand wave).",
+        "**Laghu (I)** — Variable beats (represented by a tap and finger counts)."
+      ]
+    },
+    "shadangas": {
+      "name": "Shadangas (Six Limbs)",
+      "definition": "The Shadangas are the six traditional, classical rhythmic limbs of Tala measurement codified in ancient musicology.",
+      "explanation": "In modern performance, only the first three (Anudrutam, Drutam, and Laghu) are active. The remaining three (Guru, Plutam, and Kakapadam) are used historically in massive classical Talas. The six limbs are: Anudrutam (1 beat), Drutam (2 beats), Laghu (variable beats), Guru (8 beats), Plutam (12 beats), and Kakapadam (16 beats).",
+      "bullet_points": [
+        "1. **Anudrutam (U)** — 1 beat duration.",
+        "2. **Drutam (O)** — 2 beats duration.",
+        "3. **Laghu (I)** — Variable beats (3, 4, 5, 7, 9).",
+        "4. **Guru (8)** — 8 beats duration.",
+        "5. **Plutam (12)** — 12 beats duration.",
+        "6. **Kakapadam (16)** — 16 beats duration."
+      ],
+      "list": [
+        "Anudrutam",
+        "Drutam",
+        "Laghu",
+        "Guru",
+        "Plutam",
+        "Kakapadam"
+      ]
+    },
+    "talangas": {
+      "name": "Talangas (Tala Limbs)",
+      "definition": "Talangas are the structural segments or limbs that comprise a Carnatic Tala cycle, primarily referring to Anudrutam, Drutam, and Laghu.",
+      "explanation": "Every Carnatic Tala notation maps these talangas clearly. For instance, Adi Tala (which is Chatusra Jati Triputa Tala) has the limb structure of 1 Laghu + 2 Drutams (represented as I4 O O), totaling 8 beats.",
+      "bullet_points": [
+        "Laghu (I) — Includes a tap and finger counts depending on Jaati.",
+        "Drutam (O) — Includes a tap and a reverse hand wave.",
+        "Anudrutam (U) — A single downward hand clap."
+      ],
+      "list": [
+        "Laghu (I)",
+        "Drutam (O)",
+        "Anudrutam (U)"
+      ]
+    },
+    "sapta talas": {
+      "name": "Suladi Sapta Talas (The Seven Rhythmic Families)",
+      "definition": "The Suladi Sapta Tala scheme is the foundational rhythmic classification system in Carnatic music, consisting of seven basic talas.",
+      "explanation": "These seven parent talas are categorized by their constituent sections (Angas). Each tala has a variable section called the Laghu (I), which can take 5 different beat counts (Jati variations: 3, 4, 5, 7, 9 beats). This mathematical combination results in the 35 Talas system of Carnatic music. The main Angas are: Anudrutam (U - 1 beat), Drutam (O - 2 beats), and Laghu (I - variable beats).",
+      "bullet_points": [
+        "1. **Dhruva Tala** — Angas: `I O I I` (Laghu, Drutam, Laghu, Laghu)",
+        "2. **Matya Tala** — Angas: `I O I` (Laghu, Drutam, Laghu)",
+        "3. **Rupaka Tala** — Angas: `O I` (Drutam, Laghu)",
+        "4. **Jhampa Tala** — Angas: `I U O` (Laghu, Anudrutam, Drutam)",
+        "5. **Triputa Tala** — Angas: `I O O` (Laghu, Drutam, Drutam) — *Adi Tala is a variant of Chaturasra Jati Triputa Tala (`I4 O O`)*",
+        "6. **Ata Tala** — Angas: `I I O O` (Laghu, Laghu, Drutam, Drutam)",
+        "7. **Eka Tala** — Angas: `I` (Laghu only)"
+      ]
+    },
+    "suddha madhyamam": {
+      "name": "Suddha Madhyamam (M1)",
+      "definition": "Suddha Madhyamam is the lower semitone variant of the fourth note (Madhyamam) in the Indian classical semitonal scale, corresponding to a flat or natural fourth (perfect fourth) frequency.",
+      "explanation": "In Carnatic music, the fourth note 'Madhyamam' has two variants: Suddha Madhyamam (M1, the perfect fourth) and Prati Madhyamam (M2, the sharp or augmented fourth). Suddha Madhyamam characterizes the first half (ragas 1 to 36) of the 72 Melakarta system, including major ragas like Mayamalavagowla, Shankarabharanam, and Kharaharapriya.",
+      "bullet_points": [
+        "Stands as the 4th primary note in the semitonal octave.",
+        "Corresponds to a flat/natural fourth frequency (perfect fourth).",
+        "Used to categorize Melakarta ragas 1 to 36."
+      ]
+    },
+    "prati madhyamam": {
+      "name": "Prati Madhyamam (M2)",
+      "definition": "Prati Madhyamam is the higher semitone variant of the fourth note (Madhyamam) in the Indian classical semitonal scale, corresponding to a sharp or augmented fourth frequency.",
+      "explanation": "Prati Madhyamam (M2) characterizes the second half (ragas 37 to 72) of the 72 Melakarta system, such as Kalyani, Pantuvarali, Shanmukhapriya, and Simhendramadhyamam. Its inclusion creates a bright, majestic, and structurally energetic scalar color.",
+      "bullet_points": [
+        "Stands as the sharp/augmented fourth note variant.",
+        "Characterizes the second half of the Melakarta system (ragas 37-72).",
+        "Creates a bright, energetic, and majestic mood."
+      ]
+    },
+    "achala swara": {
+      "name": "Achala Swaras (Constant Notes)",
+      "definition": "Achala Swaras are the constant, invariant notes of the octave that do not admit any semitonal variants.",
+      "explanation": "In the sapta swara system, Shadjam (Sa, the tonic base) and Panchamam (Pa, the perfect fifth) are classified as Achala Swaras (motionless or constant notes). They serve as the fixed anchors of the octave, providing structural stability. The other five notes (Ri, Ga, Ma, Dha, Ni) are Chala Swaras (variable notes) that possess semitonal variants.",
+      "bullet_points": [
+        "Shadjam (Sa) and Panchamam (Pa) are the only Achala Swaras.",
+        "They never admit any pitch variations or semitonal deviations.",
+        "Serve as fixed tonic anchors for vocal and instrumental tuning."
+      ]
+    },
+    "chala swara": {
+      "name": "Chala Swaras (Variable Notes)",
+      "definition": "Chala Swaras are the variable notes of the octave that admit multiple semitonal pitch variants.",
+      "explanation": "Five of the seven sapta swaras—Rishabham (Ri), Gandharam (Ga), Madhyamam (Ma), Dhaivatham (Dha), and Nishadham (Ni)—are classified as Chala Swaras. By taking different semitonal pitch positions (12 Swarasthanas), they allow the creation of diverse scales and ragas.",
+      "bullet_points": [
+        "Ri, Ga, Ma, Dha, and Ni are the five Chala Swaras.",
+        "They take semitonal positions to produce the 12 Dwadasa Swarasthanas.",
+        "The varying treatment of Chala Swaras defines the unique color of each raga."
+      ]
+    },
+    "vadi": {
+      "name": "Vadi Swara (The King Note)",
+      "definition": "Vadi Swara is the primary, most important, or dominant note of a raga scale, traditionally compared to the 'King' (Raja) of the raga.",
+      "explanation": "The Vadi Swara is the melodic center of gravity of a raga. It is sung or played frequently, held for longer durations (Nyasa), and forms the starting point for key musical phrases. Its frequency of usage reveals the core emotional character (bhava) of the raga.",
+      "bullet_points": [
+        "The absolute dominant note of a raga scale.",
+        "Subject to elaborate microtonal oscillation (Gamakas) and prolonged rests.",
+        "Defines the primary melodic focus and mood."
+      ]
+    },
+    "samvadi": {
+      "name": "Samvadi Swara (The Queen Note)",
+      "definition": "Samvadi Swara is the second most important note in a raga scale that perfectly complements and supports the Vadi Swara, acting as its 'Queen' or 'Minister'.",
+      "explanation": "The Samvadi Swara typically stands at a perfect fourth (Madhyama Bhava) or a perfect fifth (Panchama Bhava) interval from the Vadi Swara, creating absolute harmonic resonance. The relationship between Vadi and Samvadi (Vadi-Samvadi Bhava) is the bedrock of raga harmony.",
+      "bullet_points": [
+        "The supporting consonant note of the Vadi.",
+        "Stands at a consonant interval (usually 9 or 13 shrutis away, a perfect 4th or 5th).",
+        "Reinforces the melodic stability and aesthetic symmetry of the raga."
+      ]
+    },
+    "anuvadi": {
+      "name": "Anuvadi Swara (The Companion Note)",
+      "definition": "Anuvadi Swara represents the companion or neutral notes in a raga scale that are neither consonant (Samvadi) nor dissonant (Vivadi) with the Vadi Swara.",
+      "explanation": "The Anuvadi Swaras act as standard scale members (companions) that build the body of the raga. They follow the primary Vadi and Samvadi notes, carrying forward the melodic flow without creating strong consonances or harsh dissonances.",
+      "bullet_points": [
+        "Neutral or companion notes within the raga scale.",
+        "Support the overall scalar movement and phrase constructions.",
+        "Establish the standard melodic filler phrases."
+      ]
+    },
+    "vivadi": {
+      "name": "Vivadi Swara (The Dissonant Note)",
+      "definition": "Vivadi Swara is a dissonant or semitonally adjacent note in a raga scale that creates a sharp, dramatic tension, traditionally compared to an 'Enemy' note.",
+      "explanation": "While usually avoided or demoted, Carnatic music mathematically incorporates Vivadi Swaras inside the 40 Vivadi Melakartas (such as Kanakangi, Jhalavarali). The proximity of semitonal variants (e.g. Suddha Gandhara next to Chatusruti Rishabha) creates a distinctive, haunting, and sharp color when handled with supreme mastery.",
+      "bullet_points": [
+        "A dissonant or semitonally adjacent note.",
+        "Creates sharp aesthetic tension and high dramatic character.",
+        "Codified inside the 40 Vivadi Melakartas of Venkatamakhin."
+      ]
+    },
+    "tanam": {
+      "name": "Tanam (Rhythmic Exposition)",
+      "definition": "Tanam is the second part of a Ragam Tanam Pallavi (RTP), representing a rhythmic exposition of a raga sung without a structured tala cycle but maintaining a steady, pulsing tempo (Laya).",
+      "explanation": "Performed after the free-form Alapana and before the Pallavi, Tanam is characterized by a distinct pulse, tempo, and swing. It is sung using syllables derived from 'Ananta' (eternal), such as 'Aa-Nam-Ta-Nam', which mathematically resolve into rhythmic gallops (Gaja-Tanam, Ashva-Tanam) to build immense momentum.",
+      "bullet_points": [
+        "Rhythmic exposition of a raga without a formal Tala cycle.",
+        "Sung using syllables derived from the word 'Ananta'.",
+        "Bridges the free-form Alapana and the structured Pallavi."
+      ]
+    },
+    "alapana": {
+      "name": "Ragam Alapana (Melodic Improvisation)",
+      "definition": "Ragam Alapana is the free-form, unmetered, and melodic improvisation of a raga executed without any rhythmic accompaniment or tala cycle.",
+      "explanation": "Alapana is the absolute pinnacle of Manodharma (improvisational) sangeetham. Its purpose is to systematically establish the identity, mood, and microtonal grammar (Lakshana) of a raga. It is performed in three progressive stages: Aksepa (introductory phrases), Raga Vardhani (elaborate phrase progression across registers), and Makarini (fast-tempo concluding phrases).",
+      "bullet_points": [
+        "Free-form melodic improvisation without tala cycle or beats.",
+        "Unveils the raga's identity, mood, and emotional core.",
+        "Structured progressively from low to upper registers."
+      ]
+    },
+    "manodharma": {
+      "name": "Manodharma Sangeetham (Spontaneous Improvisation)",
+      "definition": "Manodharma Sangeetham refers to the creative, spontaneous, and improvisational aspect of Carnatic music performed in real-time within the boundaries of raga grammar.",
+      "explanation": "Unlike Kalpita Sangeetham (pre-composed music like Kritis or Varnams), Manodharma relies entirely on the artist's spontaneous imagination. It is split into five canonical branches: Ragam Alapana (free melody), Tanam (rhythmic pulse exposition), Niraval (improvising melody over a specific lyric line), Kalpanaswaram (impromptu swara singing), and Pallavi (RTP thematic cycles).",
+      "bullet_points": [
+        "Spontaneous, real-time creative improvisation.",
+        "Requires absolute mastery over raga grammar and tala cycles.",
+        "Split into 5 branches: Alapana, Tanam, Niraval, Kalpanaswaram, and RTP."
+      ]
+    },
+    "varnam": {
+      "name": "Varnam (Foundational Composition)",
+      "definition": "A Varnam is a foundational, highly structured Carnatic composition designed to encapsulate the complete scale, characteristic phrases, and microtonal grammar of a raga.",
+      "explanation": "Usually performed at the beginning of a concert, the Varnam serves as an excellent warm-up for the voice or instrument. It has a mathematically symmetric structure split into two parts: Purvanga (Pallavi, Anupallavi, and Muktayi Swaras) and Uttaranga (Charanam and Chittaswaras). It is classified into Tana Varnams (focused on swara patterns, sung in fast speeds) and Pada Varnams (focused on dance and lyric expression).",
+      "bullet_points": [
+        "A foundational composition demonstrating complete raga grammar.",
+        "Consists of Pallavi, Anupallavi, Muktayi Swaras, Charanam, and Chittaswaras.",
+        "Performed at the beginning of concerts as a voice warm-up."
+      ]
+    },
+    "madhyamakala sahityam": {
+      "name": "Madhyamakala Sahityam (Medium Tempo Lyrics)",
+      "definition": "Madhyamakala Sahityam is a specialized section of lyric composition sung or played at double speed (medium tempo) relative to the rest of the composition, commonly featured in the works of Muthuswami Dikshitar.",
+      "explanation": "Typically placed at the conclusion of the Anupallavi or Charanam inside a Kriti, Madhyamakala Sahityam adds a sudden burst of energy, momentum, and rhythmic contrast. It showcases the composer's absolute command over Sanskrit literature and speed control.",
+      "bullet_points": [
+        "A lyrical section composed and performed in double tempo.",
+        "Commonly found as a signature element in Muthuswami Dikshitar’s compositions.",
+        "Creates dynamic momentum and rhythmic contrast at the end of sections."
+      ]
+    },
+    "chittaswaram": {
+      "name": "Chittaswaram (Pre-composed Swara Passages)",
+      "definition": "Chittaswaram refers to a pre-composed, mathematically structured passage of swara notes sung or played at the conclusion of the Charanam in a Kriti.",
+      "explanation": "Unlike Kalpanaswarams (which are improvised spontaneously), Chittaswarams are carefully crafted by the composer to elaborate the raga's beauty and rhythmic drive. They are performed in medium or fast speed and conclude with a landing swara that resolves perfectly back to the Pallavi.",
+      "bullet_points": [
+        "Pre-composed, mathematically precise swara passages.",
+        "Adds immense rhythmic energy and structure to a Kriti.",
+        "Resolves seamlessly back to the starting line of the song."
+      ]
+    },
+    "muktayi": {
+      "name": "Muktayi Swaram (Concluding Swaras)",
+      "definition": "Muktayi Swaram is the pre-composed, highly energetic swara passage that concludes the Purvanga section of a Varnam, directly following the Anupallavi.",
+      "explanation": "Muktayi Swaras typically feature complex mathematical patterns and rhythmic gallops (jatis) that showcase raga prayogas. They resolve perfectly back to the main starting phrase (Pallavi) of the Varnam.",
+      "bullet_points": [
+        "Concludes the first half (Purvanga) of a Varnam.",
+        "Follows a mathematically rigorous structure.",
+        "Resolves cleanly back to the opening Pallavi."
+      ]
+    },
+    "charanam": {
+      "name": "Charanam (The Final Stanza)",
+      "definition": "Charanam is the final, concluding section or stanza of a Carnatic composition (Kriti or Varnam) that houses the primary lyrical narrative and resolves the composition.",
+      "explanation": "A standard Carnatic composition has a three-part structure: Pallavi (the chorus), Anupallavi (the secondary verse), and Charanam (the final stanza). In Varnams, the Charanam is also called the 'Ettugada Pallavi' and serves as the anchor for a series of Ettugada Swaras.",
+      "bullet_points": [
+        "The concluding structural section of a Kriti or Varnam.",
+        "Contains the main poetic narrative and devotional resolution.",
+        "Houses the Ettugada Swaras in the context of Varnams."
+      ]
+    },
+    "graha swara": {
+      "name": "Graha Swara",
+      "definition": "The starting note of a musical phrase, composition, or raga.",
+      "explanation": "In ancient texts, Graha was the note on which a raga commenced. In modern Carnatic music, it refers to the note (swara) from which a specific composition or an alapana phrase naturally begins. It is one of the ten characteristics (Dasha Pranas) of a raga.",
+      "bullet_points": [
+        "Starting note of a raga or phrase",
+        "Crucial for establishing the identity of the raga from the very first utterance",
+        "Often the same as the Jeeva Swara (life-giving note) in major ragas"
+      ]
+    },
+    "nyasa swara": {
+      "name": "Nyasa Swara",
+      "definition": "The resting note or the concluding note of a musical phrase.",
+      "explanation": "Nyasa represents the note on which a musical phrase or an entire section (like Pallavi or Charanam) comes to a natural rest. Prolonging this note brings a sense of completeness to the melodic phrase. It is also one of the Dasha Pranas.",
+      "bullet_points": [
+        "Ending note of a musical phrase",
+        "Provides resolution and stability",
+        "Commonly Shadja (S) and Panchama (P), but can be other notes depending on the raga"
+      ]
+    },
+    "jeeva swara": {
+      "name": "Jeeva Swara",
+      "definition": "The life-giving or soul-note of a raga.",
+      "explanation": "Jeeva swara (also known as Amsa swara) is the most prominent note that gives the raga its distinct identity and aesthetic beauty. It is the resting place for many phrases and is heavily ornamented with gamakas. A raga can have one or more Jeeva swaras.",
+      "bullet_points": [
+        "The most important note in a raga",
+        "Dictates the emotional mood (rasa) of the raga",
+        "Often elongated or emphasized with gamakas"
+      ]
+    },
+    "kalpanaswaram": {
+      "name": "Kalpanaswaram",
+      "definition": "Extempore singing of solfa syllables (swaras) within the framework of a raga and tala.",
+      "explanation": "Kalpanaswaram, or Swarakalpana, is a prominent aspect of Manodharma Sangeetam (improvisational music). The artist improvises intricate melodic patterns using the swaras of the raga, landing precisely on a chosen point (eduppu) of the tala cycle.",
+      "bullet_points": [
+        "Improvisational singing using swara syllables (sa, ri, ga, ma, pa, da, ni)",
+        "Adheres strictly to the raga lakshana and tala cycle",
+        "Usually performed towards the end of a kriti or during an RTP"
+      ]
+    },
+    "swarakalpana": {
+      "name": "Kalpanaswaram",
+      "definition": "Extempore singing of solfa syllables (swaras) within the framework of a raga and tala.",
+      "explanation": "Kalpanaswaram, or Swarakalpana, is a prominent aspect of Manodharma Sangeetam (improvisational music). The artist improvises intricate melodic patterns using the swaras of the raga, landing precisely on a chosen point (eduppu) of the tala cycle.",
+      "bullet_points": [
+        "Improvisational singing using swara syllables (sa, ri, ga, ma, pa, da, ni)",
+        "Adheres strictly to the raga lakshana and tala cycle",
+        "Usually performed towards the end of a kriti or during an RTP"
+      ]
+    },
+    "niraval": {
+      "name": "Niraval",
+      "definition": "Improvisation of a specific line of lyrics (sahitya) from a composition within the raga and tala framework.",
+      "explanation": "In Niraval, the artist takes a meaningful line from the kriti and sings it repeatedly, improvising the melody while maintaining the original rhythmic structure and syllable placement. It explores the raga through the sahitya.",
+      "bullet_points": [
+        "Melodic improvisation using the words of a composition",
+        "Maintains the original rhythm and spacing of syllables",
+        "Requires deep understanding of the raga, tala, and the meaning of the lyrics"
+      ]
+    },
+    "dasha pranas": {
+      "name": "Dasha Pranas (Ten Life-Giving Attributes of a Raga)",
+      "definition": "The Dasha Pranas (also called Dasha Vidha Raga Lakshanas) are the ten ancient, essential characteristics that define the identity, grammar, and living nature of every raga in Indian classical music, as codified in texts like the Natyashastra and Sangita Ratnakara.",
+      "explanation": "Just as 'prana' (life breath) sustains a living being, these ten attributes together breathe life and individuality into a raga. Without them, a mere collection of notes cannot be called a raga. They collectively define which notes are used, how they are emphasized, where phrases begin and end, and how the scale structure is treated.",
+      "bullet_points": [
+        "1. **Graha** — The starting note (Aadhara Swara) of a raga or phrase.",
+        "2. **Amsha** (Jeeva Swara) — The predominant, life-giving note that defines the raga's identity.",
+        "3. **Tara** — The upper octave limit; the highest note used in the raga.",
+        "4. **Mandra** — The lower octave limit; the lowest note used in the raga.",
+        "5. **Nyasa** — The resting or concluding note of a phrase.",
+        "6. **Apanyasa** — The secondary resting or sub-concluding note.",
+        "7. **Alpatva** — Notes used sparingly or briefly (weak/rare swaras).",
+        "8. **Bahutva** — Notes used frequently and prominently (strong/dominant swaras).",
+        "9. **Shadava** — A hexatonic scale (6-note raga — one swara omitted).",
+        "10. **Audava** — A pentatonic scale (5-note raga — two swaras omitted)."
+      ],
+      "list": [
+        "Graha (Starting note)",
+        "Amsha / Jeeva Swara (Predominant note)",
+        "Tara (Upper range limit)",
+        "Mandra (Lower range limit)",
+        "Nyasa (Resting/concluding note)",
+        "Apanyasa (Secondary resting note)",
+        "Alpatva (Sparingly-used notes)",
+        "Bahutva (Frequently-used notes)",
+        "Shadava (6-note hexatonic scale)",
+        "Audava (5-note pentatonic scale)"
+      ]
+    },
+    "dasha prana": {
+      "name": "Dasha Pranas (Ten Life-Giving Attributes of a Raga)",
+      "definition": "The Dasha Pranas are the ten essential characteristics that define the identity and grammar of every raga in Indian classical music.",
+      "explanation": "Codified in ancient texts like Natyashastra and Sangita Ratnakara, these are: Graha (starting note), Amsha/Jeeva Swara (predominant note), Tara (upper limit), Mandra (lower limit), Nyasa (resting note), Apanyasa (secondary resting note), Alpatva (rare notes), Bahutva (frequent notes), Shadava (6-note), and Audava (5-note).",
+      "bullet_points": [
+        "Collectively define the melodic identity of a raga",
+        "Codified in ancient Sanskrit musicological treatises",
+        "Every raga must conform to these characteristics to be called a valid raga"
+      ]
+    },
+    "amsha": {
+      "name": "Amsha Swara (Predominant Note / Jeeva Swara)",
+      "definition": "Amsha is the predominant or life-giving note of a raga — the swara that most prominently establishes the raga's identity and emotional character.",
+      "explanation": "Also called Jeeva Swara, the Amsha is the single most important note of the raga. It appears most frequently, is held longest, and is elaborated with the richest gamakas. It is the third Dasha Prana: Amsha (predominant note). In modern Carnatic terminology, this is equivalent to the Vadi Swara.",
+      "bullet_points": [
+        "The life-giving (Jeeva) note that embodies the raga's aesthetic soul.",
+        "Most frequently sung and most richly ornamented note.",
+        "Dasha Prana #2: Amsha — determines the raga's core identity."
+      ]
+    },
+    "tara": {
+      "name": "Tara (Upper Octave Range Limit)",
+      "definition": "Tara is the highest note or upper register limit used in the melodic phrases of a raga — one of the Dasha Pranas.",
+      "explanation": "In the context of Dasha Pranas, Tara defines how high a raga's phrases ascend. Some ragas naturally live in the upper register (Tara Sthayi), while others rarely go above the middle octave. Tara determines the melodic ceiling of the raga's grammar.",
+      "bullet_points": [
+        "Dasha Prana #3: Tara — upper octave limit of a raga.",
+        "Defines the highest note melodic phrases reach in performance.",
+        "Different from Tara Sthayi (upper octave register) — Tara here is raga-specific."
+      ]
+    },
+    "mandra": {
+      "name": "Mandra (Lower Octave Range Limit)",
+      "definition": "Mandra is the lowest note or lower register limit used in the melodic phrases of a raga — one of the Dasha Pranas.",
+      "explanation": "As a Dasha Prana, Mandra defines the lowest pitch level at which a raga's melodic grammar operates. Some ragas are predominantly Mandra-dominant (heavy in lower octave), while others rarely descend into the lower register. Mandra sthayi (lower octave) is the register that corresponds.",
+      "bullet_points": [
+        "Dasha Prana #4: Mandra — lower octave limit of a raga.",
+        "Defines the lowest note reached in characteristic phrases (prayogas).",
+        "Ragas like Todi extensively use Mandra Sthayi for emotional depth."
+      ]
+    },
+    "apanyasa": {
+      "name": "Apanyasa (Secondary Resting Note)",
+      "definition": "Apanyasa is the secondary or intermediate resting note of a raga where phrases temporarily pause before resolving to the primary Nyasa swara.",
+      "explanation": "In ancient raga grammar, Apanyasa served as the sub-cadential note where melodic movement momentarily rests or concludes before ultimately resolving. It is distinct from Nyasa (the primary rest) — Apanyasa creates a feeling of incomplete but temporary resolution, adding structural depth.",
+      "bullet_points": [
+        "Dasha Prana #6: Apanyasa — secondary resting/cadential note.",
+        "Creates intermediate melodic pauses within phrases.",
+        "Distinct from Nyasa: Apanyasa is a sub-cadence, Nyasa is the full resolution."
+      ]
+    },
+    "alpatva": {
+      "name": "Alpatva (Sparingly-Used Notes)",
+      "definition": "Alpatva refers to the notes in a raga that are used rarely, briefly, or lightly — swaras that appear infrequently and are not allowed to be emphasized or prolonged.",
+      "explanation": "Alpatva is the seventh Dasha Prana. Notes with Alpatva treatment are touched briefly while passing through a phrase — they may not be held or ornamented extensively. For example, in Kalyani raga, Rishabha (R2) has Alpatva (it is used but not emphasized), while notes like Gandhara (G3) and Madhyama (M2) have Bahutva (they are emphasized).",
+      "bullet_points": [
+        "Dasha Prana #7: Alpatva — the sparingly used, weak-emphasis notes.",
+        "Such notes appear briefly and are not allowed to be prolonged or elaborated.",
+        "Contrasted with Bahutva: Alpatva = rare/weak; Bahutva = frequent/strong."
+      ]
+    },
+    "bahutva": {
+      "name": "Bahutva (Frequently-Used/Emphasized Notes)",
+      "definition": "Bahutva refers to the notes in a raga that are used frequently, prominently, and with elaborate ornamentation — the dominant, emphasized swaras of the raga.",
+      "explanation": "Bahutva is the eighth Dasha Prana. Notes with Bahutva treatment are sung often, held for longer durations, and are richly ornamented with gamakas. They form the core of improvisation (alapana, niraval) and characteristic phrase (prayoga) construction. They shape the emotional color (rasa) of the raga.",
+      "bullet_points": [
+        "Dasha Prana #8: Bahutva — the frequently emphasized, dominant notes.",
+        "Such notes appear repeatedly and are elaborated with extensive gamakas.",
+        "Contrasted with Alpatva: Bahutva = strong/frequent; Alpatva = rare/weak."
+      ]
+    },
+    "shadava": {
+      "name": "Shadava (Hexatonic Scale / 6-Note Raga)",
+      "definition": "Shadava is a raga type that uses exactly six swaras (notes) in its scale, with one note omitted from the complete seven-note (Sampurna) scale.",
+      "explanation": "Shadava is the ninth Dasha Prana. In Carnatic raga classification, ragas are categorized by the number of notes they use: Sampurna (7 notes), Shadava (6 notes, one omitted — Varja), and Audava (5 notes, two omitted). The omitted swara is called a Varja Swara. The scale type may differ between Arohana (ascending) and Avarohana (descending).",
+      "bullet_points": [
+        "Dasha Prana #9: Shadava — hexatonic, 6-note raga.",
+        "One swara is Varja (omitted) from the Sampurna scale.",
+        "Example: Mohanam (S R2 G3 P D2 S — omits Ma and Ni) is an Audava; Hamsadhwani (S R2 G3 P N3 S — omits Ma, Dha) is an Audava."
+      ]
+    },
+    "audava": {
+      "name": "Audava (Pentatonic Scale / 5-Note Raga)",
+      "definition": "Audava is a raga type that uses exactly five swaras (notes) in its scale, with two notes omitted from the complete seven-note (Sampurna) scale.",
+      "explanation": "Audava is the tenth Dasha Prana. Famous Audava ragas include Mohanam (S R2 G3 P D2 — omits Ma and Ni), Hamsadhwani (S R2 G3 P N3 — omits Ma and Dha), and Hindolam (S G2 M1 D1 N2 — omits Ri and Pa). Audava ragas have a lean, clear, and immediately recognizable character due to their minimal note count.",
+      "bullet_points": [
+        "Dasha Prana #10: Audava — pentatonic, 5-note raga.",
+        "Two swaras are Varja (omitted) from the Sampurna scale.",
+        "Examples: Mohanam, Hamsadhwani, Hindolam, Revati, Suddhasaveri."
+      ],
+      "list": [
+        "Mohanam — S R2 G3 P D2",
+        "Hamsadhwani — S R2 G3 P N3",
+        "Hindolam — S G2 M1 D1 N2",
+        "Revati — S R1 M1 P N2",
+        "Suddhasaveri — S R2 M1 P D2"
+      ]
+    },
+    "varja": {
+      "name": "Varja Swara (Omitted Note)",
+      "definition": "A Varja Swara is a note that is intentionally omitted from a raga's scale, creating Shadava (6-note) or Audava (5-note) raga types.",
+      "explanation": "Varja (meaning 'to leave out') defines incomplete scale ragas. A raga with one Varja is Shadava; with two Varjas, it is Audava. The Varja may apply to Arohana only, Avarohana only, or both. A raga with different note counts in arohana vs avarohana is called Vaktavakra (zig-zag) or Shadava-Audava type.",
+      "bullet_points": [
+        "A deliberately omitted note from the 7-note Sampurna scale.",
+        "One Varja = Shadava (6-note); Two Varjas = Audava (5-note).",
+        "Varja can be asymmetric: omitted in arohana but present in avarohana."
+      ]
+    },
+    "vakra": {
+      "name": "Vakra Swara (Zig-Zag Note Progression)",
+      "definition": "A Vakra progression is a non-linear, zig-zag arrangement of notes in a raga's arohana or avarohana that deviates from the expected sequential (linear) order.",
+      "explanation": "Rather than proceeding in strict ascending or descending order (S R G M P D N S), a Vakra raga may use a pattern like S R G R G M P (with Ri appearing twice in different contexts). This zig-zag creates distinctive melodic phrases and is a hallmark of ragas like Kambhoji and Kaanada.",
+      "bullet_points": [
+        "A non-linear, zig-zag note arrangement in arohana/avarohana.",
+        "Creates unique signature phrases (prayogas) specific to the raga.",
+        "Example: Kambhoji arohana — S R2 G3 M1 P D2 S (drops Ni, zig-zag in descent)."
+      ]
+    },
+    "suladi sapta talas": {
+      "name": "Suladi Sapta Talas (The Seven Rhythmic Families)",
+      "definition": "The Suladi Sapta Tala scheme is the foundational rhythmic classification system in Carnatic music, consisting of seven basic talas.",
+      "explanation": "These seven parent talas are categorized by their constituent sections (Angas). Each tala has a variable section called the Laghu (I), which can take 5 different beat counts (Jati variations: 3, 4, 5, 7, 9 beats). This mathematical combination results in the 35 Talas system of Carnatic music. The main Angas are: Anudrutam (U - 1 beat), Drutam (O - 2 beats), and Laghu (I - variable beats).",
+      "bullet_points": [
+        "1. **Dhruva Tala** — Angas: `I O I I` (Laghu, Drutam, Laghu, Laghu)",
+        "2. **Matya Tala** — Angas: `I O I` (Laghu, Drutam, Laghu)",
+        "3. **Rupaka Tala** — Angas: `O I` (Drutam, Laghu)",
+        "4. **Jhampa Tala** — Angas: `I U O` (Laghu, Anudrutam, Drutam)",
+        "5. **Triputa Tala** — Angas: `I O O` (Laghu, Drutam, Drutam) — *Adi Tala is a variant of Chaturasra Jati Triputa Tala (`I4 O O`)*",
+        "6. **Ata Tala** — Angas: `I I O O` (Laghu, Laghu, Drutam, Drutam)",
+        "7. **Eka Tala** — Angas: `I` (Laghu only)"
+      ]
+    },
+    "sapta tala": {
+      "name": "Suladi Sapta Talas (The Seven Rhythmic Families)",
+      "definition": "The Suladi Sapta Tala scheme is the foundational rhythmic classification system in Carnatic music, consisting of seven basic talas.",
+      "explanation": "These seven parent talas are categorized by their constituent sections (Angas). Each tala has a variable section called the Laghu (I), which can take 5 different beat counts (Jati variations: 3, 4, 5, 7, 9 beats). This mathematical combination results in the 35 Talas system of Carnatic music. The main Angas are: Anudrutam (U - 1 beat), Drutam (O - 2 beats), and Laghu (I - variable beats).",
+      "bullet_points": [
+        "1. **Dhruva Tala** — Angas: `I O I I` (Laghu, Drutam, Laghu, Laghu)",
+        "2. **Matya Tala** — Angas: `I O I` (Laghu, Drutam, Laghu)",
+        "3. **Rupaka Tala** — Angas: `O I` (Drutam, Laghu)",
+        "4. **Jhampa Tala** — Angas: `I U O` (Laghu, Anudrutam, Drutam)",
+        "5. **Triputa Tala** — Angas: `I O O` (Laghu, Drutam, Drutam) — *Adi Tala is a variant of Chaturasra Jati Triputa Tala (`I4 O O`)*",
+        "6. **Ata Tala** — Angas: `I I O O` (Laghu, Laghu, Drutam, Drutam)",
+        "7. **Eka Tala** — Angas: `I` (Laghu only)"
+      ]
+    },
+    "suladi sapta tala": {
+      "name": "Suladi Sapta Talas (The Seven Rhythmic Families)",
+      "definition": "The Suladi Sapta Tala scheme is the foundational rhythmic classification system in Carnatic music, consisting of seven basic talas.",
+      "explanation": "These seven parent talas are categorized by their constituent sections (Angas). Each tala has a variable section called the Laghu (I), which can take 5 different beat counts (Jati variations: 3, 4, 5, 7, 9 beats). This mathematical combination results in the 35 Talas system of Carnatic music. The main Angas are: Anudrutam (U - 1 beat), Drutam (O - 2 beats), and Laghu (I - variable beats).",
+      "bullet_points": [
+        "1. **Dhruva Tala** — Angas: `I O I I` (Laghu, Drutam, Laghu, Laghu)",
+        "2. **Matya Tala** — Angas: `I O I` (Laghu, Drutam, Laghu)",
+        "3. **Rupaka Tala** — Angas: `O I` (Drutam, Laghu)",
+        "4. **Jhampa Tala** — Angas: `I U O` (Laghu, Anudrutam, Drutam)",
+        "5. **Triputa Tala** — Angas: `I O O` (Laghu, Drutam, Drutam) — *Adi Tala is a variant of Chaturasra Jati Triputa Tala (`I4 O O`)*",
+        "6. **Ata Tala** — Angas: `I I O O` (Laghu, Laghu, Drutam, Drutam)",
+        "7. **Eka Tala** — Angas: `I` (Laghu only)"
+      ]
+    },
+    "gamaka": {
+      "name": "Gamaka (Melodic Oscillations & Ornamentation)",
+      "definition": "Gamaka is any shake, oscillation, slide, or microtonal embellishment applied to a musical note (Swara) that gives Carnatic music its unique, fluid, and expressive character.",
+      "explanation": "In Carnatic sangeetham, a note is rarely sung or played as a flat, constant pitch. Instead, it is approached, held, or exited with specific curves. The ancient texts classify Gamakas into several groups, most notably the *Dasha Vidha Gamakas* (10 types of ornamentations described in Sangita Ratnakara) and the *Pancha Dasha Gamakas* (15 types described by Venkatamakhi). The most common types include Kampita (shake), Jaru (slide/glide), and Ravai (quick grace-note patterns).",
+      "bullet_points": [
+        "**Kampita:** A rapid, controlled oscillation around a swara (essential for ragas like Todi or Bhairavi).",
+        "**Jaru (Pratyahata / Vali):** Glides/slides between notes (either ascending - *Etra Jaru*, or descending - *Irakka Jaru*).",
+        "**Ravai:** A brief, rapid triplet or quick articulation of adjacent notes.",
+        "**Spurita / Pratyahata:** Double-note patterns where the second note is struck with a sudden accent from the lower/higher neighbor."
+      ]
+    },
+    "gamakas": {
+      "name": "Gamaka (Melodic Oscillations & Ornamentation)",
+      "definition": "Gamaka is any shake, oscillation, slide, or microtonal embellishment applied to a musical note (Swara) that gives Carnatic music its unique, fluid, and expressive character.",
+      "explanation": "In Carnatic sangeetham, a note is rarely sung or played as a flat, constant pitch. Instead, it is approached, held, or exited with specific curves. The ancient texts classify Gamakas into several groups, most notably the *Dasha Vidha Gamakas* (10 types of ornamentations described in Sangita Ratnakara) and the *Pancha Dasha Gamakas* (15 types described by Venkatamakhi). The most common types include Kampita (shake), Jaru (slide/glide), and Ravai (quick grace-note patterns).",
+      "bullet_points": [
+        "**Kampita:** A rapid, controlled oscillation around a swara (essential for ragas like Todi or Bhairavi).",
+        "**Jaru (Pratyahata / Vali):** Glides/slides between notes (either ascending - *Etra Jaru*, or descending - *Irakka Jaru*).",
+        "**Ravai:** A brief, rapid triplet or quick articulation of adjacent notes.",
+        "**Spurita / Pratyahata:** Double-note patterns where the second note is struck with a sudden accent from the lower/higher neighbor."
+      ]
+    },
+    "gamakam": {
+      "name": "Gamaka (Melodic Oscillations & Ornamentation)",
+      "definition": "Gamaka is any shake, oscillation, slide, or microtonal embellishment applied to a musical note (Swara) that gives Carnatic music its unique, fluid, and expressive character.",
+      "explanation": "In Carnatic sangeetham, a note is rarely sung or played as a flat, constant pitch. Instead, it is approached, held, or exited with specific curves. The ancient texts classify Gamakas into several groups, most notably the *Dasha Vidha Gamakas* (10 types of ornamentations described in Sangita Ratnakara) and the *Pancha Dasha Gamakas* (15 types described by Venkatamakhi). The most common types include Kampita (shake), Jaru (slide/glide), and Ravai (quick grace-note patterns).",
+      "bullet_points": [
+        "**Kampita:** A rapid, controlled oscillation around a swara (essential for ragas like Todi or Bhairavi).",
+        "**Jaru (Pratyahata / Vali):** Glides/slides between notes (either ascending - *Etra Jaru*, or descending - *Irakka Jaru*).",
+        "**Ravai:** A brief, rapid triplet or quick articulation of adjacent notes.",
+        "**Spurita / Pratyahata:** Double-note patterns where the second note is struck with a sudden accent from the lower/higher neighbor."
+      ]
+    },
+    "gamakams": {
+      "name": "Gamaka (Melodic Oscillations & Ornamentation)",
+      "definition": "Gamaka is any shake, oscillation, slide, or microtonal embellishment applied to a musical note (Swara) that gives Carnatic music its unique, fluid, and expressive character.",
+      "explanation": "In Carnatic sangeetham, a note is rarely sung or played as a flat, constant pitch. Instead, it is approached, held, or exited with specific curves. The ancient texts classify Gamakas into several groups, most notably the *Dasha Vidha Gamakas* (10 types of ornamentations described in Sangita Ratnakara) and the *Pancha Dasha Gamakas* (15 types described by Venkatamakhi). The most common types include Kampita (shake), Jaru (slide/glide), and Ravai (quick grace-note patterns).",
+      "bullet_points": [
+        "**Kampita:** A rapid, controlled oscillation around a swara (essential for ragas like Todi or Bhairavi).",
+        "**Jaru (Pratyahata / Vali):** Glides/slides between notes (either ascending - *Etra Jaru*, or descending - *Irakka Jaru*).",
+        "**Ravai:** A brief, rapid triplet or quick articulation of adjacent notes.",
+        "**Spurita / Pratyahata:** Double-note patterns where the second note is struck with a sudden accent from the lower/higher neighbor."
+      ]
+    },
+    "rakti ragas": {
+      "name": "Rakti Ragas (Emotionally Expressive Ragas)",
+      "definition": "A Rakti Raga is a raga that possesses deep aesthetic and emotional appeal (Rakti), where its identity is established through rich melodic phrases and gamakas rather than a simple scalar progression.",
+      "explanation": "Unlike purely scalar or linear ragas (which might be easy to define but offer limited scope for elaborate improvisation), Rakti Ragas have complex, fluid characters. They are considered the pillars of Carnatic music concerts because they allow hours of manodharma (improvisation) without sounding repetitive. Their beauty relies on microtonal oscillations, resting notes (Nyasa), and traditional phrases.",
+      "bullet_points": [
+        "**Definition:** Feeling-oriented, highly expressive ragas that represent the emotional heart of Carnatic music.",
+        "**Key Feature:** Their identity cannot be captured by arohana/avarohana alone; they require gamakas and microtonal treatment.",
+        "**Common Examples:** Bhairavi, Todi, Kalyani, Shankarabharanam, Kamboji, Anandabhairavi, Sahana, Mukhari."
+      ]
+    },
+    "rakti raga": {
+      "name": "Rakti Ragas (Emotionally Expressive Ragas)",
+      "definition": "A Rakti Raga is a raga that possesses deep aesthetic and emotional appeal (Rakti), where its identity is established through rich melodic phrases and gamakas rather than a simple scalar progression.",
+      "explanation": "Unlike purely scalar or linear ragas (which might be easy to define but offer limited scope for elaborate improvisation), Rakti Ragas have complex, fluid characters. They are considered the pillars of Carnatic music concerts because they allow hours of manodharma (improvisation) without sounding repetitive. Their beauty relies on microtonal oscillations, resting notes (Nyasa), and traditional phrases.",
+      "bullet_points": [
+        "**Definition:** Feeling-oriented, highly expressive ragas that represent the emotional heart of Carnatic music.",
+        "**Key Feature:** Their identity cannot be captured by arohana/avarohana alone; they require gamakas and microtonal treatment.",
+        "**Common Examples:** Bhairavi, Todi, Kalyani, Shankarabharanam, Kamboji, Anandabhairavi, Sahana, Mukhari."
+      ]
+    },
+    "rakti": {
+      "name": "Rakti Ragas (Emotionally Expressive Ragas)",
+      "definition": "A Rakti Raga is a raga that possesses deep aesthetic and emotional appeal (Rakti), where its identity is established through rich melodic phrases and gamakas rather than a simple scalar progression.",
+      "explanation": "Unlike purely scalar or linear ragas (which might be easy to define but offer limited scope for elaborate improvisation), Rakti Ragas have complex, fluid characters. They are considered the pillars of Carnatic music concerts because they allow hours of manodharma (improvisation) without sounding repetitive. Their beauty relies on microtonal oscillations, resting notes (Nyasa), and traditional phrases.",
+      "bullet_points": [
+        "**Definition:** Feeling-oriented, highly expressive ragas that represent the emotional heart of Carnatic music.",
+        "**Key Feature:** Their identity cannot be captured by arohana/avarohana alone; they require gamakas and microtonal treatment.",
+        "**Common Examples:** Bhairavi, Todi, Kalyani, Shankarabharanam, Kamboji, Anandabhairavi, Sahana, Mukhari."
+      ]
+    },
+    "concert structure": {
+      "name": "Carnatic Concert Structure (Katcheri Paddhati)",
+      "definition": "The modern Carnatic concert structure, or Katcheri Paddhati, is the standardized sequence of compositions and improvisations performed in a classical recital.",
+      "explanation": "This modern layout was codified in the early 20th century by the legendary vocalist **Ariyakudi Ramanuja Iyengar**. It is structured to maintain a perfect balance of melody, rhythm, speed, and emotion, keeping both the performer and the audience engaged. The concert begins with high-energy structural forms and slowly peaks with deep improvisational main centerpieces, before winding down with lighter devotional/expressive pieces.",
+      "bullet_points": [
+        "1. **Varnam** — A structural warm-up piece to establish the musical atmosphere.",
+        "2. **Invocation** — A medium-tempo composition (often dedicated to Lord Ganesha) to start the recital.",
+        "3. **Sub-main Kritis** — Medium-sized pieces with short alapanas and kalpanaswarams.",
+        "4. **Main Piece & Tani Avartanam** — The primary centerpiece featuring elaborate alapana, niraval, kalpanaswaram, and a percussion solo (Tani Avartanam).",
+        "5. **Ragam Tanam Pallavi (RTP)** — The peak of improvisational exposition (often performed in heavy concerts).",
+        "6. **Tukkadas** — Lighter, melody-rich compositions (Padams, Javalis, Devotional songs, Tillana).",
+        "7. **Mangalam** — Concluding short prayer for peace, traditionally set in raga Madhyamavati."
+      ]
+    },
+    "concert format": {
+      "name": "Carnatic Concert Structure (Katcheri Paddhati)",
+      "definition": "The modern Carnatic concert structure, or Katcheri Paddhati, is the standardized sequence of compositions and improvisations performed in a classical recital.",
+      "explanation": "This modern layout was codified in the early 20th century by the legendary vocalist **Ariyakudi Ramanuja Iyengar**. It is structured to maintain a perfect balance of melody, rhythm, speed, and emotion, keeping both the performer and the audience engaged. The concert begins with high-energy structural forms and slowly peaks with deep improvisational main centerpieces, before winding down with lighter devotional/expressive pieces.",
+      "bullet_points": [
+        "1. **Varnam** — A structural warm-up piece to establish the musical atmosphere.",
+        "2. **Invocation** — A medium-tempo composition (often dedicated to Lord Ganesha) to start the recital.",
+        "3. **Sub-main Kritis** — Medium-sized pieces with short alapanas and kalpanaswarams.",
+        "4. **Main Piece & Tani Avartanam** — The primary centerpiece featuring elaborate alapana, niraval, kalpanaswaram, and a percussion solo (Tani Avartanam).",
+        "5. **Ragam Tanam Pallavi (RTP)** — The peak of improvisational exposition (often performed in heavy concerts).",
+        "6. **Tukkadas** — Lighter, melody-rich compositions (Padams, Javalis, Devotional songs, Tillana).",
+        "7. **Mangalam** — Concluding short prayer for peace, traditionally set in raga Madhyamavati."
+      ]
+    },
+    "concert sequence": {
+      "name": "Carnatic Concert Structure (Katcheri Paddhati)",
+      "definition": "The modern Carnatic concert structure, or Katcheri Paddhati, is the standardized sequence of compositions and improvisations performed in a classical recital.",
+      "explanation": "This modern layout was codified in the early 20th century by the legendary vocalist **Ariyakudi Ramanuja Iyengar**. It is structured to maintain a perfect balance of melody, rhythm, speed, and emotion, keeping both the performer and the audience engaged. The concert begins with high-energy structural forms and slowly peaks with deep improvisational main centerpieces, before winding down with lighter devotional/expressive pieces.",
+      "bullet_points": [
+        "1. **Varnam** — A structural warm-up piece to establish the musical atmosphere.",
+        "2. **Invocation** — A medium-tempo composition (often dedicated to Lord Ganesha) to start the recital.",
+        "3. **Sub-main Kritis** — Medium-sized pieces with short alapanas and kalpanaswarams.",
+        "4. **Main Piece & Tani Avartanam** — The primary centerpiece featuring elaborate alapana, niraval, kalpanaswaram, and a percussion solo (Tani Avartanam).",
+        "5. **Ragam Tanam Pallavi (RTP)** — The peak of improvisational exposition (often performed in heavy concerts).",
+        "6. **Tukkadas** — Lighter, melody-rich compositions (Padams, Javalis, Devotional songs, Tillana).",
+        "7. **Mangalam** — Concluding short prayer for peace, traditionally set in raga Madhyamavati."
+      ]
+    },
+    "katcheri paddhati": {
+      "name": "Carnatic Concert Structure (Katcheri Paddhati)",
+      "definition": "The modern Carnatic concert structure, or Katcheri Paddhati, is the standardized sequence of compositions and improvisations performed in a classical recital.",
+      "explanation": "This modern layout was codified in the early 20th century by the legendary vocalist **Ariyakudi Ramanuja Iyengar**. It is structured to maintain a perfect balance of melody, rhythm, speed, and emotion, keeping both the performer and the audience engaged. The concert begins with high-energy structural forms and slowly peaks with deep improvisational main centerpieces, before winding down with lighter devotional/expressive pieces.",
+      "bullet_points": [
+        "1. **Varnam** — A structural warm-up piece to establish the musical atmosphere.",
+        "2. **Invocation** — A medium-tempo composition (often dedicated to Lord Ganesha) to start the recital.",
+        "3. **Sub-main Kritis** — Medium-sized pieces with short alapanas and kalpanaswarams.",
+        "4. **Main Piece & Tani Avartanam** — The primary centerpiece featuring elaborate alapana, niraval, kalpanaswaram, and a percussion solo (Tani Avartanam).",
+        "5. **Ragam Tanam Pallavi (RTP)** — The peak of improvisational exposition (often performed in heavy concerts).",
+        "6. **Tukkadas** — Lighter, melody-rich compositions (Padams, Javalis, Devotional songs, Tillana).",
+        "7. **Mangalam** — Concluding short prayer for peace, traditionally set in raga Madhyamavati."
+      ]
+    },
+    "katcheri": {
+      "name": "Carnatic Concert Structure (Katcheri Paddhati)",
+      "definition": "The modern Carnatic concert structure, or Katcheri Paddhati, is the standardized sequence of compositions and improvisations performed in a classical recital.",
+      "explanation": "This modern layout was codified in the early 20th century by the legendary vocalist **Ariyakudi Ramanuja Iyengar**. It is structured to maintain a perfect balance of melody, rhythm, speed, and emotion, keeping both the performer and the audience engaged. The concert begins with high-energy structural forms and slowly peaks with deep improvisational main centerpieces, before winding down with lighter devotional/expressive pieces.",
+      "bullet_points": [
+        "1. **Varnam** — A structural warm-up piece to establish the musical atmosphere.",
+        "2. **Invocation** — A medium-tempo composition (often dedicated to Lord Ganesha) to start the recital.",
+        "3. **Sub-main Kritis** — Medium-sized pieces with short alapanas and kalpanaswarams.",
+        "4. **Main Piece & Tani Avartanam** — The primary centerpiece featuring elaborate alapana, niraval, kalpanaswaram, and a percussion solo (Tani Avartanam).",
+        "5. **Ragam Tanam Pallavi (RTP)** — The peak of improvisational exposition (often performed in heavy concerts).",
+        "6. **Tukkadas** — Lighter, melody-rich compositions (Padams, Javalis, Devotional songs, Tillana).",
+        "7. **Mangalam** — Concluding short prayer for peace, traditionally set in raga Madhyamavati."
+      ]
+    },
+    "cutcherry": {
+      "name": "Carnatic Concert Structure (Katcheri Paddhati)",
+      "definition": "The modern Carnatic concert structure, or Katcheri Paddhati, is the standardized sequence of compositions and improvisations performed in a classical recital.",
+      "explanation": "This modern layout was codified in the early 20th century by the legendary vocalist **Ariyakudi Ramanuja Iyengar**. It is structured to maintain a perfect balance of melody, rhythm, speed, and emotion, keeping both the performer and the audience engaged. The concert begins with high-energy structural forms and slowly peaks with deep improvisational main centerpieces, before winding down with lighter devotional/expressive pieces.",
+      "bullet_points": [
+        "1. **Varnam** — A structural warm-up piece to establish the musical atmosphere.",
+        "2. **Invocation** — A medium-tempo composition (often dedicated to Lord Ganesha) to start the recital.",
+        "3. **Sub-main Kritis** — Medium-sized pieces with short alapanas and kalpanaswarams.",
+        "4. **Main Piece & Tani Avartanam** — The primary centerpiece featuring elaborate alapana, niraval, kalpanaswaram, and a percussion solo (Tani Avartanam).",
+        "5. **Ragam Tanam Pallavi (RTP)** — The peak of improvisational exposition (often performed in heavy concerts).",
+        "6. **Tukkadas** — Lighter, melody-rich compositions (Padams, Javalis, Devotional songs, Tillana).",
+        "7. **Mangalam** — Concluding short prayer for peace, traditionally set in raga Madhyamavati."
+      ]
+    },
+    "ragam tanam pallavi": {
+      "name": "Ragam Tanam Pallavi (RTP)",
+      "definition": "Ragam Tanam Pallavi (RTP) is the premier, most elaborate improvisational form in a Carnatic concert, showcasing the absolute peak of a musician's creative, melodic, and rhythmic mastery.",
+      "explanation": "RTP is split into three distinct, progressive phases: (1) **Ragam (Alapana)** - A free-form, unmetered melodic improvisation exploring the raga's personality. (2) **Tanam** - A rhythmic, pulsed improvisation without a strict drum beat, using rhythmic vocables (Ananta, Ta, Na, Nom). (3) **Pallavi** - A pre-composed short line of lyrics set to a specific Tala, expanding with speed variations (Trikala) and swara improvisation.",
+      "bullet_points": [
+        "**Ragam:** Expounds raga identity without rhythmic metre.",
+        "**Tanam:** Features steady pulse using specific rhythmic vocal patterns.",
+        "**Pallavi:** Structured line divided into Prathamanga and Dvitayanga by a resting point (Arudi)."
+      ]
+    },
+    "rtp": {
+      "name": "Ragam Tanam Pallavi (RTP)",
+      "definition": "Ragam Tanam Pallavi (RTP) is the premier, most elaborate improvisational form in a Carnatic concert, showcasing the absolute peak of a musician's creative, melodic, and rhythmic mastery.",
+      "explanation": "RTP is split into three distinct, progressive phases: (1) **Ragam (Alapana)** - A free-form, unmetered melodic improvisation exploring the raga's personality. (2) **Tanam** - A rhythmic, pulsed improvisation without a strict drum beat, using rhythmic vocables (Ananta, Ta, Na, Nom). (3) **Pallavi** - A pre-composed short line of lyrics set to a specific Tala, expanding with speed variations (Trikala) and swara improvisation.",
+      "bullet_points": [
+        "**Ragam:** Expounds raga identity without rhythmic metre.",
+        "**Tanam:** Features steady pulse using specific rhythmic vocal patterns.",
+        "**Pallavi:** Structured line divided into Prathamanga and Dvitayanga by a resting point (Arudi)."
+      ]
+    },
+    "kriti": {
+      "name": "Kriti (Classical Compositional Form)",
+      "definition": "A Kriti is the primary and most highly developed compositional form in Carnatic music, structured around a three-part division: Pallavi, Anupallavi, and Charanam.",
+      "explanation": "Kritis are devotional or philosophical songs, combining sahitya (lyrics), melody, and rhythm. Unlike simple bhajans, they are sophisticated art compositions codified by the Trinity composers. They serve as the structural framework for a concert, allowing artists to inject spontaneous improvisation (manodharma) like Niraval and Kalpanaswaram between the pre-composed sections.",
+      "bullet_points": [
+        "**Pallavi:** The first section, stating the core musical and thematic refrain.",
+        "**Anupallavi:** The second section, expanding the theme, usually in the upper octave.",
+        "**Charanam:** The third and longest section, containing the detailed narrative/message, concluding with a transition back to the Pallavi."
+      ]
+    },
+    "krithi": {
+      "name": "Kriti (Classical Compositional Form)",
+      "definition": "A Kriti is the primary and most highly developed compositional form in Carnatic music, structured around a three-part division: Pallavi, Anupallavi, and Charanam.",
+      "explanation": "Kritis are devotional or philosophical songs, combining sahitya (lyrics), melody, and rhythm. Unlike simple bhajans, they are sophisticated art compositions codified by the Trinity composers. They serve as the structural framework for a concert, allowing artists to inject spontaneous improvisation (manodharma) like Niraval and Kalpanaswaram between the pre-composed sections.",
+      "bullet_points": [
+        "**Pallavi:** The first section, stating the core musical and thematic refrain.",
+        "**Anupallavi:** The second section, expanding the theme, usually in the upper octave.",
+        "**Charanam:** The third and longest section, containing the detailed narrative/message, concluding with a transition back to the Pallavi."
+      ]
+    },
+    "tillana": {
+      "name": "Tillana (Rhythmic Concluding Form)",
+      "definition": "A Tillana is a lively, fast-paced compositional form characterized by complex rhythmic syllables, performed near the conclusion of a Carnatic concert or Bharatanatyam recital.",
+      "explanation": "The Tillana is designed to showcase rhythmic vitality and speed. While it follows the classic three-part structure (Pallavi, Anupallavi, Charanam), the Pallavi and Anupallavi use abstract, non-lexical rhythmic syllables (Solkattu/vocables like *Dheem*, *Ta*, *Na*, *Nom*, *Dirana*). The Charanam introduces a short line of meaningful lyrics (Sahitya) dedicated to a deity or patron, often containing the composer's signature (*Mudra*).",
+      "bullet_points": [
+        "**Structure:** Pallavi and Anupallavi use rhythmic solfa vocables; Charanam uses lyric text.",
+        "**Tempo:** Performed in fast tempo (Druta laya) to create an energetic climax.",
+        "**Usage:** Commonly concludes concerts or dance recitals due to its visually and rhythmically exciting character."
+      ]
+    },
+    "thillana": {
+      "name": "Tillana (Rhythmic Concluding Form)",
+      "definition": "A Tillana is a lively, fast-paced compositional form characterized by complex rhythmic syllables, performed near the conclusion of a Carnatic concert or Bharatanatyam recital.",
+      "explanation": "The Tillana is designed to showcase rhythmic vitality and speed. While it follows the classic three-part structure (Pallavi, Anupallavi, Charanam), the Pallavi and Anupallavi use abstract, non-lexical rhythmic syllables (Solkattu/vocables like *Dheem*, *Ta*, *Na*, *Nom*, *Dirana*). The Charanam introduces a short line of meaningful lyrics (Sahitya) dedicated to a deity or patron, often containing the composer's signature (*Mudra*).",
+      "bullet_points": [
+        "**Structure:** Pallavi and Anupallavi use rhythmic solfa vocables; Charanam uses lyric text.",
+        "**Tempo:** Performed in fast tempo (Druta laya) to create an energetic climax.",
+        "**Usage:** Commonly concludes concerts or dance recitals due to its visually and rhythmically exciting character."
+      ]
+    },
+    "kalpana swara": {
+      "name": "Kalpanaswaram",
+      "definition": "Extempore singing of solfa syllables (swaras) within the framework of a raga and tala.",
+      "explanation": "Kalpanaswaram, or Swarakalpana, is a prominent aspect of Manodharma Sangeetam (improvisational music). The artist improvises intricate melodic patterns using the swaras of the raga, landing precisely on a chosen point (eduppu) of the tala cycle.",
+      "bullet_points": [
+        "Improvisational singing using swara syllables (sa, ri, ga, ma, pa, da, ni)",
+        "Adheres strictly to the raga lakshana and tala cycle",
+        "Usually performed towards the end of a kriti or during an RTP"
+      ]
+    },
+    "ragamalika": {
+      "name": "Ragamalika (Garland of Ragas)",
+      "definition": "A Ragamalika is a musical form, composition, or improvisational section in Carnatic music where the raga changes sequentially, weaving a garland of multiple ragas together.",
+      "explanation": "In a Ragamalika, the main melody transitions from one raga to another while keeping the underlying Tala constant. This can be pre-composed (e.g. Ragamalika Varnams, Kritis, or Tillanas) or improvised (e.g. Ragamalika Swaras in Kalpanaswaram or the Pallavi section of an RTP). A critical aesthetic rule of Ragamalika is the inclusion of a 'raga mudra' (the name of the raga woven into the lyrics) and a reverse sequence return (viloma) to the starting raga.",
+      "bullet_points": [
+        "**Garland of Ragas:** Sequentially shifting across multiple ragas in a single piece.",
+        "**Raga Mudra:** Incorporating the name of each raga into its corresponding lyrical line.",
+        "**Viloma:** A reverse-order resolution back to the original starting raga."
+      ]
+    },
+    "pallavi": {
+      "name": "Pallavi",
+      "definition": "Pallavi refers to both the opening thematic refrain (chorus) of a classical composition (Kriti/Varnam) and the highly structured, improvisational vocal/instrumental theme of a Ragam Tanam Pallavi (RTP).",
+      "explanation": "As a composition section, the Pallavi presents the core theme and is repeated after the Anupallavi and Charanam. In RTP, the Pallavi is a short, pre-composed line of lyrics set to a specific tala, which serves as the foundation for elaborate mathematical and melodic variations (Trikala, Niraval, Kalpanaswaram). The word is an acronym representing: Pa (Pada - words/sahitya), La (Laya - tempo/rhythm), and Vi (Vinyasa - creative variations).",
+      "bullet_points": [
+        "**Refrain:** The foundational chorus section of a Kriti, Varnam, or lyric piece.",
+        "**RTP Centerpiece:** A complex, mathematically-driven theme showcasing rhythmic and melodic variations.",
+        "**Acronym Meaning:** Pa (Pada / words), La (Laya / rhythm), Vi (Vinyasa / variations)."
+      ]
+    },
+    "mangalam": {
+      "name": "Mangalam (Auspicious Concluding Song)",
+      "definition": "Mangalam is the final, auspicious concluding song performed at the absolute end of a Carnatic concert to invoke peace, express gratitude, and wish well-being for the audience and humanity.",
+      "explanation": "Traditionally, no concert can be stopped abruptly without singing the Mangalam. It is usually set in auspicious ragas like Saurashtram, Madhyamavati, or Surati. The most famous Mangalam is 'Pavamana Suthudu' (composed by Saint Tyagaraja in Saurashtram/Madhyamavati, set to Adi Tala). Singing the Mangalam serves to neutralize any musical errors or omissions made during the performance and leaves the environment filled with positive energy.",
+      "bullet_points": [
+        "**Concert Finale:** The mandatory final song expressing auspicious wishes and peace.",
+        "**Auspicious Ragas:** Set in peaceful ragas (e.g. Saurashtram, Madhyamavati, Surati).",
+        "**Pavamana:** The canonical Tyagaraja composition performed at the end of every recital."
+      ]
+    },
+    "tukkada": {
+      "name": "Tukkada (Light Concluding Compositions)",
+      "definition": "Tukkadas are lighter, lyrical, and devotionally-focused compositions performed in the post-main (latter) half of a Carnatic concert (Katcheri).",
+      "explanation": "Derived from the word meaning 'piece', Tukkadas are performed after the heavy classical centerpieces (like the RTP or main Kriti). They focus on emotional, devotional, or aesthetic appeal rather than heavy mathematical rhythm. Examples of Tukkadas include Javalis, Padams, Ashtapadis, Devaranamas, Kavadi Chindus, bhajans, and Tillanas. They are composed in diverse languages and offer a relaxing contrast to the rigorous grammar of the first half of the concert.",
+      "bullet_points": [
+        "**Post-Main Pieces:** Performed in the final section of a concert after the heavy classical works.",
+        "**Diverse Genres:** Includes Javalis (sensuous/romantic), Padams, Devaranamas, and Bhajans.",
+        "**Lighter Grammar:** Emphasizes melodic sweetness (Rakti) and emotional expression (Bhava) over complex tala math."
+      ]
+    }
+  },
+  "comparisons": {
+    "purvanga vs uttaranga": {
+      "title": "Purvanga vs Uttaranga",
+      "headers": [
+        "Feature",
+        "Purvanga",
+        "Uttaranga"
+      ],
+      "rows": [
+        [
+          "Definition",
+          "The first/lower half of the musical octave.",
+          "The second/upper half of the musical octave."
+        ],
+        [
+          "Swaras Included",
+          "Sa, Ri, Ga, Ma (S R G M).",
+          "Pa, Dha, Ni, Sa* (P D N S*)."
+        ],
+        [
+          "Vocal Range",
+          "Lower and middle sthayi emphasis.",
+          "Tara Sthayi (upper register) emphasis."
+        ],
+        [
+          "Composition role",
+          "First half of composition (Pallavi/Anupallavi).",
+          "Second half of composition (Charanam/Swaras)."
+        ]
+      ],
+      "text": "In Carnatic musicology, **Purvanga** and **Uttaranga** represent the two structural halves of a raga scale. Purvanga spans the lower tetrachord (Sa to Ma), whereas Uttaranga spans the upper tetrachord (Pa to higher Sa). A complete balance between these two halves creates symmetric raga aesthetics."
+    },
+    "dhatu vs matu": {
+      "title": "Dhatu vs Matu",
+      "headers": [
+        "Feature",
+        "Dhatu (Dhatuvu)",
+        "Matu (Matuvu)"
+      ],
+      "rows": [
+        [
+          "Core Meaning",
+          "The musical setting, notation, or swara composition.",
+          "The lyrical content, poetry, or sahitya text."
+        ],
+        [
+          "Governed by",
+          "Raga grammar, pitch intervals, and swara notations.",
+          "Language grammar, devotional themes, and poetry."
+        ],
+        [
+          "Performance role",
+          "Drives the melodic structure of the song.",
+          "Provides linguistic meaning and narrative bhava."
+        ],
+        [
+          "Improvisation role",
+          "Used directly in Swarakalpana singing.",
+          "Serves as the basis for Niraval melodic expansion."
+        ]
+      ],
+      "text": "Every classical Carnatic composition is constructed of two bodies: **Dhatu** (the musical swara notation) and **Matu** (the literary sahitya text). While Dhatu governs the pitch and melody, Matu provides the devotional or poetic narrative."
+    },
+    "sruthi vs swara": {
+      "title": "Sruthi vs Swara",
+      "headers": [
+        "Feature",
+        "Sruthi (Pitch)",
+        "Swara (Note)"
+      ],
+      "rows": [
+        [
+          "Definition",
+          "The fundamental background drone / base pitch reference.",
+          "A distinct musical note with a specific frequency interval."
+        ],
+        [
+          "Nature",
+          "Constant, steady, and unvarying throughout recital.",
+          "Dynamic, active, and moving across raga scales."
+        ],
+        [
+          "Role in Concert",
+          "Provides the foundation and reference Sa sound.",
+          "Establishes raga melody, compositions, and phrases."
+        ],
+        [
+          "Analogy",
+          "Like the canvas or foundation of a painting.",
+          "Like the paint colors and active strokes on canvas."
+        ]
+      ],
+      "text": "**Sruthi** forms the steady background reference pitch (Sa) that remains constant throughout the concert. In contrast, **Swara** refers to the active musical notes (Sa, Ri, Ga, Ma, Pa, Dha, Ni) that move dynamically to construct the raga's melody."
+    },
+    "arohana vs avarohana": {
+      "title": "Arohana vs Avarohana",
+      "headers": [
+        "Feature",
+        "Arohana (Ascending)",
+        "Avarohana (Descending)"
+      ],
+      "rows": [
+        [
+          "Direction",
+          "Ascending sequence of notes (Sa to higher Sa*).",
+          "Descending sequence of notes (higher Sa* to Sa)."
+        ],
+        [
+          "Swaras Used",
+          "Outlines notes present in the upward path.",
+          "Outlines notes present in the downward path."
+        ],
+        [
+          "Grammar Role",
+          "Shows rules for note insertions/skips rising.",
+          "Shows rules for note insertions/skips falling."
+        ],
+        [
+          "Gamakas",
+          "Suited for upward glides (Jaru) and sweeps.",
+          "Favors descending meends and oscillatory shakes."
+        ]
+      ],
+      "text": "**Arohana** is the ascending path of a raga, guiding how notes rise from lower Shadja to higher Shadja. **Avarohana** is the descending path, outlining the grammar for how notes fall."
+    },
+    "tala vs laya": {
+      "title": "Tala vs Laya",
+      "headers": [
+        "Feature",
+        "Tala (Rhythmic Cycle)",
+        "Laya (Tempo)"
+      ],
+      "rows": [
+        [
+          "Definition",
+          "The structured rhythmic metric cycle (time measure).",
+          "The underlying steady pulse, speed, or tempo."
+        ],
+        [
+          "Nature",
+          "Concrete framework with defined beats and Angas.",
+          "Abstract, continuous flow of time intervals."
+        ],
+        [
+          "Units",
+          "Measured in beats (Akshara Kalas) and loops.",
+          "Categorized as Vilambitha (slow), Madhyama (medium), or Druta (fast)."
+        ],
+        [
+          "Role",
+          "Provides the loop boundaries for percussionists.",
+          "Ensures consistent speed and timing synchronization."
+        ]
+      ],
+      "text": "**Tala** is the concrete metric cycle (like Adi Tala, Rupaka Tala) that organizes time into structured loops of beats. **Laya** is the abstract speed or tempo (Vilambitha/slow, Madhyama/medium, Druta/fast) that flows consistently inside the Tala framework."
+    },
+    "varnam vs kriti": {
+      "title": "Varnam vs Kriti",
+      "headers": [
+        "Feature",
+        "Varnam",
+        "Kriti"
+      ],
+      "rows": [
+        [
+          "Primary Purpose",
+          "Training, voice/finger warm-up & concert opener.",
+          "Devotional performance & melodic contemplation."
+        ],
+        [
+          "Aesthetic Focus",
+          "Highly Swara-oriented (focuses on raw scales and notes).",
+          "Highly Sahitya-oriented (focuses on lyric expression & bhava)."
+        ],
+        [
+          "Structure",
+          "Strict segments: Pallavi, Anupallavi, Muktayi, Charanam, Chittaswara.",
+          "Standard segments: Pallavi, Anupallavi, Charanam."
+        ],
+        [
+          "Position in Concert",
+          "Always performed as the opening item.",
+          "Performed as the main or sub-main items."
+        ]
+      ],
+      "text": "A **Varnam** is a mathematically precise, swara-heavy exercise designed to map raga grammar and open a concert. A **Kriti** is a lyrics-heavy, emotionally rich devotional composition designed for performance and deep raga exploration."
+    },
+    "pada varnam vs tana varnam": {
+      "title": "Pada Varnam vs Tana Varnam",
+      "headers": [
+        "Feature",
+        "Pada Varnam",
+        "Tana Varnam"
+      ],
+      "rows": [
+        [
+          "Core Purpose",
+          "Composed primarily for classical dance (Bharatanatyam).",
+          "Composed primarily for musical concerts."
+        ],
+        [
+          "Sahitya (Lyrics)",
+          "Every single swara note has a corresponding lyric syllable.",
+          "Lyrics are present only in the Pallavi, Anupallavi, and Charanam."
+        ],
+        [
+          "Tempo",
+          "Sung in slow or medium tempo to allow dance expressions.",
+          "Sung in medium or fast speeds to demonstrate instrumental/vocal skill."
+        ],
+        [
+          "Focus",
+          "Explores dramatic emotions (Abhinaya) and themes.",
+          "Explores pure raga scale patterns and fast speeds."
+        ]
+      ],
+      "text": "**Tana Varnams** are concert masterworks featuring fast-tempo swara patterns with sparse lyrics. **Pada Varnams** are dance-drama masterworks where every swara note has a corresponding lyric syllable to support emotional abhinaya."
+    },
+    "graha swara vs jeeva swara": {
+      "title": "Graha Swara vs Jeeva Swara",
+      "headers": [
+        "Feature",
+        "Graha Swara",
+        "Jeeva Swara"
+      ],
+      "rows": [
+        [
+          "Meaning",
+          "The starting note of a musical phrase or composition.",
+          "The life-giving note that defines the raga's identity."
+        ],
+        [
+          "Role",
+          "Initiates the melody or commences the standard phrases.",
+          "Serves as the emotional center and signature of the raga."
+        ],
+        [
+          "Frequency",
+          "Used specifically at the opening of compositions/phrases.",
+          "Sustained and repeated frequently throughout the rendition."
+        ],
+        [
+          "Aesthetic",
+          "Sets the starting tone.",
+          "Evokes the specific emotional mood (raga bhava)."
+        ]
+      ],
+      "text": "**Graha Swara** is the starting note of a raga scale or composition, initiating the melodic flow. **Jeeva Swara** (also called Amsa Swara) is the life-giving note of the raga that strongly outlines its identity, carrying the major emotional weight during performance."
+    },
+    "graha swara vs nyasa swara": {
+      "title": "Graha Swara vs Nyasa Swara",
+      "headers": [
+        "Feature",
+        "Graha Swara",
+        "Nyasa Swara"
+      ],
+      "rows": [
+        [
+          "Meaning",
+          "The starting note from which a phrase or composition begins.",
+          "The resting or concluding note of a musical phrase."
+        ],
+        [
+          "Function",
+          "Initiates the melody and sets the starting pulse.",
+          "Brings resolution, conclusion, and stability to phrases."
+        ],
+        [
+          "Position",
+          "Placed at the beginning of melodic patterns or compositions.",
+          "Placed at the end of melodic patterns or compositions."
+        ],
+        [
+          "Nature",
+          "Note of departure and dynamic entry.",
+          "Note of rest and long elongation (karvai)."
+        ]
+      ],
+      "text": "**Graha Swara** is the starting note that commences the musical scale or composition, serving as the point of departure. **Nyasa Swara** acts as the final resting note where musical phrases naturally resolve and conclude with stability."
+    },
+    "nyasa swara vs graha swara": {
+      "title": "Nyasa Swara vs Graha Swara",
+      "headers": [
+        "Feature",
+        "Nyasa Swara",
+        "Graha Swara"
+      ],
+      "rows": [
+        [
+          "Meaning",
+          "The resting or concluding note of a musical phrase.",
+          "The starting note from which a phrase or composition begins."
+        ],
+        [
+          "Function",
+          "Brings resolution, conclusion, and stability to phrases.",
+          "Initiates the melody and sets the starting pulse."
+        ],
+        [
+          "Position",
+          "Placed at the end of melodic patterns or compositions.",
+          "Placed at the beginning of melodic patterns or compositions."
+        ],
+        [
+          "Nature",
+          "Note of rest and long elongation (karvai).",
+          "Note of departure and dynamic entry."
+        ]
+      ],
+      "text": "**Nyasa Swara** acts as the final resting note where musical phrases naturally resolve and conclude with stability. **Graha Swara** is the starting note that commences the musical scale or composition, serving as the point of departure."
+    },
+    "jeeva swara vs nyasa swara": {
+      "title": "Jeeva Swara vs Nyasa Swara",
+      "headers": [
+        "Feature",
+        "Jeeva Swara",
+        "Nyasa Swara"
+      ],
+      "rows": [
+        [
+          "Meaning",
+          "The life-giving note that defines the raga's identity.",
+          "The resting note where musical phrases naturally conclude."
+        ],
+        [
+          "Primary Role",
+          "Establishes and highlights the raga bhava (emotional mood).",
+          "Resolves melodic tension and concludes phrases stably."
+        ],
+        [
+          "Oscillation",
+          "Often rendered with heavy microtonal oscillation (Gamaka).",
+          "Often held as a steady, plain note of rest (karvai)."
+        ],
+        [
+          "Symmetry",
+          "Focal note for active melodic exploration.",
+          "Cadential landing note for musical punctuation."
+        ]
+      ],
+      "text": "**Jeeva Swara** is the essential, expressive life-note that defines a raga's identity and is decorated with characteristic gamakas. **Nyasa Swara** is the resting node of steady resolution where musical phrases conclude."
+    },
+    "nyasa swara vs jeeva swara": {
+      "title": "Nyasa Swara vs Jeeva Swara",
+      "headers": [
+        "Feature",
+        "Nyasa Swara",
+        "Jeeva Swara"
+      ],
+      "rows": [
+        [
+          "Meaning",
+          "The resting note where musical phrases naturally conclude.",
+          "The life-giving note that defines the raga's identity."
+        ],
+        [
+          "Primary Role",
+          "Resolves melodic tension and concludes phrases stably.",
+          "Establishes and highlights the raga bhava (emotional mood)."
+        ],
+        [
+          "Oscillation",
+          "Often held as a steady, plain note of rest (karvai).",
+          "Often rendered with heavy microtonal oscillation (Gamaka)."
+        ],
+        [
+          "Symmetry",
+          "Cadential landing note for musical punctuation.",
+          "Focal note for active melodic exploration."
+        ]
+      ],
+      "text": "**Nyasa Swara** is the resting node of steady resolution where musical phrases conclude. **Jeeva Swara** is the essential, expressive life-note that defines a raga's identity and is decorated with characteristic gamakas."
+    },
+    "vadi swara vs samvadi swara": {
+      "title": "Vadi Swara vs Samvadi Swara",
+      "headers": [
+        "Feature",
+        "Vadi Swara",
+        "Samvadi Swara"
+      ],
+      "rows": [
+        [
+          "Hierarchy",
+          "The absolute dominant, primary note of a raga scale.",
+          "The second most important, supporting note in the raga."
+        ],
+        [
+          "King / Queen",
+          "Traditionally compared to the 'King' (Raja) of the raga.",
+          "Traditionally compared to the 'Queen' or 'Minister' (Queen)."
+        ],
+        [
+          "Consonance",
+          "Melodic focus, held for longest durations.",
+          "Stands in perfect fourth or fifth consonance with the Vadi."
+        ],
+        [
+          "Function",
+          "Establishes the raga's primary identity and mood.",
+          "Provides harmonic support and aesthetic symmetry."
+        ]
+      ],
+      "text": "**Vadi Swara** is the primary, dominant note (the 'King') of a raga that is sung or played most frequently. **Samvadi Swara** is the second most important note (the 'Queen') that stands in absolute consonance (perfect 4th or 5th interval) with the Vadi, offering harmonic support."
+    },
+    "suddha madhyamam vs prati madhyamam": {
+      "title": "Suddha Madhyamam vs Prati Madhyamam",
+      "headers": [
+        "Feature",
+        "Suddha Madhyamam (M1)",
+        "Prati Madhyamam (M2)"
+      ],
+      "rows": [
+        [
+          "Semitone Pitch",
+          "Flat or natural fourth frequency (perfect fourth).",
+          "Sharp or augmented fourth frequency (tritone)."
+        ],
+        [
+          "Melakarta Role",
+          "Defines the first 36 Melakarta ragas (Suddha half).",
+          "Defines the second 36 Melakarta ragas (Prati half)."
+        ],
+        [
+          "Character",
+          "Typically soft, tranquil, stable, and peaceful.",
+          "Typically bright, brilliant, shimmering, and energetic."
+        ],
+        [
+          "Example Ragas",
+          "Mayamalavagowla, Kharaharapriya, Shankarabharanam.",
+          "Kalyani, Pantuvarali, Simhendramadhyamam."
+        ]
+      ],
+      "text": "**Suddha Madhyamam (M1)** is the natural perfect fourth note that characterizes the first 36 Melakarta ragas of the Carnatic system. **Prati Madhyamam (M2)** is the sharp/augmented fourth note that characterizes the second half (ragas 37 to 72), adding bright harmonic energy."
+    },
+    "kalpanaswaram vs niraval": {
+      "title": "Kalpanaswaram vs Niraval",
+      "headers": [
+        "Feature",
+        "Kalpanaswaram",
+        "Niraval"
+      ],
+      "rows": [
+        [
+          "Improvisation Unit",
+          "Singing or playing solfa syllable patterns (swaras).",
+          "Expanding a single line of lyrics (sahitya)."
+        ],
+        [
+          "Dhatu vs Matu",
+          "Focuses entirely on Dhatu (melody and swara notes).",
+          "Focuses on both Dhatu (melody) and Matu (literary text)."
+        ],
+        [
+          "Structure",
+          "Syllables are 'Sa Ri Ga Ma...', ending on landing note.",
+          "Lyrics remain constant while melody is expanded in real-time."
+        ],
+        [
+          "Pacing",
+          "Often features complex arithmetic patterns and speeds.",
+          "Requires careful retention of the tala structure and lyric bhava."
+        ]
+      ],
+      "text": "**Kalpanaswaram** is spontaneous improvisation using solfa syllables (swaras) that concludes on a specific landing note. **Niraval** is real-time melodic improvisation where the lyrical text remains fixed while the melody is continuously reshaped to explore raga bhava."
+    },
+    "ragam vs tanam": {
+      "title": "Ragam vs Tanam",
+      "headers": [
+        "Feature",
+        "Ragam (Alapana)",
+        "Tanam"
+      ],
+      "rows": [
+        [
+          "Time Measure",
+          "Completely unmetered, free-form, without steady pulse.",
+          "Maintains a steady, pulsing rhythmic tempo (Laya)."
+        ],
+        [
+          "Accompaniment",
+          "Accompanied by violin only; no percussion.",
+          "Accompanied by violin; historically no mridangam."
+        ],
+        [
+          "Syllables Used",
+          "Sung using abstract vocal sounds (Akaram, Tadaram).",
+          "Sung using rhythmic syllables like 'Anantha', 'Ta-Nam'."
+        ],
+        [
+          "Position",
+          "Executed as the first, free-flowing introductory phase.",
+          "Executed as the second, pulsing transition to the Pallavi."
+        ]
+      ],
+      "text": "**Ragam (Alapana)** is free-form, unmetered melodic improvisation to showcase the raga grammar without any rhythmic pulse. **Tanam** is rhythmic melodic exposition that maintains a steady pulse (Laya) using rhythmic syllables, serving as the bridge to the structured Pallavi."
+    },
+    "adi tala vs rupaka tala": {
+      "title": "Adi Tala vs Rupaka Tala",
+      "headers": [
+        "Feature",
+        "Adi Tala",
+        "Rupaka Tala"
+      ],
+      "rows": [
+        [
+          "Aksharas (Beats)",
+          "8 beats per cycle",
+          "3 beats per cycle (often played as 6 in concerts)"
+        ],
+        [
+          "Angas (Sections)",
+          "1 Laghu, 2 Drutams (I4 O O)",
+          "1 Drutam, 1 Laghu (O I4) - natively O I2"
+        ],
+        [
+          "Usage",
+          "Most common, used in majority of kritis",
+          "Second most common, used for brisk kritis"
+        ],
+        [
+          "Structure",
+          "Chatusra Jaati Triputa Tala",
+          "Chatusra Jaati Rupaka Tala"
+        ]
+      ],
+      "text": "Adi Tala and Rupaka Tala are the two most frequently used talas in Carnatic music. While Adi Tala provides a long, expansive 8-beat cycle suitable for elaborate compositions, Rupaka Tala offers a crisp 3-beat (or 6-beat) cycle perfect for medium to fast-paced kritis."
+    },
+    "rupaka tala vs adi tala": {
+      "title": "Adi Tala vs Rupaka Tala",
+      "headers": [
+        "Feature",
+        "Adi Tala",
+        "Rupaka Tala"
+      ],
+      "rows": [
+        [
+          "Aksharas (Beats)",
+          "8 beats per cycle",
+          "3 beats per cycle (often played as 6 in concerts)"
+        ],
+        [
+          "Angas (Sections)",
+          "1 Laghu, 2 Drutams (I4 O O)",
+          "1 Drutam, 1 Laghu (O I4) - natively O I2"
+        ],
+        [
+          "Usage",
+          "Most common, used in majority of kritis",
+          "Second most common, used for brisk kritis"
+        ],
+        [
+          "Structure",
+          "Chatusra Jaati Triputa Tala",
+          "Chatusra Jaati Rupaka Tala"
+        ]
+      ],
+      "text": "Adi Tala and Rupaka Tala are the two most frequently used talas in Carnatic music. While Adi Tala provides a long, expansive 8-beat cycle suitable for elaborate compositions, Rupaka Tala offers a crisp 3-beat (or 6-beat) cycle perfect for medium to fast-paced kritis."
+    }
+  }
+}
