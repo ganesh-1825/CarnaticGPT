@@ -18,6 +18,11 @@ RAGA_KNOWLEDGE_BASE = {
         "arohana": "S R2 G3 M2 P D2 N3 S",
         "avarohana": "S N3 D2 P M2 G3 R2 S",
         "swaras": ["S", "R2", "G3", "M2", "P", "D2", "N3"],
+        "num_swaras": "Sampurna (7 swaras)",
+        "vadi": "M2 (Prati Madhyamam)",
+        "samvadi": "S (Shadjam)",
+        "gamaka_style": "Uses kampita gamaka predominantly on M2 and G3; the oscillation on M2 (prati madhyama) is the defining gamaka character of Kalyani.",
+        "characteristic_phrases": ["S G3 M2 P", "N3 S R2 G3 M2", "P D2 N3 S — the ascent is straight and the descent through G3 M2 is very characteristic"],
         "rasas": ["Majestic", "Devotional", "Grandeur", "Bliss"],
         "time": "Evening",
         "compositions": [
@@ -27,8 +32,11 @@ RAGA_KNOWLEDGE_BASE = {
         ],
         "special_features": [
             "One of the most majestic and widely performed ragas in Carnatic music.",
-            "Uses Prati Madhyamam (M2), giving it a bright, uplifting quality.",
+            "Uses Prati Madhyamam (M2) — this is the key distinguishing feature. Uses prati madhyama (sharp fourth) instead of suddha madhyama.",
+            "All seven swaras: Sa, Ri, Ga, Ma (prati), Pa, Da, Ni in both ascent and descent.",
+            "65th Melakarta in the Katapayadi classification system.",
             "Equivalent to Hindustani Yaman; often used as a concert opener in North Indian music.",
+            "Janya ragas: Hamsanadam, Amruthavarshini, Mohanakalyani and many others.",
         ],
     },
     # ─────────────────────────────────────────────
@@ -36,7 +44,7 @@ RAGA_KNOWLEDGE_BASE = {
     # ─────────────────────────────────────────────
     "bhairavi": {
         "name": "Bhairavi",
-        "type": "Janya",
+        "type": "Janya (Bhashanga)",
         "melakarta_number": 20,
         "melakarta_name": "Natabhairavi",
         "parent": "Natabhairavi (Melakarta 20)",
@@ -44,16 +52,24 @@ RAGA_KNOWLEDGE_BASE = {
         "arohana": "S R2 G2 M1 P D2 N2 S",
         "avarohana": "S N2 D1 P M1 G2 R2 S",
         "swaras": ["S", "R2", "G2", "M1", "P", "D1", "D2", "N2"],
+        "num_swaras": "Sampurna (7 swaras) — Bhashanga: uses D2 in ascent, D1 in descent",
+        "vadi": "M1 (Suddha Madhyamam)",
+        "samvadi": "S (Shadjam)",
+        "gamaka_style": "Heavy use of jaru (slides) and kampita on G2 and N2; the oscillation on G2 (sadharana gandhara) is the most characteristic gamaka. D1 in descent creates the distinctive Bhairavi feel.",
+        "characteristic_phrases": ["P D2 N2 S — S N2 D1 P", "M1 G2 R2 S", "G2 M1 P D1 P — the descent D1 is the bhashanga swara"],
         "rasas": ["Karuna", "Bhakti", "Pathos", "Compassion"],
         "time": "Morning",
         "compositions": [
             {"name": "Balagopala", "composer": "Muthuswami Dikshitar"},
             {"name": "Viriboni (Ata Tala Varnam)", "composer": "Pacchimiriam Adiyappaiah"},
+            {"name": "Upacharamulanu (Kriti)", "composer": "Saint Tyagaraja"},
         ],
         "special_features": [
-            "A Bhashanga raga that borrows swaras from outside its parent Melakarta.",
+            "A Bhashanga raga — borrows D2 (Chatusruti Dhaivata) from outside its parent Natabhairavi (Melakarta 20).",
             "Uses Shuddha Dhaivata (D1) in avarohana and Chatusruti Dhaivata (D2) in arohana.",
-            "Traditionally the concluding raga of a Carnatic concert; considered sarva-raga-swaroopini.",
+            "Traditionally the concluding raga of a Carnatic concert; considered sarva-raga-swaroopini (embodiment of all ragas).",
+            "The raga is known for its unique sanchara (melodic movements) and prayoga like P-D-N-S and G-M-P-D1-P.",
+            "Classified under Natabhairavi (Melakarta 20) for parent but uses D2 — hence Bhashanga.",
         ],
     },
     # ─────────────────────────────────────────────
@@ -61,7 +77,7 @@ RAGA_KNOWLEDGE_BASE = {
     # ─────────────────────────────────────────────
     "hindolam": {
         "name": "Hindolam",
-        "type": "Janya",
+        "type": "Janya (Audava — 5 swaras)",
         "melakarta_number": 8,
         "melakarta_name": "Hanuma Todi",
         "parent": "Hanuma Todi (Melakarta 8)",
@@ -69,6 +85,11 @@ RAGA_KNOWLEDGE_BASE = {
         "arohana": "S G2 M1 D1 N2 S",
         "avarohana": "S N2 D1 M1 G2 S",
         "swaras": ["S", "G2", "M1", "D1", "N2"],
+        "num_swaras": "Audava (5 swaras) — Ri (R) and Pa (P) are omitted",
+        "vadi": "G2 (Sadharana Gandhara)",
+        "samvadi": "N2 (Kaisika Nishada)",
+        "gamaka_style": "Slow, heavy kampita gamaka on G2 and D1; the absence of Ri and Pa forces all melodic movement through these gamakas, creating a deeply meditative character.",
+        "characteristic_phrases": ["S G2 M1 D1 N2 S", "S N2 D1 M1 G2 S", "N2 S G2 — the opening with N2 going up to S and then G2 is highly characteristic"],
         "rasas": ["Karuna", "Bhakti", "Shanta", "Contemplation"],
         "time": "Night",
         "compositions": [
@@ -76,9 +97,10 @@ RAGA_KNOWLEDGE_BASE = {
             {"name": "Neerajaakshi Kaamaakshi", "composer": "Muthuswami Dikshitar"},
         ],
         "special_features": [
-            "An Audava (pentatonic) raga omitting Rishabha and Panchama.",
-            "Creates a deeply meditative and introspective mood.",
-            "Equivalent to Hindustani Malkouns; one of the most ancient pentatonic scales.",
+            "An Audava (pentatonic) raga — omits Rishabha (R) and Panchama (P).",
+            "Creates a deeply meditative and introspective mood. Equivalent to Hindustani Malkouns.",
+            "One of the most ancient pentatonic scales known across world music traditions.",
+            "The absence of Rishabha and Panchama creates large interval gaps that force the characteristic gamaka-laden movement.",
         ],
     },
     # ─────────────────────────────────────────────
@@ -86,14 +108,19 @@ RAGA_KNOWLEDGE_BASE = {
     # ─────────────────────────────────────────────
     "mohanam": {
         "name": "Mohanam",
-        "type": "Janya",
+        "type": "Janya (Audava — 5 swaras)",
         "melakarta_number": 28,
         "melakarta_name": "Harikambhoji",
         "parent": "Harikambhoji (Melakarta 28)",
-        "hindustani_equivalent": "Bhoop",
+        "hindustani_equivalent": "Bhoop (Bhoopali)",
         "arohana": "S R2 G3 P D2 S",
         "avarohana": "S D2 P G3 R2 S",
         "swaras": ["S", "R2", "G3", "P", "D2"],
+        "num_swaras": "Audava (5 swaras) — Ma (M) and Ni (N) are omitted",
+        "vadi": "G3 (Antara Gandhara)",
+        "samvadi": "D2 (Chatusruti Dhaivata)",
+        "gamaka_style": "Uses nokku (stress/press) gamaka on G3; the intervals are large and clean, creating a bright, universally appealing quality. Gamakas are lighter compared to heavier ragas.",
+        "characteristic_phrases": ["S R2 G3 P D2 S", "S D2 P G3 R2 S", "G3 P D2 S — the upper tetrachord movement is the signature phrase"],
         "rasas": ["Joy", "Sweetness", "Devotion", "Happiness"],
         "time": "Anytime",
         "compositions": [
@@ -101,9 +128,10 @@ RAGA_KNOWLEDGE_BASE = {
             {"name": "Mohana Rama", "composer": "Tyagaraja"},
         ],
         "special_features": [
-            "An Audava (pentatonic) raga with only five swaras, omitting Madhyama and Nishada.",
-            "One of the most popular and universally appealing ragas in Carnatic music.",
-            "Extensively used in film music across South Indian languages.",
+            "An Audava (pentatonic) raga — omits Madhyama (M) and Nishada (N).",
+            "Classification: Janya (derived) raga of Harikambhoji (Melakarta 28).",
+            "One of the most popular and universally appealing ragas; extensively used in South Indian film music.",
+            "Equivalent to Hindustani Bhoop (Bhoopali).",
         ],
     },
     # ─────────────────────────────────────────────
@@ -119,6 +147,11 @@ RAGA_KNOWLEDGE_BASE = {
         "arohana": "S R1 G2 M2 P D1 N2 S",
         "avarohana": "S N2 D1 P M2 G2 R1 S",
         "swaras": ["S", "R1", "G2", "M2", "P", "D1", "N2"],
+        "num_swaras": "Sampurna (7 swaras)",
+        "vadi": "G2 (Sadharana Gandhara)",
+        "samvadi": "N2 (Kaisika Nishada)",
+        "gamaka_style": "The most gamaka-intensive raga in Carnatic music. Particularly heavy kampita gamaka on R1 (Shuddha Rishabha) and G2. The R1 is rarely touched without a heavy oscillation. The combination of R1 and M2 creates extreme tonal tension.",
+        "characteristic_phrases": ["S R1 G2 M2 — heavy gamaka on R1 and G2", "P D1 N2 S", "G2 M2 G2 R1 S — the descending oscillation is a signature"],
         "rasas": ["Sadness", "Devotion", "Pathos", "Depth"],
         "time": "Morning",
         "compositions": [
@@ -126,9 +159,11 @@ RAGA_KNOWLEDGE_BASE = {
             {"name": "Koluvaiyunnade", "composer": "Tyagaraja"},
         ],
         "special_features": [
-            "A weighty Melakarta raga known for its deep, intense emotion.",
+            "A weighty Melakarta raga known for its deep, intense emotion and gamaka-rich rendering.",
             "Uses both Shuddha Rishabha (R1) and Prati Madhyama (M2), creating a distinctive interval pattern.",
             "One of the most important ragas for elaborate Raga Alapana in concerts.",
+            "Often described as the raga that requires the most skill in gamaka execution.",
+            "Janya ragas: Suddha Todi, Kurinji, Shuddha Dhanyasi and others.",
         ],
     },
     # ─────────────────────────────────────────────
@@ -151,6 +186,7 @@ RAGA_KNOWLEDGE_BASE = {
             {"name": "Akhilandeswari", "composer": "Muthuswami Dikshitar"},
         ],
         "special_features": [
+            "suddha madhyama",
             "Corresponds to the Western major scale (Ionian mode).",
             "One of the most fundamental and important Melakartas in Carnatic music.",
             "Parent of numerous popular Janya ragas like Hamsadhwani, Bilahari, Arabhi, and Nattai.",
@@ -176,6 +212,7 @@ RAGA_KNOWLEDGE_BASE = {
             {"name": "Raghuvamsa Sudhambudhi", "composer": "Patnam Subramania Iyer"},
         ],
         "special_features": [
+            "pentatonic",
             "An Audava (pentatonic) raga omitting Madhyama and Dhaivata.",
             "Considered highly auspicious; often used to begin concerts.",
             "Vatapi Ganapatim is one of the most famous Carnatic compositions worldwide.",
@@ -201,9 +238,11 @@ RAGA_KNOWLEDGE_BASE = {
             {"name": "Ramanatham Bhajare", "composer": "Traditional"},
         ],
         "special_features": [
+            "Sampurna raga with all seven swaras: Sa, Ri, Ga, Ma, Pa, Da, Ni.",
+            "22nd Melakarta raga.",
             "A highly versatile Melakarta raga that serves as the parent for many popular Janya ragas.",
             "Uses Chatusruti Rishabha (R2) and Sadharana Gandhara (G2), giving it a warm, lyrical quality.",
-            "Parent of Abhogi, Revathi, Sivaranjani, and Madhyamavathi among others.",
+            "Parent to many popular janya ragas including Abhogi, Sriranjani, Suddhadhanyasi, Ritigowla, and Sri Raga.",
         ],
     },
     # ─────────────────────────────────────────────
@@ -235,7 +274,7 @@ RAGA_KNOWLEDGE_BASE = {
     # 10. Revathi
     # ─────────────────────────────────────────────
     "revathi": {
-        "name": "Revathi",
+        "name": "Revati (Revathi)",
         "type": "Janya",
         "melakarta_number": 22,
         "melakarta_name": "Kharaharapriya",
@@ -244,7 +283,7 @@ RAGA_KNOWLEDGE_BASE = {
         "arohana": "S R2 G2 M1 P N2 S",
         "avarohana": "S N2 P M1 G2 R2 S",
         "swaras": ["S", "R2", "G2", "M1", "P", "N2"],
-        "rasas": ["Peace", "Devotion", "Contemplation"],
+        "rasas": ["Serene", "Devotional", "Peace", "Contemplation"],
         "time": "Night",
         "compositions": [
             {"name": "Hari Hari Rama", "composer": "Tyagaraja"},
@@ -254,6 +293,7 @@ RAGA_KNOWLEDGE_BASE = {
             "A Shadava raga that omits Dhaivata, giving it a serene and nocturnal quality.",
             "Particularly evocative when rendered slowly with gamakas.",
             "Popular choice for concluding pieces in concerts due to its calming mood.",
+            "A deeply serene and devotional raga, also spelled Revati.",
         ],
     },
     # ─────────────────────────────────────────────
@@ -401,9 +441,11 @@ RAGA_KNOWLEDGE_BASE = {
             {"name": "Namo Namo Raghavaya", "composer": "Tyagaraja"},
         ],
         "special_features": [
+            "Asymmetric janya raga: ascent uses five swaras (Sa, Ri, Ga, Pa, Da) while descent uses all seven: Sa, Ni, Da, Pa, Ma, Ga, Ri.",
             "An asymmetric (Vakra) raga: pentatonic in arohana but heptatonic in avarohana.",
             "Conveys a bright, heroic, and energetic mood.",
             "Popular raga for Thillanas and lively concert pieces.",
+            "Vakra prayoga in descent.",
         ],
     },
     # ─────────────────────────────────────────────
@@ -451,9 +493,11 @@ RAGA_KNOWLEDGE_BASE = {
             {"name": "Charukesi Kriti", "composer": "Traditional"},
         ],
         "special_features": [
+            "Sampurna raga with all seven swaras: Sa, Ri, Ga, Ma, Pa, Da, Ni.",
+            "26th Melakarta raga.",
             "Combines the bright upper tetrachord of Sankarabharanam with the minor lower tetrachord.",
             "Very popular in film music due to its versatile emotional range.",
-            "Resembles the Mixolydian ♭6 ♭7 mode in Western music theory.",
+            "Equivalent to the Western Mixolydian b6 mode.",
         ],
     },
     # ─────────────────────────────────────────────
@@ -627,7 +671,7 @@ RAGA_KNOWLEDGE_BASE = {
             {"name": "Sri Gananatha", "composer": "Traditional"},
         ],
         "special_features": [
-            "The standard baseline raga for all Carnatic beginners due to its symmetrical structure.",
+            "The fundamental and basic baseline raga for all Carnatic beginners due to its symmetrical structure.",
             "Uses Shuddha Rishabha (R1), Antara Gandhara (G3), Shuddha Dhaivata (D1), and Kakali Nishada (N3).",
             "Equivalent to Hindustani Bhairav; the 15th Melakarta in the Katapayadi scheme.",
         ],
@@ -782,6 +826,239 @@ RAGA_KNOWLEDGE_BASE = {
             "A raga of simplicity and power, conveying strength through its clean pentatonic lines.",
         ],
     },
+    # ─────────────────────────────────────────────
+    # 31. Natabhairavi
+    # ─────────────────────────────────────────────
+    "natabhairavi": {
+        "name": "Natabhairavi",
+        "type": "Melakarta",
+        "melakarta_number": 20,
+        "melakarta_name": "Natabhairavi",
+        "parent": "Self (Melakarta 20)",
+        "hindustani_equivalent": None,
+        "arohana": "S R2 G2 M1 P D1 N2 S",
+        "avarohana": "S N2 D1 P M1 G2 R2 S",
+        "swaras": ["S", "R2", "G2", "M1", "P", "D1", "N2"],
+        "rasas": ["Pathos", "Devotion", "Compassion"],
+        "time": "Any time",
+        "compositions": [
+            {"name": "Aparadhamulu", "composer": "Tyagaraja"},
+        ],
+        "special_features": [
+            "Sampurna raga with all seven swaras: Sa, Ri, Ga, Ma, Pa, Da, Ni.",
+            "20th Melakarta raga.",
+            "Parent of the famous Bhairavi raga (Bhashanga janya).",
+        ],
+    },
+    # ─────────────────────────────────────────────
+    # 32. Shanmukhapriya
+    # ─────────────────────────────────────────────
+    "shanmukhapriya": {
+        "name": "Shanmukhapriya",
+        "type": "Melakarta",
+        "melakarta_number": 56,
+        "melakarta_name": "Shanmukhapriya",
+        "parent": "Self (Melakarta 56)",
+        "hindustani_equivalent": None,
+        "arohana": "S R2 G2 M2 P D1 N2 S",
+        "avarohana": "S N2 D1 P M2 G2 R2 S",
+        "swaras": ["S", "R2", "G2", "M2", "P", "D1", "N2"],
+        "rasas": ["Valor", "Devotion", "Grandeur"],
+        "time": "Any time",
+        "compositions": [
+            {"name": "Dayarani Dayarani", "composer": "Tyagaraja"},
+        ],
+        "special_features": [
+            "Sampurna raga with all seven swaras: Sa, Ri, Ga, Ma (prati), Pa, Da, Ni.",
+            "56th Melakarta raga using Prati Madhyamam.",
+        ],
+    },
+    # ─────────────────────────────────────────────
+    # 33. Simhendramadhyama
+    # ─────────────────────────────────────────────
+    "simhendramadhyama": {
+        "name": "Simhendramadhyama",
+        "type": "Melakarta",
+        "melakarta_number": 57,
+        "melakarta_name": "Simhendramadhyama",
+        "parent": "Self (Melakarta 57)",
+        "hindustani_equivalent": None,
+        "arohana": "S R2 G3 M2 P D1 N2 S",
+        "avarohana": "S N2 D1 P M2 G3 R2 S",
+        "swaras": ["S", "R2", "G3", "M2", "P", "D1", "N2"],
+        "rasas": ["Grandeur", "Devotion", "Majesty"],
+        "time": "Any time",
+        "compositions": [
+            {"name": "Raga Sudha Rasa", "composer": "Tyagaraja"},
+        ],
+        "special_features": [
+            "Sampurna raga with all seven swaras: Sa, Ri, Ga, Ma (prati), Pa, Da, Ni.",
+            "57th Melakarta raga.",
+            "Known for its majestic and grand quality.",
+        ],
+    },
+    # ─────────────────────────────────────────────
+    # 34. Sriranjani
+    # ─────────────────────────────────────────────
+    "sriranjani": {
+        "name": "Sriranjani",
+        "type": "Janya",
+        "melakarta_number": 22,
+        "melakarta_name": "Kharaharapriya",
+        "parent": "Kharaharapriya (Melakarta 22)",
+        "hindustani_equivalent": None,
+        "arohana": "S R2 G2 M1 D2 N2 S",
+        "avarohana": "S N2 D2 M1 G2 R2 S",
+        "swaras": ["S", "R2", "G2", "M1", "D2", "N2"],
+        "rasas": ["Devotion", "Tenderness", "Romance"],
+        "time": "Night",
+        "compositions": [
+            {"name": "Koluvaiyunnade", "composer": "Tyagaraja"},
+        ],
+        "special_features": [
+            "Shadava janya raga with six swaras: Sa, Ri, Ga, Ma, Da, Ni (Pa omitted).",
+            "Known for its delicate and devotional quality.",
+        ],
+    },
+    # ─────────────────────────────────────────────
+    # 35. Sahana
+    # ─────────────────────────────────────────────
+    "sahana": {
+        "name": "Sahana",
+        "type": "Janya",
+        "melakarta_number": 28,
+        "melakarta_name": "Harikambhoji",
+        "parent": "Harikambhoji (Melakarta 28)",
+        "hindustani_equivalent": None,
+        "arohana": "S R2 G3 M1 P M1 D2 N2 S",
+        "avarohana": "S N2 D2 P M1 G3 R2 G3 S",
+        "swaras": ["S", "R2", "G3", "M1", "P", "D2", "N2"],
+        "rasas": ["Devotion", "Peace", "Love"],
+        "time": "Night",
+        "compositions": [
+            {"name": "Sri Subrahmanyaya", "composer": "Dikshitar"},
+        ],
+        "special_features": [
+            "Vakra (zig-zag) janya raga with all seven swaras: Sa, Ri, Ga, Ma, Pa, Da, Ni appearing in irregular progression.",
+            "Characteristic vakra prayoga in both ascent and descent.",
+        ],
+    },
+    # ─────────────────────────────────────────────
+    # 36. Begada
+    # ─────────────────────────────────────────────
+    "begada": {
+        "name": "Begada",
+        "type": "Janya",
+        "melakarta_number": 29,
+        "melakarta_name": "Dheerasankarabharanam",
+        "parent": "Dheerashankarabharanam (Melakarta 29)",
+        "hindustani_equivalent": None,
+        "arohana": "S G3 R2 G3 M1 P D2 N3 S",
+        "avarohana": "S N3 D2 P M1 G3 R2 S",
+        "swaras": ["S", "R2", "G3", "M1", "P", "D2", "N3"],
+        "rasas": ["Devotion", "Majesty", "Grandeur"],
+        "time": "Morning",
+        "compositions": [
+            {"name": "Evarura", "composer": "Tyagaraja"},
+        ],
+        "special_features": [
+            "Vakra (zig-zag) janya raga with all seven swaras: Sa, Ri, Ga, Ma, Pa, Da, Ni in irregular order.",
+            "Vakra prayoga S-G-R-G in ascent is characteristic.",
+        ],
+    },
+    # ─────────────────────────────────────────────
+    # 37. Vasanta
+    # ─────────────────────────────────────────────
+    "vasanta": {
+        "name": "Vasanta",
+        "type": "Janya",
+        "melakarta_number": 17,
+        "melakarta_name": "Suryakantam",
+        "parent": "Suryakantam (Melakarta 17)",
+        "hindustani_equivalent": None,
+        "arohana": "S G3 M1 D1 N3 S",
+        "avarohana": "S N3 D1 M1 G3 R1 S",
+        "swaras": ["S", "R1", "G3", "M1", "D1", "N3"],
+        "rasas": ["Joy", "Romance", "Spring"],
+        "time": "Spring/Morning",
+        "compositions": [
+            {"name": "Sri Ramam", "composer": "Dikshitar"},
+        ],
+        "special_features": [
+            "Shadava janya raga with six swaras: Sa, Ri, Ga, Ma, Da, Ni (Pa omitted in both ascent and descent).",
+            "Associated with the season of spring (Vasanta Ritu).",
+        ],
+    },
+    # ─────────────────────────────────────────────
+    # 38. Ritigowla
+    # ─────────────────────────────────────────────
+    "ritigowla": {
+        "name": "Ritigowla",
+        "type": "Janya",
+        "melakarta_number": 22,
+        "melakarta_name": "Kharaharapriya",
+        "parent": "Kharaharapriya (Melakarta 22)",
+        "hindustani_equivalent": None,
+        "arohana": "S G2 R2 G2 M1 N2 D2 N2 S",
+        "avarohana": "S N2 D2 M1 G2 R2 S",
+        "swaras": ["S", "R2", "G2", "M1", "P", "D2", "N2"],
+        "rasas": ["Devotion", "Pathos", "Yearning"],
+        "time": "Night",
+        "compositions": [
+            {"name": "Sowmya Dasarate", "composer": "Tyagaraja"},
+        ],
+        "special_features": [
+            "Vakra (zig-zag) janya raga with all seven swaras: Sa, Ri, Ga, Ma, Pa, Da, Ni in irregular order.",
+            "Pa is used only in avarohana; arohana skips from Ma to Ni.",
+        ],
+    },
+    # ─────────────────────────────────────────────
+    # 39. Sri Raga
+    # ─────────────────────────────────────────────
+    "sri": {
+        "name": "Sri Raga",
+        "type": "Janya",
+        "melakarta_number": 22,
+        "melakarta_name": "Kharaharapriya",
+        "parent": "Kharaharapriya (Melakarta 22)",
+        "hindustani_equivalent": None,
+        "arohana": "S R2 M1 P N2 S",
+        "avarohana": "S N2 P D2 N2 P M1 R2 G2 R2 S",
+        "swaras": ["S", "R2", "G2", "M1", "P", "D2", "N2"],
+        "rasas": ["Devotion", "Majesty", "Auspiciousness"],
+        "time": "Evening",
+        "compositions": [
+            {"name": "Endaro Mahanubhavulu", "composer": "Tyagaraja"},
+        ],
+        "special_features": [
+            "Vakra janya raga with all seven swaras: Sa, Ri, Ga, Ma, Pa, Da, Ni — Ga and Da appear only in avarohana.",
+            "One of the five Pancharatna Kritis ragas.",
+            "Also known simply as 'Sri'.",
+        ],
+    },
+    # ─────────────────────────────────────────────
+    # 40. Suddhadhanyasi
+    # ─────────────────────────────────────────────
+    "suddhadhanyasi": {
+        "name": "Suddhadhanyasi",
+        "type": "Janya",
+        "melakarta_number": 22,
+        "melakarta_name": "Kharaharapriya",
+        "parent": "Kharaharapriya (Melakarta 22)",
+        "hindustani_equivalent": None,
+        "arohana": "S G2 M1 P N2 S",
+        "avarohana": "S N2 P M1 G2 S",
+        "swaras": ["S", "G2", "M1", "P", "N2"],
+        "rasas": ["Devotion", "Peace", "Simplicity"],
+        "time": "Any time",
+        "compositions": [
+            {"name": "Brochevarevarura", "composer": "Mysore Vasudevacharya"},
+        ],
+        "special_features": [
+            "Audava (pentatonic) janya raga with five swaras: Sa, Ga, Ma, Pa, Ni (Ri and Da omitted).",
+            "Known for its simple, devotional quality.",
+        ],
+    },
 }
 
 # ──────────────────────────────────────────────────────────────
@@ -795,7 +1072,7 @@ RAGA_ALIASES = {
     "subhapantuvarali": "todi",
     "mechakalyani": "kalyani",
     "mecha kalyani": "kalyani",
-    "natabhairavi": "bhairavi",
+    "natabhairavi": "natabhairavi",
     "harikambhoji": "kamboji",
     "hamsadwani": "hamsadhwani",
     "hamsa dhwani": "hamsadhwani",
@@ -804,6 +1081,7 @@ RAGA_ALIASES = {
     "ananda bhairavi": "anandabhairavi",
     "shuddhasaveri": "shuddha_saveri",
     "suddha saveri": "shuddha_saveri",
+    "suddhasaveri": "shuddha_saveri",
     "amritavarshini": "amruthavarshini",
     "amritha varshini": "amruthavarshini",
     "madhyamavati": "madhyamavathi",
@@ -811,6 +1089,24 @@ RAGA_ALIASES = {
     "shiva ranjani": "sivaranjani",
     "revati": "revathi",
     "mayamalavagaula": "mayamalavagowla",
+    # New raga aliases
+    "nata bhairavi": "natabhairavi",
+    "shanmukha priya": "shanmukhapriya",
+    "sanmukhapriya": "shanmukhapriya",
+    "simhendra madhyama": "simhendramadhyama",
+    "simhendramadhyamam": "simhendramadhyama",
+    "sri ranjani": "sriranjani",
+    "sree ranjani": "sriranjani",
+    "sri raga": "sri",
+    "sriraga": "sri",
+    "sree": "sri",
+    "suddha dhanyasi": "suddhadhanyasi",
+    "shuddhadhanyasi": "suddhadhanyasi",
+    "shuddha dhanyasi": "suddhadhanyasi",
+    "rithi gowla": "ritigowla",
+    "riti gowla": "ritigowla",
+    "vasantham": "vasanta",
+    "begade": "begada",
 
     # Hindustani alternate spellings
     "kirwani": "keeravani",

@@ -187,8 +187,49 @@ def get_sessions(current_user: dict = Depends(get_current_user)):
 
 @router.get("/chat/sessions/{conv_id}/history")
 def get_session_history(conv_id: str, current_user: dict = Depends(get_current_user)):
-    # Verify ownership or retrieve
-    return get_conversation_history(conv_id)
+    """Return history as {history: [{role, content, citations, ...}]} so the
+    frontend ChatPage can consume it directly. 'sender' is normalized to 'role'.
+    The 'confidence' column may contain a plain float OR a JSON dict with rich metadata.
+    """
+    import json as _json
+    raw = get_conversation_history(conv_id)
+    normalized = []
+    for msg in raw:
+        # Try to unpack the packed metadata JSON
+        meta = {}
+        conf_raw = msg.get("confidence")
+        if conf_raw is not None:
+            if isinstance(conf_raw, str):
+                try:
+                    parsed = _json.loads(conf_raw)
+                    # json.loads of a plain number like "0.0" returns a float, not a dict
+                    if isinstance(parsed, dict):
+                        meta = parsed
+                    elif isinstance(parsed, (int, float)):
+                        meta = {"top_confidence": float(parsed)}
+                except Exception:
+                    # Not JSON — could be a plain number string like "95.0"
+                    try:
+                        meta = {"top_confidence": float(conf_raw)}
+                    except Exception:
+                        pass
+            elif isinstance(conf_raw, (int, float)):
+                meta = {"top_confidence": float(conf_raw)}
+        if not isinstance(meta, dict):
+            meta = {}
+
+        normalized.append({
+            "id":               msg["id"],
+            "role":             "assistant" if msg["sender"] == "assistant" else "user",
+            "content":          msg["content"],
+            "citations":        msg["citations"] or [],
+            "top_confidence":   meta.get("top_confidence", 0),
+            "confidence_label": meta.get("confidence_label"),
+            "source_type":      meta.get("source_type"),
+            "synthesis_method": meta.get("synthesis_method"),
+            "created_at":       msg["created_at"],
+        })
+    return {"history": normalized, "session_id": conv_id}
 
 @router.delete("/chat/sessions/{conv_id}")
 def delete_session(conv_id: str, current_user: dict = Depends(get_current_user)):
@@ -210,6 +251,154 @@ def pin_session(conv_id: str, current_user: dict = Depends(get_current_user)):
     if not success:
         raise HTTPException(status_code=400, detail="Failed to toggle pin on conversation")
     return {"status": "success", "message": "Conversation pin toggled"}
+
+@router.post("/chat/query")
+async def query_chat(request: dict, current_user: dict = Depends(get_current_user)):
+    try:
+        import time
+        import logging
+        import re
+        log = logging.getLogger("carnaticgpt")
+        start_time = time.time()
+        query = (
+            request.get("query") or request.get("question") or
+            request.get("message") or request.get("text") or ""
+        ).strip()
+        
+        session_id = request.get("session_id") or request.get("conversation_id")
+        
+        if not query:
+            return {"answer": "Empty query received.", "sources": [], "confidence": "LOW"}
+            
+        if session_id and current_user:
+            create_conversation_if_not_exists(session_id, current_user["id"], query[:48])
+            save_chat_message(session_id, "user", query)
+
+        log.info("[QUERY] %s", query)
+        ql = query.lower()
+
+        # ── Domain validation ────────────────────────────────────────────────
+        from backend.services.query_router import route_query
+        route_check = route_query(query)
+        if route_check.mode == "rejected":
+            return {
+                "answer": "Please ask a Carnatic music related question.",
+                "sources": [], "citations": [], "confidence": "LOW",
+                "confidence_label": "low", "top_confidence": 0.0,
+                "sources_found": 0, "route": "rejected",
+            }
+
+        # ── Audio Route Interception ─────────────────────────────────────────
+        audio_data = None
+        try:
+            from backend.services.audio_mapping import resolve_audio_from_query
+            audio_data = resolve_audio_from_query(query)
+        except Exception:
+            pass
+
+        if route_check.mode != "multiple_questions" and any(w in ql for w in ["play", "listen", "audio", "hear", "youtube"]):
+            try:
+                from backend.services.query_router import _extract_raga
+                from backend.services.database_loader import find_recordings, TRACKS
+                raga_found = _extract_raga(query)
+                if raga_found:
+                    matches = find_recordings(raga_found)
+                else:
+                    matches = [
+                        s for s in TRACKS
+                        if s.get("ragam") and re.search(rf"\b{re.escape(s.get('ragam').lower())}\b", ql)
+                    ]
+                    
+                if matches:
+                    links = []
+                    citations = []
+                    for m in matches[:5]:
+                        s_name = m.get('song_name', 'Unknown').replace("-", " ")
+                        y_url = m.get('youtube', '')
+                        links.append(f"- **[{s_name}]({y_url})** (Watch: {y_url}) (By: {m.get('composer', 'Unknown')})")
+                        citations.append({
+                            "book_name": "YouTube Performance",
+                            "song": s_name,
+                            "composer": m.get("composer", "Unknown"),
+                            "shruti": str(m.get("shruti_kattai", "1.5")),
+                            "youtube_url": y_url,
+                            "type": "music",
+                            "excerpt": f"YouTube performance of {s_name} by {m.get('artist', 'Unknown')}.",
+                            "confidence": 100.0,
+                            "confidence_label": "High"
+                        })
+                    ragam_name = matches[0].get("ragam", "Unknown").title()
+                    
+                    answer = f"**{ragam_name} Raga**\n\nAudio Demonstrations:\n" + "\n".join(links)
+                    
+                    # Log telemetry
+                    try:
+                        latency_ms = int((time.time() - start_time) * 1000)
+                        from backend.database import get_db_connection
+                        conn = get_db_connection()
+                        cursor = conn.cursor()
+                        cursor.execute(
+                            "INSERT INTO telemetry (user_id, query, latency_ms) VALUES (?, ?, ?)",
+                            (1, query, latency_ms)
+                        )
+                        conn.commit()
+                        conn.close()
+                    except Exception as e:
+                        log.error("Telemetry logging failed: %s", e)
+ 
+                    return {
+                        "answer": answer,
+                        "synthesis_method": "audio_router",
+                        "sources": [],
+                        "citations": citations,
+                        "confidence": "HIGH",
+                        "confidence_label": "high",
+                        "top_confidence": 100.0,
+                        "sources_found": len(citations),
+                        "route": "audio",
+                        "audio": audio_data,
+                        "session_id": request.get("session_id") or request.get("conversation_id"),
+                    }
+            except Exception as e:
+                log.error("Audio routing failed: %s", e)
+        
+        # Single question flow delegates directly to retrieval pipeline
+        from backend.services.retrieval import answer_question
+        result = answer_question(query)
+        
+        # Attach audio player data and session ID
+        result["audio"] = audio_data
+        result["session_id"] = session_id
+        
+        if session_id and current_user:
+            save_chat_message(
+                session_id, "assistant",
+                result["answer"],
+                result.get("citations", []),
+                result.get("top_confidence", 0.0)
+            )
+        
+        # Log telemetry
+        try:
+            latency_ms = int((time.time() - start_time) * 1000)
+            from backend.database import get_db_connection
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute(
+                "INSERT INTO telemetry (user_id, query, latency_ms) VALUES (?, ?, ?)",
+                (current_user["id"], query, latency_ms)
+            )
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            log.error("Telemetry logging failed: %s", e)
+
+        return result
+
+    except Exception as e:
+        import logging
+        logging.getLogger("carnaticgpt").exception("CHAT ERROR")
+        return {"answer": f"Server error: {e}", "sources": [], "confidence": "LOW"}
 
 # --- FEEDBACK ---
 
@@ -248,6 +437,7 @@ async def upload_document(file: UploadFile = File(...), current_user: dict = Dep
 
 # --- TELEMETRY / DASHBOARD ---
 
+@router.get("/stats", response_model=DashboardStats)
 @router.get("/dashboard/stats", response_model=DashboardStats)
 def get_dashboard_stats(current_user: dict = Depends(get_current_user)):
     conn = get_db_connection()
@@ -256,6 +446,13 @@ def get_dashboard_stats(current_user: dict = Depends(get_current_user)):
         # Count total queries
         cursor.execute("SELECT count(*) FROM telemetry")
         total_queries = cursor.fetchone()[0] or 0
+        
+        # Count active sessions
+        try:
+            cursor.execute("SELECT count(*) FROM conversations")
+            active_sessions = cursor.fetchone()[0] or 0
+        except Exception:
+            active_sessions = 0
         
         # Avg Latency
         cursor.execute("SELECT avg(latency_ms) FROM telemetry")
@@ -297,6 +494,13 @@ def get_dashboard_stats(current_user: dict = Depends(get_current_user)):
             {"date": "05-24", "queries": total_queries if total_queries > 0 else 5, "latency": avg_latency}
         ]
         
+        # Retrieve total vectors from FAISSStore
+        try:
+            from backend.services.faiss_store import FAISSStore
+            total_vectors = FAISSStore().stats().get("total_vectors", 0)
+        except Exception:
+            total_vectors = 0
+            
         return {
             "total_queries": total_queries if total_queries > 0 else 92,
             "avg_latency_ms": avg_latency,
@@ -304,7 +508,9 @@ def get_dashboard_stats(current_user: dict = Depends(get_current_user)):
             "upvotes": upvotes if upvotes > 0 else 8,
             "downvotes": downvotes,
             "raga_distribution": raga_distribution,
-            "usage_trend": usage_trend
+            "usage_trend": usage_trend,
+            "total_vectors": total_vectors,
+            "active_sessions": active_sessions
         }
     finally:
         conn.close()
